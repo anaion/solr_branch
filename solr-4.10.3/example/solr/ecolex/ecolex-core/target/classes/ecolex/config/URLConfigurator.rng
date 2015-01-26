@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+ @author <a href="mailto:pwiech@ii.pw.edu.pl">Przemysław Więch</a>
+-->
+<element name="config" xmlns="http://relaxng.org/ns/structure/1.0">
+  <element name="localBaseAddress">
+    <text/>
+  </element>
+  <element name="documentBaseAddress">
+    <text/>
+  </element>
+  <element name="faolexIndexAddress">
+    <text/>
+  </element>
+  <zeroOrMore>
+    <element name="linkPath">
+      <attribute name="field">
+        <text/>
+      </attribute>
+      <text/>
+    </element>
+  </zeroOrMore>
+</element>

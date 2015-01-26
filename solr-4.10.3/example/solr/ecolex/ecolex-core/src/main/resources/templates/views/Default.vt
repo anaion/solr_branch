@@ -1,0 +1,2 @@
+$viewEnclosureTool.override('Layout')##
+$!embeddedPlaceholder

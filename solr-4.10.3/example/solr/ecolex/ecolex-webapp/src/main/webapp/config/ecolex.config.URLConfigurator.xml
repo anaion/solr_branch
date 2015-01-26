@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology.
+ All rights reserved.
+-->
+<config>
+<!-- Testing configuration
+  <localBaseAddress>http://194.29.167.248:8180/cgi-bin/xml-iucn.exe</localBaseAddress>
+  <documentBaseAddress>http://194.29.167.248:8180/libcat/docs/</documentBaseAddress>
+  <faolexIndexAddress>http://shadow:8580/faolex/</faolexIndexAddress>
+  -->
+<!--
+  <localBaseAddress>http://iucn.cus.de/cgi-bin/xml.exe</localBaseAddress>
+  <documentBaseAddress>http://iucn.cus.de/libcat/docs/</documentBaseAddress> 
+ -->
+<!--
+  <localBaseAddress>http://wizzar.ii.pw.edu.pl/cgi-bin/xml.exe</localBaseAddress>
+  <documentBaseAddress>http://wizzar.ii.pw.edu.pl/libcat/docs/</documentBaseAddress>
+  -->
+  
+  <localBaseAddress>http://elis.ecolex.org/cgi-bin/xml.exe</localBaseAddress>
+  <documentBaseAddress>http://elis.ecolex.org/libcat/docs/</documentBaseAddress>
+
+<!--
+  <localBaseAddress>http://localhost/cgi-bin/xml.exe</localBaseAddress>
+  <documentBaseAddress>http://localhost/libcat/docs/</documentBaseAddress> 
+  -->
+  <faolexIndexAddress>http://faolex.fao.org:8080/faolex-webapp/</faolexIndexAddress>
+  <linkPath field="linkToAbstract">abstracts/</linkPath>
+  <linkPath field="linkToComment">comments/</linkPath>
+</config>

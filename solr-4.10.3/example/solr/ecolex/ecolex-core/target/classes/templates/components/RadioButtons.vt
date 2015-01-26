@@ -1,0 +1,4 @@
+#foreach($option in $options.keySet())
+        <input class="radioButton" id="radio_$option.hashCode()" name="$name" type="radio" #if($selected.equals($option)) checked="checked" #end value="$option"/>
+        <label for="radio_$option.hashCode()">$i18nViews.get($options.get($option).toString())</label>
+#end

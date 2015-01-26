@@ -1,0 +1,54 @@
+$viewEnclosureTool.top()##
+## Removed XML header because it makes IE work in quirks mode
+##<?xml version="1.0" encoding="$pageTool.encoding"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" #if("$i18n.locale" == "ar_SA") dir="rtl"#end >
+## top level view
+$viewEnclosureTool.top()
+##
+<head>
+<title>$pageTool.title</title>
+<meta http-equiv="Content-Type" content="$pageTool.contentType" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+## page tool http equiv meta tags
+#foreach($meta in $pageTool.httpEquivMetas)
+<meta http-equiv="$meta.httpEquiv" content="$meta.content" />
+#end
+## page tool name meta tags
+#foreach($meta in $pageTool.nameMetas)
+<meta name="$meta.name" content="$meta.content" />
+#end
+## CSS links
+#foreach($styleLink in $pageTool.styleLinks)
+<link rel="stylesheet" type="text/css" href="$styleLink.href" />
+#end
+## JavaScript links
+#if($pageTool.hasScripts())
+##
+##$pageTool.addAutoLoadScriptLink('script/ScriptLoader.js')
+##$pageTool.addAutoLoadScriptLink('script/BrowserUtil.js')
+#set($jslink = $link.sessionless())
+<script type="text/javascript">
+<!--
+// initialisation of config parameters for ScriptLoader
+javaScriptBaseDir = '$jslink.content('script/')';
+// -->
+</script>
+##
+#end
+#foreach($scriptLink in $pageTool.scriptLinks)
+<script type="text/javascript" src="$scriptLink.src"##
+#if($scriptLink.charset) charset="$scriptLink.charset"#end> </script>
+#end
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</head>
+
+<!-- actualView:$innermostView -->
+
+<body>
+$!embeddedPlaceholder
+</body>
+</html>

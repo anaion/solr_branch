@@ -1,0 +1,41 @@
+<caption>
+<script type="text/javascript">
+  function openListing(listingField)
+  {
+    form = el('advancedSearchForm');
+    form.action = "$link.view('Listing')";
+    el('listingField').value = listingField;
+    form.submit();
+  }
+</script>
+  <input id="listingField" type="hidden" name="listingField" value=""/>
+</caption>
+	#set($shortLink = $link.toString().substring($link.toString().lastIndexOf('/')).substring(1))
+    #set($shortLink = $shortLink.toLowerCase())
+    #if($shortLink=="common")
+    	#set($shortLink = "")
+    #end
+    #if($shortLink=="legislation")
+    	#set($shortLink = "documents")
+    #end
+    
+    #foreach($criterium in $criteria.entrySet())
+    <tr>
+      <th>
+        #if(!$i18nIndex.get("field.${criterium.value}_search", "").equals(""))
+            $i18nIndex.get("field.${criterium.value}_search"):
+        #else
+            $i18nIndex.get("field.${criterium.value}"):
+        #end
+      </th>
+    <td>
+    
+        $component.embed('TextField', [['style', 'criteriatextfield'],['name', $criterium.key], ['text', $!htmlEncoder.encodeAttribute($parametersTool.get($criterium.key, ''))]])
+        $component.embed('ComboBox', [['style','allAnySelect'],['name', "${criterium.key}_allWords"], ['options',$allAny], ['selected', $parametersTool.get("${criterium.key}_allWords", "")] ])
+        #if ($criterium.value.listing)
+        <script>autocomplete("$criterium.key","$shortLink","$criterium.key")</script>
+        <input class="short_button" type="button" value="$i18nAS.get('List')" onclick="openListing('$criterium.key')"/>
+        #end
+    </td>
+    </tr>
+    #end

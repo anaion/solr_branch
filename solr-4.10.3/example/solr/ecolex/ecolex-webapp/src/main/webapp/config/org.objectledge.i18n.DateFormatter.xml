@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology. 
+ All rights reserved.
+--> 
+
+<config>
+  <locale name="en_US" defaultPattern="full">
+    <pattern name="full" value="HH:mm:ss, d MMMM yyyy"/>
+    <pattern name="shorttime" value="HH:mm"/>
+    <pattern name="date" value="dd.MM.yyyy"/>
+  </locale>
+  <locale name="fr_FR" defaultPattern="full">
+    <pattern name="full" value="dd.MM.yyyy, HH:mm"/>
+    <pattern name="shorttime" value="HH:mm"/>
+    <pattern name="date" value="dd.MM.yyyy"/>
+  </locale>
+  <locale name="es_ES" defaultPattern="full">
+    <pattern name="full" value="dd.MM.yyyy, HH:mm"/>
+    <pattern name="shorttime" value="HH:mm"/>
+    <pattern name="date" value="dd.MM.yyyy"/>
+  </locale>
+  <locale name="ar_SA" defaultPattern="full">
+    <pattern name="full" value="dd.MM.yyyy, HH:mm"/>
+    <pattern name="shorttime" value="HH:mm"/>
+    <pattern name="date" value="dd.MM.yyyy"/>
+  </locale>
+</config>

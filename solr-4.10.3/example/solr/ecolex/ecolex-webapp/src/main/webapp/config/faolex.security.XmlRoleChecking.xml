@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+-->
+<config>
+  <passwordFile path="/config/pasla"/>
+  <superUser name="root"/>
+  <user name="admin">
+    <role name="ecolexAdministrator"/>
+  </user>
+  <user name="root">
+    <role name="systemAdministrator"/>
+    <role name="faolexAdministrator"/>
+  </user>
+</config>

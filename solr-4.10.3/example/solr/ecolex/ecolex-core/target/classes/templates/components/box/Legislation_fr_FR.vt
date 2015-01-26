@@ -1,0 +1,5 @@
+<p>Legislation de tous les pays au niveau national ou provincial</p>
+#set($fromDate = $format_date.pattern("yyyyMMdd").format($dateTool.daysBack(90)))
+#set($newestLink = $link.view('SearchResults').set('index', 'documents').set('query', "dateOfEntry:[$fromDate TO z]").set('sortField', 'dateOfEntry').set('title', 'newest'))
+<p><a href="$newestLink">Nouvelles entrées</a>
+##<p><a href="$link.view('Legislation')">&gt;&gt;</a></p>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+ @author <a href="mailto:pwiech@ii.pw.edu.pl">Przemysław Więch</a>
+-->
+<element name="config" xmlns="http://relaxng.org/ns/structure/1.0">
+  <optional>
+    <element name="documentDirs">
+      <oneOrMore>
+        <element name="dir">
+          <element name="baseDir">
+            <text/>
+          </element>
+          <oneOrMore>
+            <element name="extension">
+              <text/>
+            </element>
+          </oneOrMore>
+        </element>
+      </oneOrMore>
+    </element>
+  </optional>
+  <element name="resultLinks">
+    <oneOrMore>
+      <element name="link">
+        <attribute name="locale"/>
+        <element name="format">
+          <text/>
+        </element>
+        <element name="lang">
+          <text/>
+        </element>
+      </element>
+    </oneOrMore>
+  </element>
+</element>

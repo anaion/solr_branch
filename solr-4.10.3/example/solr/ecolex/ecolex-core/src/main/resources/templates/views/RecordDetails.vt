@@ -1,0 +1,102 @@
+#set($i18nIndex = $i18n.usePrefix("ecolex.index.$parametersTool.get('index')"))
+#set($i18nIndexes = $i18n.usePrefix("ecolex.index"))
+#set($i18nRef = $i18n.usePrefix("ecolex.references.strings"))
+#set($i18nRD = $i18n.usePrefix("ecolex.RecordDetails.strings"))
+#set($i18nParties = $i18n.usePrefix("ecolex.parties.strings"))
+
+$pageTool.setTitle("$i18nIndex.get('index.name'): $i18nRD.get('record details')")##
+$pageTool.addScriptLink('ecolex/javascript/utils.js')
+$pageTool.addScriptLink('ecolex/javascript/sorttable.js')
+
+
+#if(!$fields)
+  <div class="no_matches">Could not find specified record.</div>
+#else
+
+<h1>$i18nIndex.get('index.name'): $i18nRD.get('record details') (<a href="javascript:history.back()" class="results-header">$i18nRD.get('return')</a>)</h1>
+<table class="input-fields">
+    #foreach($field in $fields.entrySet())
+            <tr>
+                <th>$i18nIndex.get("field.$field.key"):</th>
+                <td>$field.value</td>
+            </tr>
+    #end
+</table>
+
+
+#if($parametersTool.get('index').equals("treaties"))
+    <br/>
+    <script type="text/javascript">
+        function showHidePartyTable()
+        {
+            if(el("partyTable").style.display == "none")
+            {
+                el("partyTable").style.display = "block";
+                el("plusMinus").src="$link.content('ecolex/images/minus.jpg')";
+                el("plusMinus").title="$i18nRD.get('Click to hide parties')";
+            }
+            else
+            {
+                el("partyTable").style.display = "none";
+                el("plusMinus").src="$link.content('ecolex/images/plus.jpg')";
+                el("plusMinus").title="$i18nRD.get('Click to show parties')";
+            }
+        }
+    </script>
+
+    <h1><img id="plusMinus" src="$link.content('ecolex/images/plus.jpg')" title="$i18nRD.get('Click to show parties')" onclick="showHidePartyTable();" alt="+"/> $i18nRD.get('Parties')</h1>
+
+    <table class="party-list sortable" id="partyTable" style="display: none">
+        <tr>
+        #foreach($columnName in $partyTableHeader)
+            <th>$i18nParties.get($columnName.toString())</th>
+        #end
+        </tr>
+        #foreach($party in $parties)
+            <tr #if($velocityCount % 2 == 1)class="odd"#end>
+                #foreach($field in $party.entrySet())
+                    <td #if($field.key.equals("country"))class="state"#end>
+                            $!htmlEncoder.encodeHTML($field.value)
+                    </td>
+                #end
+            </tr>
+        #end
+    </table>
+#end
+
+#set($date = $format_date.pattern('dd MMMM yyyy'))
+#if(!$references.empty)
+<br/>
+<h1>$i18nRD.get('References')</h1>
+<table class="references-list">
+    #foreach($referenceIndex in $references.references.entrySet())
+        #if(!$referenceIndex.value.isEmpty())
+            <tr><th colspan="2" class="darker_bg">$i18nIndexes.get("${referenceIndex.key}.index.name")</th></tr>
+            #foreach($referenceList in $referenceIndex.value.entrySet())
+                <tr>
+                    <th>$i18nRef.get($referenceList.key):</th>
+                    <td>
+                        #foreach($reference in $referenceList.value)
+                            <p>$component.embed('DisplayTitle', [['record', $reference]])
+                            #if(!$referenceIndex.key.equals("literature") && $reference.dateOfText)
+                                <span class="nobr">- $date.format($dateConverter.toDate($reference.dateOfText))</span>
+                            #end
+                            </p>
+                        #end
+                    </td></tr>
+            #end
+        #end
+    #end
+
+#if($references.referenceLinksCount > 0)
+    #set($refLink = $link.view('SearchResults').set('sortField','searchDate').set('op', 'or'))
+    #foreach($term in $references.referenceLinks)
+        #set($refLink = $refLink.set($term.field(), $term.text()))
+    #end
+    <tr><td colspan="2" class="darker_bg"><a href="$refLink">$i18nRD.get("Referring documents") ($references.referenceLinksCount)</a></td></tr>
+#end
+
+</table>
+#end
+
+#end

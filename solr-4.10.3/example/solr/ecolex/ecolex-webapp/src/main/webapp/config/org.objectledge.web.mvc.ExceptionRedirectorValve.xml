@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology. 
+ All rights reserved.
+--> 
+
+<config>
+  <exception class="org.objectledge.web.mvc.security.LoginRequiredException"
+  			 view="Login" level="DEBUG"/>
+  <exception class="org.objectledge.web.mvc.security.AccessDeniedException"
+  			 view="AccessDenied" level="DEBUG"/>
+</config>

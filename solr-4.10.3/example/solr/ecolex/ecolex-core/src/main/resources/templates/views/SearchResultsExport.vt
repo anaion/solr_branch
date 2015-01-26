@@ -1,0 +1,248 @@
+$viewEnclosureTool.override('ExportLayout')##
+$!embeddedPlaceholder##
+#set($i18nIndex = $i18n.usePrefix('ecolex.index'))
+#set($i18nSR = $i18n.usePrefix('ecolex.SearchResults.strings'))
+#set($i18nViews = $i18n.usePrefix('ecolex.views.strings'))
+#set($i18nRD = $i18n.usePrefix("ecolex.RecordDetails.strings"))
+#set($i18nParties = $i18n.usePrefix("ecolex.parties.strings"))
+#set($i18nIndexes = $i18n.usePrefix("ecolex.index"))
+#set($i18nRef = $i18n.usePrefix("ecolex.references.strings"))
+$pageTool.setTitle($i18nSR.get("title"))##
+$pageTool.addScriptLink('ecolex/javascript/utils.js')##
+#macro(field $hit $field)
+    #if($hit.get("${field}Whole_$i18n.Locale"))
+        $highlighter.highlight($hit.get("${field}Whole_$i18n.Locale")))
+    #elseif($hit.get("${field}Whole"))
+        $highlighter.highlight($hit.get("${field}Whole"))
+    #elseif($hit.get("${field}_$i18n.Locale"))
+        $highlighter.highlight($hit.get("${field}_$i18n.Locale"))
+    #elseif($hit.get("$field"))
+       $highlighter.highlight($hit.get("$field"))
+    #end
+#end
+#macro(fieldName $index $field)$i18nIndex.get("${index}.field.$field")#end
+#macro(fieldDiv $index $hit $field)
+#if($hit.get("${field}Whole_$i18n.Locale") || $hit.get("${field}Whole") || $hit.get("${field}_$i18n.Locale") || $hit.get("$field"))
+<div class="result-date">
+    <span>#fieldName($index $field): #field($hit $field)</span>##
+</div>
+#end
+#end
+#macro(dateDiv $index $hit $field)
+#if($hit.get("$field"))
+<div class="result-date">
+    <span>#fieldName($index $field): $!dateTool.format($hit.get("$field"), $i18n.Locale)</span>##
+</div>
+#end
+#end
+#if($params.get('exportType')=='xml')
+$viewEnclosureTool.top()##
+<?xml version="1.0" encoding="UTF-8"?>
+<result queryID="1" numberResultsFound="$selected.size()" numberResultsPresented="$selected.size()">
+#end
+#foreach($sel in $selected)
+  #set($hit = $hitsTable.rows.get($sel).object)
+#set($index = $indexIdentifier.identify($hit.document))
+#if($params.get('exportType')=='short') 
+<table>
+<tr>
+<td>
+</td>
+
+<td style="border-bottom: dotted #005D13 1px;padding-left: 5px;margin-bottom: 3px;padding-bottom: 10px;width:100%">
+
+#if($indexHits.size() > 1)
+    <div class="recordtype">$i18nIndex.get("${index}.index.name")</div>
+#end
+
+    <p class="result-countries">
+    #if($index.equals("treaties"))
+        $i18nSR.get("International")
+    #elseif($hit.scope)
+        #field($hit 'scope')
+    #else
+        #field($hit 'country')
+        #foreach($countryCode in $hit.tokens(' ').countryCodes)
+            #if($velocityCount > 1) ; #end
+                #if($dictionary.getTerm($countryCode, $i18n.Locale))
+                    $dictionary.getTerm($countryCode, $i18n.Locale)
+                #else
+                    $countryCode
+                #end
+        #end
+
+        #if($hit.territorialSubdivision)
+            ($hit.territorialSubdivision)
+        #end
+    #end
+    </p>
+
+        <p class="result-title">
+              $highlighter.highlight($component.embed('DisplayTitle', [['record', $hit.document]]))
+
+    #foreach($basinCode in $hit.tokens(' ').basinCodes)
+        #if($velocityCount > 1) ; #end
+            $dictionary.getTerm($basinCode, $i18n.Locale)
+        #end
+        </p>
+
+
+#fieldDiv($index $hit 'courtName')
+
+#if($hit.dateOfText)
+<div class="result-date">
+<span>
+    $i18nIndex.get("${index}.field.dateOfText"):
+    #if($index.equals("literature"))
+        $hit.dateOfText.substring(0, 4)
+    #else
+        $!dateTool.format($hit.dateOfText, $i18n.Locale)
+    #end
+</span>##
+</div>
+#end
+
+#dateDiv($index $hit 'dateOfOriginalText')
+
+##dateDiv($index $hit 'dateOfEntry')
+
+#if ($index.equals('documents'))
+  #dateDiv($index $hit 'dateOfConsolidation')
+#end
+
+#dateDiv($index $hit 'dateOfAdoption')
+#fieldDiv($index $hit 'placeOfAdoption')
+
+#if($index.equals("treaties"))
+  #fieldDiv($index $hit 'typeOfText')
+  #fieldDiv($index $hit 'fieldOfApplication')
+#end
+
+<div class="result-date">
+    <span>$i18nSR.get("ID"): $hit.id</span>##
+</div>
+
+## Faolex
+    <div  class="result-date">
+#if($hit.linksToFullText)
+    #fieldName($index 'link_to_full_text'):
+    #foreach($link in $hit.tokens(' ').linksToFullText)
+    	#if($link.lastIndexOf('/')>=0)
+    		#set($shortLink = $link.substring($link.lastIndexOf('/')).substring(1))
+    	#else
+    		#set($shortLink = $link)
+    	#end
+        #if($urlGenerator.getFaolexLink($link))
+            <a href="$urlGenerator.getFaolexLink($link)" target="_blank">$shortLink</a>
+        #else
+            <a href="#">$shortLinkink</a> (<span class="not_available">$i18nSR.get("not available")</span>)
+        #end
+    #end
+#end
+
+## Libcat
+##$hit.linkToFullText
+#if($hit.linkToFullText)
+    #fieldName($index 'linksToFullText'):
+    #foreach($link in $hit.tokens(' ').linkToFullText)
+    	#if($link.lastIndexOf('/')>=0)
+    		#set($shortLink = $link.substring($link.lastIndexOf('/')).substring(1))
+    	#else
+    		#set($shortLink = $link)
+    	#end
+        #if($urlGenerator.getEcolexLink($link))
+            <a href="$urlGenerator.getEcolexLink($link)" target="_blank">$shortLink</a>
+        #else
+            <a href="#">$shortLink</a> (<span class="not_available">$i18nSR.get("not available")</span>)
+        #end
+    #end
+#end
+    </div>
+</td>
+</tr>
+</table>
+
+#elseif($params.get('exportType')=='full')
+#set($fields=$recordDetails.getFields($hit))
+#set($i18nIndex = $i18n.usePrefix("ecolex.index.$index"))
+
+<div style="width:750px">
+<table class="input-fields">
+    #foreach($field in $fields.entrySet())
+            <tr>
+                <th>$i18nIndex.get("field.$field.key"):</th>
+                <td>$field.value</td>
+            </tr>
+    #end
+</table>
+
+#set($references = $recordDetails.getReferences($hit))
+#set($date = $format_date.pattern('dd MMMM yyyy'))
+#if(!$references.isEmpty())
+<h3>$i18nRD.get('References')</h3>
+<table class="references-list">
+    #foreach($referenceIndex in $references.references.entrySet())
+        #if(!$referenceIndex.value.isEmpty())
+            <tr><th colspan="2" class="darker_bg">$i18nIndexes.get("${referenceIndex.key}.index.name")</th></tr>
+            #foreach($referenceList in $referenceIndex.value.entrySet())
+                <tr>
+                    <th>$i18nRef.get($referenceList.key):</th>
+                    <td>
+                        #foreach($reference in $referenceList.value)
+                            <p>$component.embed('DisplayTitle', [['record', $reference]])
+                            #if(!$referenceIndex.key.equals("literature") && $reference.dateOfText)
+                                <span class="nobr">- $date.format($dateConverter.toDate($reference.dateOfText))</span>
+                            #end
+                            </p>
+                        #end
+                    </td></tr>
+            #end
+        #end
+    #end
+
+
+
+#if($references.referenceLinksCount > 0)
+    #set($refLink = $link.view('SearchResults').set('sortField','searchDate').set('op', 'or'))
+    #foreach($term in $references.referenceLinks)
+        #set($refLink = $refLink.set($term.field(), $term.text()))
+    #end
+    <tr><td colspan="2" class="darker_bg"><a href="$refLink">$i18nRD.get("Referring documents") ($references.referenceLinksCount)</a></td></tr>
+#end
+</table>
+#end
+#if($index.equals("treaties"))
+     <h3>$i18nRD.get('Parties')</h3>
+
+    <table class="party-list sortable" id="partyTable" style="display: block">
+        <tr>
+        #set($partyTableHeader=$recordDetails.getPartyTableHeaders())
+        #set($parties=$recordDetails.getParties($hit))
+        #foreach($columnName in $partyTableHeader)
+            <th>$i18nParties.get($columnName.toString())</th>
+        #end
+        </tr>
+        #foreach($party in $parties)
+            <tr #if($velocityCount % 2 == 1)class="odd"#end>
+                #foreach($field in $party.entrySet())
+                    <td #if($field.key.equals("country"))class="state"#end>
+                            $!htmlEncoder.encodeHTML($field.value)
+                    </td>
+                #end
+            </tr>
+        #end
+    </table>
+#end
+
+
+
+
+</div>
+<hr/>
+#elseif($params.get('exportType')=='xml')
+$recordDetails.getXML($hit)
+#end
+#end
+#if($params.get('exportType')=='xml')
+</result>
+#end

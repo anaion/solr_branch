@@ -1,0 +1,1 @@
+<a href="$link.view('Simple').action("authentication.Logout")">log out</a>

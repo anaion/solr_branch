@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="enabledByTreaty">
+      <value>Enabled by</value>
+    </prefix>
+    <prefix name="enables">
+      <value>Enables</value>
+    </prefix>
+    <prefix name="amendsTreaty">
+      <value>Amends</value>
+    </prefix>
+    <prefix name="amendedBy">
+      <value>Amended by</value>
+    </prefix>
+    <prefix name="intoForceTreaty">
+      <value>Into force</value>
+    </prefix>
+    <prefix name="intoForceBy">
+      <value>Into force by</value>
+    </prefix>
+    <prefix name="supersedesTreaty">
+      <value>Supersedes</value>
+    </prefix>
+    <prefix name="supersededBy">
+      <value>Superseded by</value>
+    </prefix>
+    <prefix name="citesTreaty">
+      <value>Cites</value>
+    </prefix>
+    <prefix name="citedBy">
+      <value>Cited by</value>
+    </prefix>
+    <prefix name="relevantTextTreaty">
+      <value>Relevant text</value>
+    </prefix>
+    <prefix name="relevantFor">
+      <value>Relevant for</value>
+    </prefix>
+    <prefix name="amends">
+      <value>Amends</value>
+    </prefix>
+    <prefix name="implements">
+      <value>Implements</value>
+    </prefix>
+    <prefix name="implementsTre">
+      <value>Implements</value>
+    </prefix>
+    <prefix name="implementedBy">
+      <value>Implemented by</value>
+    </prefix>
+    <prefix name="repeals">
+      <value>Repeals</value>
+    </prefix>
+    <prefix name="repealedBy">
+      <value>Repealed by</value>
+    </prefix>
+    <prefix name="referenceToEULegislation">
+      <value>Cites</value>
+    </prefix>
+    <prefix name="referenceToTreaties">
+      <value>Cites</value>
+    </prefix>
+    <prefix name="referenceToLiterature">
+      <value>Cites</value>
+    </prefix>
+    <prefix name="referenceToNationalLegislation">
+      <value>Cites</value>
+    </prefix>
+    <prefix name="referenceToCourtDecision">
+      <value>Cites</value>
+    </prefix>
+    <prefix name="referenceToFaolex">
+      <value>Cites</value>
+    </prefix>
+    <prefix name="referencedFrom">
+      <value>Cited by</value>
+    </prefix>
+  </prefix>
+</strings>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Traités</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>TRA</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Mots de l'entrée et texte</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Sujet(s)</value>
+    </prefix>
+    <prefix name="region">
+      <value>Région géographique</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Bassin</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Mot(s)-clé(s)</value>
+    </prefix>
+    <prefix name="placeOfAdoption">
+      <value>Lieu d'adoption</value>
+    </prefix>
+    <prefix name="depository">
+      <value>Dépositaire</value>
+    </prefix>
+    <prefix name="languageOfDocument">
+      <value>Langue du document</value>
+    </prefix>
+    <prefix name="country">
+      <value>Parties</value>
+    </prefix>
+
+    <prefix name="typeOfText">
+      <value>Type de document</value>
+    </prefix>
+    <prefix name="fieldOfApplication">
+      <value>Champ d'application</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Année / Période</value>
+    </prefix>
+    <prefix name="entryIntoForceDate">
+      <value>Entrée en vigueur</value>
+    </prefix>
+    <prefix name="entryIntoForceDate_search">
+      <value>Entrée en vigueur (année / période)</value>
+    </prefix>
+    <prefix name="obsolete">
+      <value>Traités en désuétude</value>
+    </prefix>
+     <prefix name="jurisdiction">
+      <value>Juridiction</value>
+    </prefix>
+    <prefix name="titleOfText_search">
+      <value>Mots du titre</value>
+    </prefix>
+    <prefix name="titleOfText">
+      <value>Titre (Anglais)</value>
+    </prefix>
+    <prefix name="titleOfTextFr">
+      <value>Titre (Français)</value>
+    </prefix>
+    <prefix name="titleOfTextSp">
+      <value>Titre (Espagnole)</value>
+    </prefix>
+    <prefix name="titleOfTextOther">
+      <value>Titre (autre langue)</value>
+    </prefix>
+    <prefix name="titleAbbreviation">
+      <value>Titre abréviation</value>
+    </prefix>
+    <prefix name="dateOfText">
+      <value>Date du document</value>
+    </prefix>
+    <prefix name="availableIn">
+      <value>Disponible dans</value>
+    </prefix>
+    <prefix name="amendments">
+      <value>Amendements</value>
+    </prefix>
+    <prefix name="relatedWebSite">
+      <value>Site Web concerné</value>
+    </prefix>
+    <prefix name="linksToFullText">
+      <value>Accès au texte intégral</value>
+    </prefix>
+    <prefix name="numberOfPages">
+      <value>Numéro de pages</value>
+    </prefix>
+    <prefix name="appendices">
+      <value>Appendices</value>
+    </prefix>
+    <prefix name="languageOfTranslation">
+      <value>Traduction du document</value>
+    </prefix>
+    <prefix name="abstract">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="abstractFr">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="abstractSp">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="abstractOther">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="linkToAbstract">
+      <value>Accès au résumé</value>
+    </prefix>
+    <prefix name="comment">
+      <value>Commentaire</value>
+    </prefix>
+    <prefix name="linkToComment">
+      <value>Accès au commentaire</value>
+    </prefix>
+
+    <prefix name="id">
+      <value>Numéro d'identification</value>
+    </prefix>
+  </prefix>
+</strings>
+

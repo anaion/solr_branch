@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="Home">
+      <value>Home</value>
+    </prefix>
+    <prefix name="About">
+      <value>About</value>
+    </prefix>
+    <prefix name="Search">
+      <value>Advanced Search</value>
+    </prefix>
+    <prefix name="CopDecisions">
+      <value>COP Decisions</value>
+    </prefix>
+    <prefix name="News">
+      <value>Latest News</value>
+    </prefix>
+    <prefix name="recentActions">
+      <value>Recent Actions</value>
+    </prefix>
+    <prefix name="newLegislations">
+      <value>New legislations</value>
+    </prefix>
+    <prefix name="newCourtDecisions">
+      <value>New court decisions</value>
+    </prefix>
+    <prefix name="newLiterature">
+      <value>New literature</value>
+    </prefix>
+    <prefix name="Contact">
+      <value>Contact</value>
+    </prefix>
+    <prefix name="user agreement">
+      <value>user agreement</value>
+    </prefix>
+    <prefix name="privacy">
+      <value>privacy</value>
+    </prefix>
+    <prefix name="acknowledgements">
+      <value>acknowledgements</value>
+    </prefix>
+    <prefix name="site map">
+      <value>site map</value>
+    </prefix>
+  </prefix>
+</strings>

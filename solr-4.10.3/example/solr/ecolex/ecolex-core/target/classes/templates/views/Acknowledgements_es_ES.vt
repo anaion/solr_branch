@@ -1,0 +1,56 @@
+$pageTool.setTitle('Reconocimientos')
+
+<h1>Reconocimientos</h1>
+<p>ECOLEX es administrado conjuntamente por FAO, UICN y PNUMA.</p>
+
+<p>FAO se encarga de la información de legislación nacional.<br/>
+UICN se encarga de la información de tratados y doctrina.<br/>
+PNUMA se encarga de la información de decisiones judiciales.</p>
+
+<p><b>Unidad de manejo de ECOLEX:</b> UICN -  Centro de Derecho Ambiental<br/>
+<b>Coordinador:</b> Sra. Francoise Burhenne-Guilmin</p>
+
+<h3>Socios de ECOLEX:</h3>
+
+<p>FAO - Organización de las Naciones Unidad para la Agricultura y Alimentación<br/>
+Viale delle Terme di Caracalla<br/>
+00153 Roma, Italia<br/>
+Teléfono: (+39) 06 57051<br/>
+Fax: (+39) 06 570 53152<br/>
+Correo electrónico: <a href="FAO-HQ@fao.org">FAO-HQ@fao.org</a><br/>
+Coordinador: Sra. Barbara Moauro</p>
+
+<p>UICN - Unión Mundial para la Naturaleza<br/>
+Godesbergerallee 108-112<br/>
+53175 Bonn<br/>
+Alemania<br/>
+Teléfono: ++49-228-2692231<br/>
+Fax: ++49-228-2692-250<br/>
+Correo electrónico: <a href="mailto:elcsecretariat@iucn.org">elcsecretariat@iucn.org</a><br/>
+Coordinador: Sra. Anni Lukacs</p>
+
+<p>PNUMA- Programa de las Naciones Unidas para el Medio Ambiente<br/>
+United Nations Avenue, Gigiri<br/>
+PO Box 30502, 00100<br/>
+Nairobi, Kenia<br/>
+Teléfono: ++254-207621234<br/>
+Fax: ++254-207624489/90<br/>
+Correo electrónico: <a href="mailto:unepinfo@unep.org">unepinfo@unep.org</a><br/>
+Coordinador: Sra. Iwona Rummel-Bulska</p>
+
+
+<h3>Diseño de sistema e implementación de programas</h3>
+<p><a href="http://www.icie.com.pl">Instituto de Computación e Ingeniería Informática</a></p>
+<p style="text-decoration: underline">Personas responsables:</p>
+<p>Henryk Rybiński<br/>
+Przemysław Więch<br/>
+Łukasz Skonieczny<br/>
+Mariusz Suchorowski</p>
+
+<p style="text-decoration: underline">Programas:</p>
+<p><a href="http://lucene.apache.org/java/">Lucene</a><br/>
+<a href="http://lucene.apache.org/nutch/">Nutch</a><br/>
+<a href="http://objectledge.org/">ObjectLedge</a></p>
+
+<h3>Proyecto gráfico</h3>
+<p>Giancarlo De Pol</p>

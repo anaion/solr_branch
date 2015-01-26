@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology.
+ All rights reserved.
+-->
+<config>
+  <localBaseAddress>http://faolex.fao.org/cgi-bin/</localBaseAddress>
+  <externalBaseAddress>http://faolex.fao.org/cgi-bin/</externalBaseAddress>
+  <documentBaseAddress>http://faolex.fao.org/docs/</documentBaseAddress>
+  <advancedSearchUrl>
+    <url locale="en_US">http://faolex.fao.org/faolex/subject_sel.html</url>
+    <url locale="fr_FR">http://faolex.fao.org/faolex_fra/subject_sel.html</url>
+    <url locale="es_ES">http://faolex.fao.org/faolex_spa/subject_sel.html</url>
+    <url locale="ar_SA">http://faolex.fao.org/faolex_arb/subject_sel.html</url>
+  </advancedSearchUrl>
+</config>

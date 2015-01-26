@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="Home">
+      <value>Inicio</value>
+    </prefix>
+    <prefix name="About">
+      <value>Acerca</value>
+    </prefix>
+    <prefix name="Search">
+      <value>Buscar</value>
+    </prefix>
+    <prefix name="Contact">
+      <value>Contactar</value>
+    </prefix>
+    <prefix name="News">
+      <value>Últimas noticias</value>
+    </prefix>
+    <prefix name="recentActions">
+      <value>Tratados – acciones recientes</value>
+    </prefix>
+    <prefix name="newLegislations">
+      <value>Nuevas legislaciones</value>
+    </prefix>
+    <prefix name="newCourtDecisions">
+      <value>Nuevas decisiones judiciales</value>
+    </prefix>
+    <prefix name="newLiterature">
+      <value>Nueva doctrina</value>
+    </prefix>
+    <prefix name="CopDecisions">
+      <value>Decisions COP</value>
+    </prefix>
+    <prefix name="user agreement">
+      <value>acuerdo para el usuario</value>
+    </prefix>
+    <prefix name="privacy">
+      <value>privacidad</value>
+    </prefix>
+    <prefix name="acknowledgements">
+      <value>reconocimientos</value>
+    </prefix>
+    <prefix name="site map">
+      <value>mapa del sitio</value>
+    </prefix>
+  </prefix>
+</strings>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="title">
+      <value>Lista</value>
+    </prefix>
+    <prefix name="Start from">
+      <value>Empezar de</value>
+    </prefix>
+    <prefix name="Select">
+      <value>Seleccionar</value>
+    </prefix>
+    <prefix name="Cancel">
+      <value>Regresar</value>
+    </prefix>
+   </prefix>
+</strings>

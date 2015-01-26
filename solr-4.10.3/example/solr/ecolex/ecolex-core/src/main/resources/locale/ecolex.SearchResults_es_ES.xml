@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="title">
+      <value>Search results</value>
+    </prefix>
+    <prefix name="Results">
+      <value>Resultados</value>
+    </prefix>
+    <prefix name="of">
+      <value>de</value>
+    </prefix>
+    <prefix name="Sort by">
+      <value>Clasificado por</value>
+    </prefix>
+    <prefix name="Read full text">
+      <value>Leer el texto completo</value>
+    </prefix>
+    <prefix name="International">
+      <value>Internacional</value>
+    </prefix>
+    <prefix name="ID">
+      <value>ID</value>
+    </prefix>
+    <prefix name="No matches found">
+      <value>No se encontraron resultados</value>
+    </prefix>
+    <prefix name="not available">
+      <value>no está disponible</value>
+    </prefix>
+    <prefix name="newest">
+      <value>nuevas entradas</value>
+    </prefix>
+    <prefix name="newestActions">
+      <value>acciones recientes</value>
+    </prefix>
+   </prefix>
+</strings>

@@ -1,0 +1,5 @@
+$viewEnclosureTool.top()##
+suggestedTerms:
+#foreach($option in $result)
+$!htmlEncoder.encodeAttribute($option.text)
+#end

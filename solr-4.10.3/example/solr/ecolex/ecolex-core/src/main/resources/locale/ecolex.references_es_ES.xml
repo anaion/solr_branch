@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="enabledByTreaty">
+      <value>Habilitado por</value>
+    </prefix>
+    <prefix name="enables">
+      <value>Habilita</value>
+    </prefix>
+    <prefix name="amendsTreaty">
+      <value>Enmienda</value>
+    </prefix>
+    <prefix name="amendedBy">
+      <value>Enmendado por</value>
+    </prefix>
+    <prefix name="intoForceTreaty">
+      <value>Tratado en vigor</value>
+    </prefix>
+    <prefix name="intoForceBy">
+      <value>En vigor por</value>
+    </prefix>
+    <prefix name="supersedesTreaty">
+      <value>Remplaza</value>
+    </prefix>
+    <prefix name="supersededBy">
+      <value>Remplazado por</value>
+    </prefix>
+    <prefix name="citesTreaty">
+      <value>Cita</value>
+    </prefix>
+    <prefix name="citedBy">
+      <value>Citada por</value>
+    </prefix>
+    <prefix name="relevantTextTreaty">
+      <value>Texto de Tratado relevante</value>
+    </prefix>
+    <prefix name="relevantFor">
+      <value>Relevante por</value>
+    </prefix>
+    <prefix name="amends">
+      <value>Enmienda</value>
+    </prefix>
+    <prefix name="implements">
+      <value>Implementa</value>
+    </prefix>
+    <prefix name="implementedBy">
+      <value>Implementado por</value>
+    </prefix>
+    <prefix name="repeals">
+      <value>Revoca</value>
+    </prefix>
+    <prefix name="repealedBy">
+      <value>Revocado por</value>
+    </prefix>
+    <prefix name="referenceToEULegislation">
+      <value>Cita</value>
+    </prefix>
+    <prefix name="referenceToTreaties">
+      <value>Cita</value>
+    </prefix>
+    <prefix name="referenceToLiterature">
+      <value>Cita</value>
+    </prefix>
+    <prefix name="referenceToNationalLegislation">
+      <value>Cita</value>
+    </prefix>
+    <prefix name="referenceToCourtDecision">
+      <value>Cita</value>
+    </prefix>
+    <prefix name="referenceToFaolex">
+      <value>Cita</value>
+    </prefix>
+    <prefix name="referencedFrom">
+      <value>Citada por</value>
+    </prefix>
+  </prefix>
+</strings>

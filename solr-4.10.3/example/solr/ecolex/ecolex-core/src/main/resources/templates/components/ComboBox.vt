@@ -1,0 +1,32 @@
+<select
+    id="$name" name="$name"
+    #if ($size) size="$size" #end
+    #if ($multiple) multiple #end
+    #if ( ($name == "type" || $name == "yaxis" || $name=="xaxis") && ($disabled || $options.size() == 1)) disabled="true" #end
+    #if ($style) class="$style"#end
+    #if ($onchange) onchange="$onchange" #end
+    #if ($onMouseOver) onmouseover="$onMouseOver" #end
+    #if ($onMouseOut) onmouseout="$onMouseOut" #end
+    #if ($onMouseMove) onmousemove="$onMouseMove" #end>
+
+    #foreach($option in $options.keySet())
+        #if (!$multiple || !$option.equals(""))
+            <option value="$option" #if($option == $selected) selected="selected"#end>$i18nViews.get($options.get($option).toString())</option>
+        #end
+    #end
+</select>
+
+#set($options = "")
+#set($selected = "")
+#if($disabled)
+    #set($disabled = !$disabled)
+#end
+#set($style = "")
+#set($onchange = "")
+#set($onMouseOver = "")
+#set($onMouseOut = "")
+#set($onMouseMove = "")
+#set($size ="")
+#if($multiple)
+    #set($multiple = !$multiple)
+#end

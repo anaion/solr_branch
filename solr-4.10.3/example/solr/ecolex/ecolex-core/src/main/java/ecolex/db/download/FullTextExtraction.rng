@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+ @author <a href="mailto:pwiech@ii.pw.edu.pl">Przemysław Więch</a>
+-->
+<element name="config" xmlns="http://relaxng.org/ns/structure/1.0">
+
+    <oneOrMore>
+        <element name="field">
+            <element name="linkField"> <!-- Field containing link to document -->
+                <text/>
+            </element>
+            <element name="targetField"> <!-- Where to put extracted full text -->
+                <text/>
+            </element>
+        </element>
+    </oneOrMore>
+
+</element>

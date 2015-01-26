@@ -1,0 +1,9 @@
+#set($recordLink = $link.view('RecordDetails').set('index', $indexIdentifier.identify($record)).set('id', $record.id))
+
+<a href="$recordLink">## onclick="openDialog('$recordLink','Record details')">
+    #if($record.get("displayTitle_$i18n.locale")) $record.get("displayTitle_$i18n.locale")
+    #elseif($record.get("displayTitle")) $record.get("displayTitle")
+    #elseif($record.get("titleOfText")) $record.get("titleOfText")  ## Faolex titles
+    #else ... #end
+</a>
+#if($record.get("displayDetails")) <br/>$record.get("displayDetails") #end

@@ -1,0 +1,14 @@
+$pageTool.setTitle('Error')##
+##
+<h1>ecolex error occured</h1>
+
+#if($originalView)
+<p>
+<a href="$link.view($originalView)">Go back</a>
+</p>
+#end
+
+#if($stackTrace)
+<h3>Information for ecolex developers:</h3>
+<pre>$stackTrace</pre>
+#end

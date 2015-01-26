@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2007, Warsaw University of Technology.
+ All rights reserved.
+-->
+
+<config>
+  <!-- CRITERIA TYPES -->
+  <options name="treatyCriterion">
+    <option value="allFields" listing="no"/>
+    <option value="titleOfText"/>
+    <option value="subject"/>
+    <option value="region"/>
+    <option value="basin"/>
+    <option value="keyword"/>
+    <option value="placeOfAdoption"/>
+    <option value="depository"/>
+    <option value="languageOfDocument"/>
+    <option value="country"/>
+  </options>
+
+  <options name="courtDecisionsCriterion">
+    <option value="allFields" listing="no"/>
+    <option value="titleOfText"/>
+    <option value="subject"/>
+    <option value="country"/>
+    <option value="territorialSubdivision"/>
+    <option value="region"/>
+    <option value="basin"/>
+    <option value="keyword"/>
+    <option value="seatOfCourt"/>
+    <option value="courtName"/>
+    <option value="justices"/>
+    <option value="languageOfDocument"/>
+  </options>
+
+  <options name="literatureCriterion">
+    <option value="allFields" listing="no"/>
+    <option value="titleOfText"/>
+    <option value="subject"/>
+    <option value="country"/>
+    <option value="region"/>
+    <option value="basin"/>
+    <option value="keyword"/>
+    <option value="author"/>
+    <option value="intOrg"/>
+    <option value="serialTitle"/>
+    <option value="publisher"/>
+    <option value="typeOfText"/>
+    <option value="languageOfDocument"/>
+  </options>
+
+  <options name="legislationCriterion">
+    <option value="allFields" listing="no"/>
+    <option value="titleOfText"/>
+    <option value="subject"/>
+    <option value="country"/>
+    <option value="territorialSubdivision"/>
+    <option value="region"/>
+    <option value="basin"/>
+    <option value="keyword"/>
+  </options>
+
+  <options name="commonCriterion">
+    <option value="allFields" listing="no"/>
+    <option value="titleOfText"/>
+    <option value="subject"/>
+    <option value="country"/>
+    <option value="region"/>
+    <option value="basin"/>
+    <option value="keyword"/>
+    <option value="languageOfDocument"/>
+  </options>
+
+  <options name="otherSearchFields">
+    <option value="languageOfRecord"/>
+    <option value="fieldOfApplication"/>
+    <option value="obsolete"/>
+  </options>
+
+  <options name="allWords">
+    <option value="allWords"/>
+    <option value="anyWord"/>
+  </options>
+
+  <options name="treatyTypesOfText">
+    <option value="multilateral"/>
+    <option value="bilateral"/>
+  </options>
+
+<options name="treatyFieldsOfApplication">
+    <option value="global"/>
+    <option value="regional"/>
+  </options>
+
+  <options name="courtDecisionsTypesOfText">
+    <option value="decision"/>
+    <option value="notice"/>
+    <option value="inferior"/>
+    <option value="superior"/>
+    <option value="preliminary"/>
+    <option value="others"/>
+  </options>
+
+  <options name="legislationTypesOfText">
+    <option value="legislation"/>
+    <option value="miscellaneous"/>
+    <option value="regulation"/>
+  </options>
+
+  <options name="commonDatabases">
+    <option value="treaties">Treaties</option>
+    <option value="documents">Legislation</option>
+    <option value="courtdecisions">Court decisions</option>
+    <option value="literature">Literature</option>
+  </options>
+
+  <options name="languageOfRecord">
+    <option value="E">English</option>
+    <option value="F">French</option>
+    <option value="S">Spanish</option>
+  </options>
+
+  <options name="commonSort">
+    <option value="searchDate">Date</option>
+    <option value="asc_sortCountry_+searchDate">Country</option>
+    <option value="score">Relevance</option>
+  </options>
+
+  <options name="treatiesSort">
+    <option value="searchDate">Date</option>
+    <option value="asc_sortTypeOfText+searchDate">Type of document</option>
+    <option value="asc_sortFieldOfApplication+searchDate">Field of application</option>
+  </options>
+
+  <options name="courtdecisionsSort">
+    <option value="searchDate">Date</option>
+    <option value="asc_sortCountry_+searchDate">Country</option>
+  </options>
+
+  <options name="documentsSort">
+    <option value="searchDate">Date</option>
+    <option value="asc_sortCountry_+searchDate">Country</option>
+  </options>
+
+  <options name="literatureSort">
+    <option value="searchDate">Date</option>
+    <option value="asc_sortCountry_+searchDate">Country</option>
+    <option value="asc_sortAuthor+searchDate">Author</option>
+  </options>
+
+  <options name="RecordDetails.treaties">
+    <option value="jurisdiction"/>
+    <option value="typeOfText"/>
+    <option value="fieldOfApplication"/>
+    <option value="region"/>
+    <option value="titleOfText"/>
+    <option value="titleOfTextFr"/>
+    <option value="titleOfTextSp"/>
+    <option value="titleOfTextOther"/>
+    <option value="titleAbbreviation"/>
+    <option value="dateOfText" type="date"/>
+    <option value="entryIntoForceDate" type="date"/>
+    <option value="availableIn"/>
+    <option value="depository"/>
+    <option value="placeOfAdoption"/>
+    <option value="amendments" type="date"/>
+    <option value="relatedWebSite" type="link"/>
+    <option value="linksToFullText"/>
+    <option value="numberOfPages"/>
+    <option value="appendices"/>
+    <option value="languageOfDocument"/>
+    <option value="languageOfTranslation"/>
+    <option value="abstract" type="breaks"/>
+    <option value="abstractFr" type="breaks"/>
+    <option value="abstractSp" type="breaks"/>
+    <option value="abstractOther" type="breaks"/>
+    <option value="linkToAbstract" type="ecolexLink"/>
+    <option value="comment"/>
+    <option value="linkToComment" type="ecolexLink"/>
+    <option value="subject"/>
+    <option value="keyword"/>
+    <option value="id"/>
+  </options>
+
+  <options name="RecordDetails.courtdecisions">
+    <option value="country"/>
+    <option value="territorialSubdivision"/>
+    <option value="titleOfText"/>
+    <option value="titleOfTextFr"/>
+    <option value="titleOfTextSp"/>
+    <option value="titleOfTextOther"/>
+    <option value="titleAbbreviation"/>
+    <option value="dateOfText" type="date"/>
+    <option value="availableIn"/>
+    <option value="typeOfText"/>
+    <option value="placeOfAdoption"/>
+    <option value="courtName"/>
+    <option value="seatOfCourt"/>
+    <option value="subdivision"/>
+    <option value="courtJurisdiction"/>
+    <option value="instance"/>
+    <option value="justices"/>
+    <option value="referenceNumber"/>
+    <option value="relatedWebSite" type="link"/>
+    <option value="linksToFullText"/>
+    <option value="numberOfPages"/>
+    <option value="appendices"/>
+    <option value="languageOfDocument"/>
+    <option value="languageOfTranslation"/>
+    <option value="abstract" type="breaks"/>
+    <option value="abstractFr" type="breaks"/>
+    <option value="abstractSp" type="breaks"/>
+    <option value="abstractOther" type="breaks"/>
+    <option value="linkToAbstract" type="ecolexLink"/>
+    <option value="comment"/>
+    <option value="linkToComment"  type="ecolexLink"/>
+    <option value="subject"/>
+    <option value="keyword"/>
+    <option value="id"/>
+  </options>
+
+  <options name="RecordDetails.literature">
+    <option value="authorA"/>
+    <option value="corpAuthorA"/>
+    <option value="paperTitleOfText"/>
+    <option value="paperTitleOfTextFr"/>
+    <option value="paperTitleOfTextSp"/>
+    <option value="paperTitleOfTextOther"/>
+    <option value="paperTitleOfTextTransl"/>
+    <option value="paperTitleOfTextStatement"/>
+
+    <option value="authorM"/>
+    <option value="corpAuthorM"/>
+    <option value="contributor"/>
+    <option value="titleOfText"/>
+    <option value="titleOfTextFr"/>
+    <option value="titleOfTextSp"/>
+    <option value="titleOfTextOther"/>
+    <option value="titleOfTextTransl"/>
+    <option value="titleOfTextTranslFr"/>
+    <option value="titleOfTextTranslSp"/>
+
+    <option value="confName"/>
+    <option value="confDate"/>
+    <option value="confPlace"/>
+    <option value="serialTitle"/>
+
+    <option value="isbn"/>
+    <option value="publisher"/>
+    <option value="publPlace"/>
+    <option value="volumeNo"/>
+    <option value="collation"/>
+    <option value="dateOfText" type="year"/>
+    <option value="typeOfText"/>
+
+    <option value="linkToFullText" type="ecolexLink"/>
+    <option value="languageOfDocument" type="dictionary"/>
+    <option value="languageOfTranslation"/>
+    <option value="abstract" type="breaks"/>
+    <option value="abstractFr" type="breaks"/>
+    <option value="abstractSp" type="breaks"/>
+    <option value="abstractOther" type="breaks"/>
+    <option value="linkToAbstract" type="ecolexLink"/>
+    <option value="comment"/>
+    <option value="linkToComment" type="ecolexLink"/>
+    <option value="subject"/>
+    <option value="keyword"/>
+
+    <option value="country"/>
+    <option value="scope"/>
+    <option value="territorialSubdivision"/>
+    <option value="displayRegion"/>
+    <option value="basin"/>
+    <option value="intOrg"/>
+
+	<option value="relatedWebSite" type="link"/>
+	<option value="doi" type="link"/>
+    <option value="id"/>
+  </options>
+
+  <options name="RecordDetails.documents">
+    <option value="country" type="dictionary"/>
+    <option value="Territorial_Subdivision">territorialSubdivision</option>
+    <option value="basin" type="dictionary"/>
+    <option value="Title_of_Text"/>
+    <option value="Long_Title_of_text"/>
+    <option value="Date_of_Text" type="date">dateOfText</option>
+    <option value="Date_of_original_Text" type="date">dateOfOriginalText</option>
+    <option value="Date_of_Consolidation" type="date">dateOfConsolidation</option>
+    <option value="Entry_into_Force"/>
+    <option value="Publication_reference"/>
+    <option value="Serial_Imprint"/>
+    <option value="Type_of_Text" type="dictionary">typeOfText</option>
+    <option value="Related_Web_Site" type="link"/>
+    <option value="link_to_full_text" type="faolexLink"/>
+    <option value="Doc_Language" type="dictionary"/>
+    <option value="Abstract" type="breaks"/>
+    <option value="Comment"/>
+    <option value="Sub_file_code" type="dictionary">subject</option>
+    <option value="keyword" type="dictionary"/>
+    <option value="id"/>
+  </options>
+
+  <options name="RecordDetails.parties">
+    <option value="country"/>
+    <option value="entryIntoForce"/>
+    <option value="dateOfRatification"/>
+    <option value="dateOfAccessionApprobation"/>
+    <option value="dateOfAcceptanceApproval"/>
+    <option value="dateOfConsentToBeBound"/>
+    <option value="dateOfSuccession"/>
+    <option value="dateOfDefiniteSignature"/>
+    <option value="dateOfSimpleSignature"/>
+    <option value="dateOfReservation"/>
+    <option value="dateOfOmission"/>
+  </options>
+
+  <!-- References -->
+	<options name="referenceFields">
+		<option value="amends">amendedBy</option>
+		<option value="implements">implementedBy</option>
+		<option value="amendsTreaty">amendedBy</option>
+		<option value="citesTreaty">citedBy</option>
+		<option value="supersedesTreaty">supersededBy</option>	
+		<option value="citesTre">citedBy</option>	
+		<option value="intoForceTreaty">intoForceBy</option>
+		<option value="supersedesTreaty">supersededBy</option>	
+		<option value="relevantTextTreaty">relevantFor</option>	
+		<option value="repeals">repealedBy</option>
+		<option value="referenceToEULegislation">referencedFrom</option>
+		<option value="referenceToTreaties">referencedFrom</option>
+		<option value="referenceToLiterature">referencedFrom</option>
+		<option value="referenceToNationalLegislation">referencedFrom</option>
+		<option value="referenceToCourtDecision">referencedFrom</option>
+		<option value="implementsTre">implementedBy</option>
+		<option value="referenceToFaolex">referencedFrom</option>	
+		<option value="enabledByTreaty">enables</option>		
+	</options>
+
+	<options name="linkReferences">
+	  <option value="referencedFrom"/>
+	</options>
+
+	<options name="referenceIds">
+	  <option value="id2"/>
+	  <option value="id"/>
+	</options>
+
+</config>

@@ -1,0 +1,7 @@
+<p>References to and extensive information on multilateral and bilateral legal instruments</p>
+#set($fromDate = $format_date.pattern("yyyyMMdd").format($dateTool.daysBack(90)))
+#set($newestLink = $link.view('SearchResults').set('index', 'treaties').set('query', "dateOfEntry:[$fromDate TO z]").set('sortField', 'dateOfEntry').set('title', 'newest'))
+#set($newestActionLink = $link.view('SearchResults').set('index', 'treaties').set('query', "dateOfLastLegalAction:[$fromDate TO z]").set('sortField', 'dateOfLastLegalAction').set('title', 'newestActions'))
+<p><a href="$newestLink">New entries</a><br/>
+<a href="$newestActionLink">Recent actions</a></p>
+##<a href="$link.view('Treaties')">&gt;&gt;</a></p>

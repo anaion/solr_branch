@@ -1,0 +1,280 @@
+'<document>'/,
+'<db>',db,'</db>'/,
+'<isisMfn>',mfn(6),'</isisMfn>'/,
+'<id>'v3'</id>'/,
+"<id2><![CDATA["v1"]]></id2>"/
+'<dateOfEntry>'v120^d.4,"-"v120^d*4.2,"-"v120^d*6.2,'</dateOfEntry>'/,
+'<dateOfModification>'v130[nocc(v130)]^d.4,"-"v130[nocc(v130)]^d*4.2,"-"v130[nocc(v130)]^d*6.2,'</dateOfModification>'/,
+
+"<titleOfText><![CDATA["v340"]]></titleOfText>"/
+"<titleOfTextFr><![CDATA["v341"]]></titleOfTextFr>"/
+"<titleOfTextSp><![CDATA["v342"]]></titleOfTextSp>"/
+"<titleOfTextOther><![CDATA["v343"]]></titleOfTextOther>"/
+"<titleAbbreviation><![CDATA["v345"]]></titleAbbreviation>"/
+"<titleOfTextShort><![CDATA["v370"]]></titleOfTextShort>"/
+"<titleOfTextShortFr><![CDATA["v371"]]></titleOfTextShortFr>"/
+"<titleOfTextShortSp><![CDATA["v372"]]></titleOfTextShortSp>"/
+"<titleOfTextShortOther><![CDATA["v373"]]></titleOfTextShortOther>"/
+"<titleOfTextTransl><![CDATA["v380"]]></titleOfTextTransl>"/
+"<titleOfTextTranslFr><![CDATA["v381"]]></titleOfTextTranslFr>"/
+"<titleOfTextTranslSp><![CDATA["v382"]]></titleOfTextTranslSp>"/
+
+
+'<displayTitle><![CDATA['
+if p(v340) then v340
+else if p(v341) then v341
+else if p(v342) then v342
+else if p(v343) then v343
+else if p(v380) then v380
+else if p(v381) then v381
+else if p(v382) then v382
+fi fi fi fi fi fi fi
+']]></displayTitle>'/
+
+'<displayTitle_fr_FR><![CDATA['
+if p(v341) then v341
+else if p(v340) then v340
+else if p(v342) then v342
+else if p(v343) then v343
+else if p(v381) then v381
+else if p(v380) then v380
+else if p(v382) then v382
+fi fi fi fi fi fi fi
+']]></displayTitle_fr_FR>'/
+
+'<displayTitle_es_ES><![CDATA['
+if p(v342) then v342
+else if p(v340) then v340
+else if p(v341) then v341
+else if p(v343) then v343
+else if p(v382) then v382
+else if p(v380) then v380
+else if p(v381) then v381
+fi fi fi fi fi fi fi
+']]></displayTitle_es_ES>'/
+
+
+
+if p(v280) then
+ '<typeOfText>',
+    if v280:'trbil' then 'Bilateral'
+        else if v280:'trmul' then 'Multilateral' fi fi,
+ '</typeOfText>'/,
+ '<typeOfText_fr_FR>',
+    if v280:'trbil' then 'Bilatéral'
+        else if v280:'trmul' then 'Multilatéral' fi fi,
+ '</typeOfText_fr_FR>'/
+ '<typeOfText_es_ES>',
+    if v280:'trbil' then 'Bilateral'
+        else if v280:'trmul' then 'Multilateral' fi fi,
+ '</typeOfText_es_ES>'/
+
+ '<sortTypeOfText>',
+    if v280:'trbil' then '2'
+        else if v280:'trmul' then '1' fi fi,
+ '</sortTypeOfText>'/,
+ '<sortCountry_en_US>',
+    if v280:'trbil' then '2'
+        else if v280:'trmul' then '1' fi fi,
+ '</sortCountry_en_US>'/,
+ '<sortCountry_fr_FR>',
+    if v280:'trbil' then '2'
+        else if v280:'trmul' then '1' fi fi,
+ '</sortCountry_fr_FR>'/,
+ '<sortCountry_es_ES>',
+    if v280:'trbil' then '2'
+        else if v280:'trmul' then '1' fi fi,
+ '</sortCountry_es_ES>'/,
+
+else
+ '<sortTypeOfText>3</sortTypeOfText>'/
+ '<sortCountry_en_US>3</sortCountry_en_US>'/
+ '<sortCountry_fr_FR>3</sortCountry_fr_FR>'/
+ '<sortCountry_es_ES>3</sortCountry_es_ES>'/
+fi/
+
+(|<jurisdiction>|v4^e|</jurisdiction>|)/
+(|<jurisdiction_fr_FR>|v4^f|</jurisdiction_fr_FR>|)/
+(|<jurisdiction_es_ES>|v4^s|</jurisdiction_es_ES>|)/
+
+if p(v281) then
+'<fieldOfApplication>'
+  (if v281='TRglo' then 'Global'
+   else if v281='TRreg' then 'Regional/restricted'
+ else if v281='TRnat' then 'National'
+   fi fi fi ),
+'</fieldOfApplication>'/
+
+'<fieldOfApplication_fr_FR>'
+  (if v281='TRglo' then 'Mondial'
+   else if v281='TRreg' then 'Régional/restreint'
+   else if v281='TRnat' then 'National'
+   fi fi fi )
+'</fieldOfApplication_fr_FR>'/
+
+'<fieldOfApplication_es_ES>'
+  (if v281='TRglo' then 'Mundial'
+   else if v281='TRreg' then 'Regional/restringido'
+ else if v281='TRnat' then 'Nacional'
+   fi fi fi )
+'</fieldOfApplication_es_ES>'/
+
+'<sortFieldOfApplication>'
+  (if v281='TRglo' then '1'
+   else if v281='TRreg' then '2'
+ else if v281='TRnat' then '3'
+   fi fi fi ),
+'</sortFieldOfApplication>'/
+
+else
+'<sortFieldOfApplication>4</sortFieldOfApplication>'/
+fi/
+
+(|<region>|v854^e|</region>|/),
+(|<region_fr_FR>|v854^f|</region_fr_FR>|/),
+(|<region_es_ES>|v854^s|</region_es_ES>|/),
+(|<basin>|v856^e|</basin>|/),
+(|<basin_fr_FR>|v856^f|</basin_fr_FR>|/),
+(|<basin_es_ES>|v856^s|</basin_es_ES>|/),
+
+if p(v212) then
+  ( if p(v212) then '<subject>' fi,
+    if v212='A' then 'Land &amp; soil'
+    else if v212='C' then 'Water'
+    else if v212='D' then 'Sea'
+    else if v212='E' then 'Air &amp; atmosphere'
+    else if v212='G' then 'Forestry'
+    else if v212='J' then 'Fisheries'
+    else if v212='K' then 'Waste &amp; hazardous substances'
+    else if v212='L' then 'Mineral resources'
+    else if v212='Q' then 'Energy'
+    else if v212='U' then 'Wild species &amp; ecosystems'
+    else if v212='V' then 'Environment gen.'
+    else if v212='W' then 'Agriculture'
+    else if v212='X' then 'Cultivated plants'
+    else if v212='Y' then 'Livestock'
+    else if v212='Z' then 'Food' fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+    if p(v212) then '</subject>' fi/)
+
+  ( if p(v212) then '<subject_fr_FR>' fi,
+    if v212='A' then 'Terre et sols'
+    else if v212='C' then 'Eau'
+    else if v212='D' then 'Mer'
+    else if v212='E' then 'Air et atmosphère'
+    else if v212='G' then 'Forêts'
+    else if v212='J' then 'Pêche'
+    else if v212='K' then 'Déchets et substances dangereuses'
+    else if v212='L' then 'Ressources minérales'
+    else if v212='Q' then 'Énergie'
+    else if v212='U' then 'Espèces sauvages et écosystèmes'
+    else if v212='V' then 'Environnement gén.'
+    else if v212='W' then 'Agriculture'
+    else if v212='X' then 'Plantes cultivées'
+    else if v212='Y' then 'Bétail'
+    else if v212='Z' then 'Alimentation' fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+    if p(v212) then '</subject_fr_FR>' fi/)
+
+  ( if p(v212) then '<subject_es_ES>' fi,
+    if v212='A' then 'Tierra y suelos'
+    else if v212='C' then 'Agua'
+    else if v212='D' then 'Mar'
+    else if v212='E' then 'Aire y atmósfera'
+    else if v212='G' then 'Montes'
+    else if v212='J' then 'Pesca'
+    else if v212='K' then 'Desechos y sustancias peligrosas'
+    else if v212='L' then 'Recursos minerales'
+    else if v212='Q' then 'Energía'
+    else if v212='U' then 'Especies silvestres y ecosistemas'
+    else if v212='V' then 'Medio ambiente gen.'
+    else if v212='W' then 'Agricultura'
+    else if v212='X' then 'Cultivos'
+    else if v212='Y' then 'Ganado'
+    else if v212='Z' then 'Alimentación' fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+    if p(v212) then '</subject_es_ES>' fi/)
+fi/
+
+(|<languageOfDocument>|v440|</languageOfDocument>|)/
+(|<languageOfDocument_fr_FR>|v441|</languageOfDocument_fr_FR>|)/
+(|<languageOfDocument_es_ES>|v442|</languageOfDocument_es_ES>|)/
+
+(|<languageOfTranslation>|v450|</languageOfTranslation>|)/
+(|<languageOfTranslation_fr_FR>|v451|</languageOfTranslation_fr_FR>|)/
+(|<languageOfTranslation_es_ES>|v452|</languageOfTranslation_es_ES>|)/
+
+(|<placeOfAdoption><![CDATA[|v310|]]></placeOfAdoption>|/)
+
+(|<depository><![CDATA[|v611|]]></depository>|)/
+(|<depository_fr_FR><![CDATA[|v612|]]></depository_fr_FR>|)/
+(|<depository_es_ES><![CDATA[|v613|]]></depository_es_ES>|)/
+
+'<dateOfText>'v55.4,"-"v55*4.2,"-"v55*6.2,'</dateOfText>'/,
+'<searchDate>'v55.4,"-"v55*4.2,"-"v55*6.2,'</searchDate>'/,
+
+(|<amendments>|v565^d.4,|-|v565^d*4.2,|-|v565^d*6.2|</amendments>|)/
+(|<dateOfConsolidation>|v570^d.4,|-|v570^d*4.2,|-|v570^d*6.2|</dateOfConsolidation>|)/
+'<entryIntoForceDate>'v580^d.4,"-"v580^d*4.2,"-"v580^d*6.2'</entryIntoForceDate>'/
+'<expirationDate>'v590^d.4,"-"v590^d*4.2,"-"v590^d*6.2'</expirationDate>'/
+'<obsolete>' if p(v590) then 'true' else 'false' fi '</obsolete>'/
+'<validUntilDate>'v591.4,"-"v591*4.2,"-"v591*6.2'</validUntilDate>'/
+"<numberOfPages>"v520"</numberOfPages>"/
+"<appendices>"v530"</appendices>"/
+(|<officialPublication><![CDATA[|v510|]]></officialPublication>|)/
+"<availableIn>"v560"</availableIn>"/
+
+(|<linkToFullText><![CDATA[|v171|]]></linkToFullText>|)/
+(|<linkToFullTextFr><![CDATA[|v172|]]></linkToFullTextFr>|)/
+(|<linkToFullTextSp><![CDATA[|v173|]]></linkToFullTextSp>|)/
+(|<linkToFullTextOther><![CDATA[|v174|]]></linkToFullTextOther>|)/
+
+(|<internetReference><![CDATA[|v62|]]></internetReference>|)/
+(|<internetReferenceFr><![CDATA[|v722|]]></internetReferenceFr>|)/
+(|<internetReferenceSp><![CDATA[|v723|]]></internetReferenceSp>|)/
+(|<internetReferenceOther><![CDATA[|v724|]]></internetReferenceOther>|)/
+
+(|<relatedWebSite><![CDATA[|v63|]]></relatedWebSite>|)/
+(|<dependencies>|v621|</dependencies>|)/
+(|<dependenciesFr>|v622|</dependenciesFr>|)/
+(|<dependenciesSp>|v623|</dependenciesSp>|)/
+
+(|<keyword><![CDATA[|v74|]]></keyword>|)/
+(|<keyword_fr_FR><![CDATA[|v742|]]></keyword_fr_FR>|)/
+(|<keyword_es_ES><![CDATA[|v743|]]></keyword_es_ES>|)/
+
+(|<abstract><![CDATA[|v79|]]></abstract>|/),
+(|<abstractFr><![CDATA[|v792|]]></abstractFr>|/),
+(|<abstractSp><![CDATA[|v793|]]></abstractSp>|/),
+(|<abstractOther><![CDATA[|v794|]]></abstractOther>|/),
+(|<linkToAbstract><![CDATA[|v790|]]></linkToAbstract>|)/
+
+(|<comment><![CDATA[|v711|]]></comment>|/),
+(|<commentFr><![CDATA[|v712|]]></commentFr>|/),
+(|<commentSp><![CDATA[|v713|]]></commentSp>|/),
+(|<commentOther><![CDATA[|v714|]]></commentOther>|/),
+(|<linkToComment><![CDATA[|v720|]]></linkToComment>|)/
+
+(if v907^s='01' then
+|<enabledByTreaty><![CDATA[|v907^o|]]></enabledByTreaty>|/ fi)
+
+(if v907^s='03' then
+|<amendsTreaty><![CDATA[|v907^o|]]></amendsTreaty>|/ fi)
+
+(if v907^s='04' then
+|<intoForceTreaty><![CDATA[|v907^o|]]></intoForceTreaty>|/ fi)
+
+(if v907^s='05' then
+|<supersedesTreaty><![CDATA[|v907^o|]]></supersedesTreaty>|/ fi)
+
+(if v907^s='06' then
+|<citesTreaty><![CDATA[|v907^o|]]></citesTreaty>|/ fi)
+
+(if v907^s='07' then
+|<relevantTextTreaty><![CDATA[|v907^o|]]></relevantTextTreaty>|/ fi)
+
+
+(|<referenceToEULegislation><![CDATA[|v901^o|]]></referenceToEULegislation>|/)
+
+
+'</document>'/
+
+
+

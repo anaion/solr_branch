@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<schema name="ecolex" version="1.1">
+    <!-- The StrField type is not analyzed, but indexed/stored verbatim.
+       - StrField and TextField support an optional compressThreshold which
+       limits compression (if enabled in the derived fields) to values which
+       exceed a certain size (in characters).
+    -->
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+    <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="int" class="solr.TrieIntField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="tdate" class="solr.TrieDateField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="double" class="solr.TrieDoubleField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+        <analyzer type="index">
+          <tokenizer class="solr.StandardTokenizerFactory"/>
+          <filter class="solr.StandardFilterFactory"/>
+          <filter class="solr.LowerCaseFilterFactory"/>
+          <!-- <filter class="solr.StopFilterFactory"/> -->
+        </analyzer>
+    </fieldType>
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+        <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        -->
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <field name="_version_" type="long" indexed="true" stored="true"/>
+    <field name="id" type="string" indexed="true" stored="true" required="true"/>
+
+    <field name="trDateOfText" type="string" indexed="true" stored="true"/>
+    <field name="trDateOfModification" type="string" indexed="false" stored="true"/>
+    <field name="trDateOfEntry" type="string" indexed="true" stored="true"/>
+    <field name="trEntryIntoForceDate" type="string" indexed="true" stored="true"/>
+    <field name="trSearchDate" type="string" indexed="true" stored="false"/>
+    <field name="trDateOfLastLegalAction" type="string" indexed="true" stored="false"/>
+    
+    <field name="trDisplayTitle" type="string" indexed="false" stored="true"/>
+    <field name="trDisplayTitle_En_US" type="string" indexed="false" stored="true"/>
+    <field name="trDisplayTitle_Sp_SP" type="string" indexed="false" stored="true"/>
+    <field name="trDisplayTitle_Fr_FR" type="string" indexed="false" stored="true"/>
+    
+    <field name="trDisplayDetails" type="string" indexed="false" stored="true"/>
+    
+    <field name="trTitleOfText" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trTitleAbbreviation" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTitleOfTextShort" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTitleOfTextFr" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTitleOfTextShortFr" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTitleOfTextSp" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTitleOfTextShortSp" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTitleOfTextOther" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTitleOfTextShortOther" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trPaperTitleOfText" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trPaperTitleOfTextSp" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trPaperTitleOfTextFr" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trPaperTitleOfTextOther" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trPaperTitleOfTextTransl" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trPaperTitleOfTextStatement" type="text" indexed="false" stored="false" multiValued="true"/>
+    
+    <field name="trAbstract" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trAbstractFr" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trAbstractSp" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trAbstractOther" type="text" indexed="false" stored="false" multiValued="true"/>
+    
+    <field name="trComment" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trCommentFr" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trCommentSp" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trCommentOther" type="text" indexed="false" stored="false" multiValued="true"/>
+    
+    <field name="trTypeOfText" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trTypeOfText_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTypeOfText_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trTypeOfTextWhole" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trTypeOfTextWhole_Fr_FR" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trTypeOfTextWhole_Es_ES" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="trFieldOfApplication" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trFieldOfApplication_Fr_FR" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trFieldOfApplication_Es_ES" type="text" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="trPlaceOfAdoption" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trPlaceOfAdoptionWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trDepository" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trDepository_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trDepository_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trDepositoryWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trDepositoryWhole_Fr_FR" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trDepositoryWhole_Es_ES" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trSubject" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trSubject_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trSubject_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trSubjectWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trSubjectWhole_Fr_FR" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trSubjectWhole_Es_ES" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trKeyword" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trKeyword_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trKeyword_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trKeywordWhole" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trKeywordWhole_Fr_FR" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trKeywordWhole_Es_ES" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="trLanguageOfDocument" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trLanguageOfDocument_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trLanguageOfDocument_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trLanguageOfDocumentWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trLanguageOfDocumentWhole_Fr_FR" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trLanguageOfDocumentWhole_Es_ES" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trSeatOfCourt" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trSeatOfCourtWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trCourtName" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trCourtNameWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trJustices" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trJusticesWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trPublisher" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trPublisherWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trConfName" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trConfNameWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trConfPlace" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trConfPlaceWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trContributor" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trAuthorA" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trAuthorM" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trAuthor" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trAuthorWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trCorpAuthorA" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trCorpAuthorM" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trCorpAuthor" type="text" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trIntOrg" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trIntOrgWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trSerialTitle" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trSerialTitleWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    
+    <field name="trLinkToFullText" type="string" indexed="false" stored="true" multiValued="true"/>
+    
+    <field name="trCountry" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trCountry_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trCountry_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trCountryWhole" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trCountryWhole_Fr_FR" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trCountryWhole_Es_ES" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="trRegion" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trRegion_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trRegion_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trRegionWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trRegionWhole_Fr_FR" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trRegionWhole_Es_ES" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trBasin" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trBasin_Fr_FR" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trBasin_Es_ES" type="text" indexed="false" stored="false" multiValued="true"/>
+    <field name="trBasinWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trBasinWhole_Fr_FR" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trBasinWhole_Es_ES" type="string" indexed="true" stored="false" multiValued="true"/>
+    
+    <field name="trTerritorialSubdivision" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trTerritorialSubdivisionWhole" type="string" indexed="true" stored="false" multiValued="true"/>
+    <field name="trScope" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trScope_Fr_FR" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trScope_Es_ES" type="text" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="trEnabledByTreaty" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trAmendsTreaty" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trIntoForceTreaty" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trSupersedesTreaty" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trCitesTreaty" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trRelevantTextTreaty" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="trReferenceToTreaties" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trReferenceToLiterature" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trReferenceToCourtDecision" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trReferenceToNationalLegislation" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trReferenceToEULegislation" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="trReferenceToFaolex" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="trObsolete" type="string" indexed="true" stored="false"/>
+    
+    <field name="trSortCountry_En_US" type="string" indexed="true" stored="false"/>
+    <field name="trSortCountry_Fr_FR" type="string" indexed="true" stored="false"/>
+    <field name="trSortCountry_Es_ES" type="string" indexed="true" stored="false"/>
+    
+    <field name="trSortAuthor" type="string" indexed="true" stored="false"/>
+    <field name="trSortTypeOfText" type="string" indexed="true" stored="false"/>
+    <field name="trSortFieldOfApplication" type="string" indexed="true" stored="false"/>
+    
+    <field name="trFullText" type="text" indexed="true" stored="false" multiValued="true"/>
+
+    
+    <!-- Participant -->
+    
+    <field name="participant" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="entryIntoForce" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="ratification" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="accession" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="acceptanceApproval" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="consent" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="succession" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="definiteSignature" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="simpleSignature" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="reservation" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="withdrawal" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="provisionalApplication" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    
+
+    <!-- InforMEA Treaty extra fields -->
+    <field name="trIdParent" type="int" indexed="true" stored="true" multiValued="false"/>
+    <field name="trShortTitleAlternative" type="text" indexed="true" stored="false" multiValued="true"/>
+    <field name="trPrimary" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trUrl" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trUrlTreatyText" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trUrlParties" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trUrlWikipedia" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trUrlElearning" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trNumberOfParties" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trTheme" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trThemeSecondary" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="trEnabled" type="int" indexed="true" stored="true" multiValued="false"/>
+    <field name="trOrder" type="int" indexed="true" stored="true" multiValued="false"/>
+    <field name="trIsProtocol" type="int" indexed="true" stored="true" multiValued="false"/>
+    <field name="trLogoMedium" type="text" indexed="true" stored="true" multiValued="false"/>
+    
+    <!-- InforMEA Decision -->
+    <field name="decOriginalId" type="string" indexed="true" stored="true" multiValued="false"/>
+    <field name="decOrganizationId" type="int" indexed="true" stored="true" multiValued="false"/>
+    <field name="decLink" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="decShortTitle" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="decLongTitle" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="decSummary" type="text_general" indexed="true" stored="true" multiValued="true"/>
+    <field name="decType" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="decStatus" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="decNumber" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="decTreatyId" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="decPublishDate" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="decUpdateDate" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="decevingId" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="decevingTitle" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="decevingUrl" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="decBody" type="text_general" indexed="true" stored="true" multiValued="true"/>
+    <field name="decDisplayOrder" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="decRecCreated" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="decRecAuthor" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="decRedUpdated" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="decRecUpdatedAuthor" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="decIsIndexed" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    <!-- InforMEA event -->
+    <field name="evOriginalId" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evOrganizationId" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="evTreatyId" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="evEventUrl" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="evTitle" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="evAbbreviation" type="string" indexed="true" stored="true" multiValued="true"/>    
+    <field name="evDescription" type="text_general" indexed="true" stored="true" multiValued="true"/>
+    <field name="evStart" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="evEnd" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="evRepetition" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="evIdEventPrevious" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="evKind" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evType" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evAccess" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evStatus" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evImage" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evImageCopyRight" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evLocation" type="string" indexed="true" stored="true" multiValued="true"/>
+    <field name="evCity" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="evCountryId" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="evLatitude" type="double" indexed="true" stored="true" multiValued="true"/>
+    <field name="evLongitude" type="double" indexed="true" stored="true" multiValued="true"/>
+    <field name="evPersonId" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="evUseInformea" type="int" indexed="true" stored="true" multiValued="true"/>
+    <field name="evRecCreated" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="evRecAuthor" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="evRecUpdated" type="tdate" indexed="true" stored="true" multiValued="true"/>
+    <field name="evRecUpdatedAuthor" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="evIsIndexed" type="int" indexed="true" stored="true" multiValued="true"/>
+    
+    <!-- Full text content -->
+    <field name="content" type="text_general" indexed="false" stored="true" multiValued="true"/>
+    
+    <!-- Field that holds all searchable data -->
+    <field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
+
+  <uniqueKey>id</uniqueKey>
+
+  <copyField source="trAuthorA" dest="author"/>
+  <copyField source="trAuthorM" dest="author"/>
+  <copyField source="trContributor" dest="author"/>
+  <copyField source="trCorpAuthorA" dest="corpAuthor"/>
+  <copyField source="trCorpAuthorM" dest="corpAuthor"/>
+  
+  
+  <copyField source="trPlaceOfAdoption" dest="placeOfAdoptionWhole"/>
+  <copyField source="trSeatOfCourt" dest="seatOfCourtWhole"/>
+  <copyField source="trCourtName" dest="courtNameWhole"/>
+  <copyField source="trJustices" dest="justicesWhole"/>
+  <copyField source="trPublisher" dest="publisherWhole"/>
+  <copyField source="trConfName" dest="confNameWhole"/>
+  <copyField source="trConfPlace" dest="confPlaceWhole"/>
+  
+  <copyField source="trLanguageOfDocument" dest="languageOfDocumentWhole"/>
+  <copyField source="trLanguageOfDocument_Fr_FR" dest="languageOfDocumentWhole_Fr_FR"/>
+  <copyField source="trLanguageOfDocument_Es_ES" dest="languageOfDocumentWhole_Es_ES"/>
+  <copyField source="trLanguageOfDocument_Fr_FR" dest="languageOfDocument"/>
+  <copyField source="trLanguageOfDocument_Es_ES" dest="languageOfDocument"/>
+  
+  <copyField source="trDepository" dest="depositoryWhole"/>
+  <copyField source="trDepository_Fr_FR" dest="depositoryWhole_Fr_FR"/>
+  <copyField source="trDepository_Es_ES" dest="depositoryWhole_Es_ES"/>
+  <copyField source="trDepository_Fr_FR" dest="depository"/>
+  <copyField source="trDepository_Es_ES" dest="depository"/>
+  
+  <copyField source="trSubject" dest="subjectWhole"/>
+  <copyField source="trSubject_Fr_FR" dest="subjectWhole_Fr_FR"/>
+  <copyField source="trSubject_Es_ES" dest="subjectWhole_Es_ES"/>
+  <copyField source="trSubject_Fr_FR" dest="subject"/>
+  <copyField source="trSubject_Es_ES" dest="subject"/>
+  
+  <copyField source="trKeyword" dest="keywordWhole"/>
+  <copyField source="trKeyword_Fr_FR" dest="keywordWhole_Fr_FR"/>
+  <copyField source="trKeyword_Es_ES" dest="keywordWhole_Es_ES"/>
+  <copyField source="trKeyword_Fr_FR" dest="keyword"/>
+  <copyField source="trKeyword_Es_ES" dest="keyword"/>
+  
+  <copyField source="trCountry" dest="countryWhole"/>
+  <copyField source="trCountry_Fr_FR" dest="countryWhole_Fr_FR"/>
+  <copyField source="trCountry_Es_ES" dest="countryWhole_Es_ES"/>
+  <copyField source="trCountry_Fr_FR" dest="country"/>
+  <copyField source="trCountry_Es_ES" dest="country"/>
+  
+  <copyField source="trRegion" dest="regionWhole"/>
+  <copyField source="trRegion_Fr_FR" dest="regionWhole_Fr_FR"/>
+  <copyField source="trRegion_Es_ES" dest="regionWhole_Es_ES"/>
+  <copyField source="trRegion_Fr_FR" dest="region"/>
+  <copyField source="trRegion_Es_ES" dest="region"/>
+  
+  <copyField source="trBasin" dest="basinWhole"/>
+  <copyField source="trBasin_Fr_FR" dest="basinWhole_Fr_FR"/>
+  <copyField source="trBasin_Es_ES" dest="basinWhole_Es_ES"/>
+  <copyField source="trBasin_Fr_FR" dest="basin"/>
+  <copyField source="trBasin_Es_ES" dest="basin"/>
+  
+  <copyField source="trTerritorialSubdivision" dest="territorialSubdivisionWhole"/>
+  <copyField source="trAuthor" dest="authorWhole"/>
+  <copyField source="trIntOrg" dest="intOrgWhole"/>
+  <copyField source="trSerialTitle" dest="serialTitleWhole"/>
+  
+  <copyField source="trTypeOfText" dest="typeOfTextWhole"/>
+  <copyField source="trTypeOfText_Fr_FR" dest="typeOfTextWhole_Fr_FR"/>
+  <copyField source="trTypeOfText_Es_ES" dest="typeOfTextWhole_Es_ES"/>
+  <copyField source="trTypeOfText_Fr_FR" dest="typeOfText"/>
+  <copyField source="trTypeOfText_Es_ES" dest="typeOfText"/>
+  
+  <copyField source="trTitleAbbreviation" dest="titleOfText"/>
+  <copyField source="trTitleOfTextShort" dest="titleOfText"/>
+  <copyField source="trTitleOfTextFr" dest="titleOfText"/>
+  <copyField source="trTitleOfTextShortFr" dest="titleOfText"/>
+  <copyField source="trTitleOfTextSp" dest="titleOfText"/>
+  <copyField source="trTitleOfTextShortSp" dest="titleOfText"/>
+  <copyField source="trTitleOfTextOther" dest="titleOfText"/>
+  <copyField source="trTitleOfTextShortOther" dest="titleOfText"/>
+  <copyField source="trPaperTitleOfText" dest="titleOfText"/>
+  <copyField source="trPaperTitleOfTextSp" dest="titleOfText"/>
+  <copyField source="trPaperTitleOfTextFr" dest="titleOfText"/>
+  <copyField source="trPaperTitleOfTextOther" dest="titleOfText"/>
+  <copyField source="trPaperTitleOfTextTransl" dest="titleOfText"/>
+  <copyField source="trPaperTitleOfTextStatement" dest="titleOfText"/>
+  
+  <copyField source="trAbstractFr" dest="abstract"/>
+  <copyField source="trAbstractSp" dest="abstract"/>
+  <copyField source="trAbstractOther" dest="abstract"/>
+  
+  <copyField source="trCommentFr" dest="comment"/>
+  <copyField source="trCommentSp" dest="comment"/>
+  <copyField source="trCommentOther" dest="comment"/>
+  
+  <copyField source="trContent" dest="text"/>
+  <copyField source="trTitleOfText" dest="text"/>
+  <copyField source="trSubject" dest="text"/>
+
+
+</schema>

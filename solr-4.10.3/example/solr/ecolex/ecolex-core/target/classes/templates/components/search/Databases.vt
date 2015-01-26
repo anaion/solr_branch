@@ -1,0 +1,6 @@
+    <tr>
+      <th>$i18nIndex.get("field.databases"):</th>
+      <td>
+            $component.embed('CheckBoxes', [['style','checkbox'],['name','index'],['options',$commonDatabases], ['selected', $arraysTool.asList($parametersTool.getStrings('index'))]])
+      </td>
+    </tr>

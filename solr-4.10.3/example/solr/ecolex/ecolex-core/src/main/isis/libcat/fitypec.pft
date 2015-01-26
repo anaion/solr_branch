@@ -1,0 +1,20 @@
+(if v280='LIann' then 'Rapport annuel/biannuel'
+  else if v280='LIart' then 'Article en publication périodique'
+  else if v280='LIcha' then "Châpitre d'une monographie"d280
+  else if v280='LIcom' then 'CD-ROM'
+  else if v280='LIcon' then 'Rapport/document de conférence, colloque etc'
+  else if v280='LIdir' then 'Annuaire/Glossaire'
+  else if v280='LIdra' then 'Brouillon'
+  else if v280='LIgov' then 'Document gouvernemental'
+  else if v280='LIior' then "Document d'organisation international"d280
+  else if v280='LImon' then 'Monographie/livre'
+  else if v280='LIoth' then 'Divers'
+  else if v280='LIser' then 'Série'
+  else if v280='LIthe' then 'Thèsis, dissertation'
+  else if v280='LItrn' then "Matériel d'instruction/d'éducation"d280
+  else if v280='SLdec' then 'Soft law - Décision/résolution'
+  else if v280='SLdel' then 'Soft law - Déclaration/recommendation'
+  else if v280='SLgui' then 'Soft law - Lignes directrices'
+  else if v280='SLoth' then 'Soft law - Divers'
+  fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+d280+|</typeOfText_fr_FR><typeOfText_fr_FR>|)

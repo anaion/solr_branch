@@ -1,0 +1,76 @@
+mpl,
+if p(v340)or p(v341)or p(v342)or p(v343)or p(v344) then e4:=1 else e4:=0 fi,
+if p(v410)or p(v411)or p(v412)or p(v413)or p(v414) then e1:=1 else e1:=0 fi,
+if p(v460)or p(v461)or p(v462)or p(v463)or p(v464) then e6:=1 else e6:=0 fi,
+
+if V11.1='A'or ('LEGMIS':v3.3) then
+
+" (Date of text: "v711.4")",
+(v336), if a(v336) then MDL,(v28+|; |),MPL,fi/
+
+d30" / ",
+(v30^a,| (|v30^b|) |,d30|, |),
+if e4=1 or e1=1 then,
+'<b> In: </b>',
+mhl,if v340.4='In: ' then v340*4 else v340 fi,"; "v360+|; |,if a(v340) then v341,"; "v361,
+if a(v341) then v342,"; "v362,if a(v342) then v343,"; "v363,fi,fi,fi,
+if e4=1 and e1=1 then '; ' fi,
+if e1=1 then,
+ s1:=(v410),if a(v410) then s1:=(v411),if a(v411) then s1:=(v412),if a(v412) then s1:=(v413) fi,fi,fi,
+ '<i>',s1,'</i>','<ISISREF dbn='db'#;# max_record=1#;# l=V:',s1,'#;# PFT=@ELSERU#;#>',
+fi,
+(", "v415+|, |),"; "V416,
+fi,
+if e6=1 then '<I>',
+ if p(v28^a) or e1=1 or e4=1 then '; ' fi,
+ v460,if a(v460) then v461,if a(v461) then v462,if a(v462) then v463 fi,fi,fi,'</I>',
+fi,
+" ("v465")",", "v466,", "v467/,
+MDL,(", "v29+|; |),MPL,
+if (p(v28^a)or p(v29^a)or e1=1 or e6=1) and (p(v31)or p(v53)) then ' / ' fi/,,,
+(v31^a,| (|v31^b|) |,d31+|, |),
+if a(v31) then v52,if p(v53)and p(v52)then ', 'fi,  if v11:'AS' then else v53 fi  fi/
+", "v64/
+
+else,
+
+if e4=1  then,
+", "v346, if a(v346) then MDL,(v29+|; |),MPL,fi /
+if a(v340) then " ["v344,"; "v364,"]. "d344 fi,
+fi,
+
+(|, |+v765^a,| <I>|v765^b|</I>|)/
+mhl,(|, |+v768)/,
+if e1=1 then,
+if e4=0 then,
+
+else '<b> In: </b>' fi,
+if e1=1 then,
+ s1:=(v410),if a(v410) then s1:=(v411),if a(v411) then s1:=(v412),if a(v412) then s1:=(v413) fi,fi,fi,
+ '<i>',s1,'</i>',
+ '<ISISREF dbn='db'#;# max_record=1#;# l=V:',s1,'#;# PFT=@ELSERU#;#>',
+fi,
+
+(", "v415+|, |),
+fi/
+if e6=1 then '<i>',
+ if p(v29^a) or e1=1 then '; ' fi,
+ v460,if a(v460) then v461,if a(v461) then v462,if a(v462) then v463 fi,fi,fi,'</i>',
+fi,
+" ("v465")",", "v466,", "v467,
+if (p(v29^a)or e1=1 or e6=1) and (p(v31)or p(v53)) then ' / ' fi/
+(v31^a,| (|v31^b|) | ,d31+|, |),
+if a(v31) then v52,if p(v53)and p(v52)then ', 'fi,    if v11:'AS' then else v53 fi fi,
+", "v64,", "v51,", "v56^a, "; "V56^b/
+
+fi,
+
+MHL,
+If 'MON-SER':v3.3  then
+     ", "D26,(|ISBN |d26,if v26.5='ISBN ' then v26*5 else v26 fi,d26+|; |),
+     if p(v27)or p(v417)then
+           ', ',(|<b>ISSN </b>|v27+|; |)(|<b> ISSN </b>|v417+|; |),
+     fi,
+fi,
+
+mpl,

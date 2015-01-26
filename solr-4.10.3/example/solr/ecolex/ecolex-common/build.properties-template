@@ -1,0 +1,2 @@
+# $Id$
+maven.build.dir=WORKSPACE-targets/${pom.artifactId}

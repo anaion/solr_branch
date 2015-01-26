@@ -1,0 +1,210 @@
+'<document>'/,
+'<db>',db,'</db>'/,
+'<isisMfn>',mfn(6),'</isisMfn>'/,
+'<id>'v3'</id>'/,
+"<id2><![CDATA["v1"]]></id2>"/
+'<dateOfEntry>'v120^d.4,"-"v120^d*4.2,"-"v120^d*6.2,'</dateOfEntry>'/,
+'<dateOfModification>'v130[nocc(v130)]^d.4,"-"v130[nocc(v130)]^d*4.2,"-"v130[nocc(v130)]^d*6.2,'</dateOfModification>'/,
+
+'<sortCountry_en_US><![CDATA[',if p(v4^e) then v4^e else 'ZZZ' fi,']]></sortCountry_en_US>'/
+'<sortCountry_fr_FR><![CDATA[',if p(v4^f) then v4^f else 'ZZZ' fi,']]></sortCountry_fr_FR>'/
+'<sortCountry_es_ES><![CDATA[',if p(v4^s) then v4^s else 'ZZZ' fi,']]></sortCountry_es_ES>'/
+
+"<titleOfText><![CDATA["v340"]]></titleOfText>"/
+"<titleOfTextFr><![CDATA["v341"]]></titleOfTextFr>"/
+"<titleOfTextSp><![CDATA["v342"]]></titleOfTextSp>"/
+"<titleOfTextOther><![CDATA["v343"]]></titleOfTextOther>"/
+"<titleAbbreviation><![CDATA["v345"]]></titleAbbreviation>"/
+"<titleOfTextShort><![CDATA["v370"]]></titleOfTextShort>"/
+"<titleOfTextShortFr><![CDATA["v371"]]></titleOfTextShortFr>"/
+"<titleOfTextShortSp><![CDATA["v372"]]></titleOfTextShortSp>"/
+"<titleOfTextShortOther><![CDATA["v373"]]></titleOfTextShortOther>"/
+
+'<displayTitle><![CDATA['
+if p(v340) then v340
+else if p(v341) then v341
+else if p(v342) then v342
+else if p(v343) then v343
+fi fi fi fi
+']]></displayTitle>'/
+
+'<displayTitle_fr_FR><![CDATA['
+if p(v341) then v341
+else if p(v340) then v340
+else if p(v342) then v342
+else if p(v343) then v343
+fi fi fi fi
+']]></displayTitle_fr_FR>'/
+
+'<displayTitle_es_ES><![CDATA['
+if p(v342) then v342
+else if p(v340) then v340
+else if p(v341) then v341
+else if p(v343) then v343
+fi fi fi fi
+']]></displayTitle_es_ES>'/
+
+if p(v280) then '<typeOfText>',@EITYP,'</typeOfText>' fi/
+
+(|<country>|v4^e|</country>|)/
+(|<country_fr_FR>|v4^f|</country_fr_FR>|)/
+(|<country_es_ES>|v4^s|</country_es_ES>|)/
+
+'<!-- Region in all languages -->'/,
+
+(if p(V4^e)then |<ISISREF max_record=1#;# dbn=valid#;# l=CE:|V4^e|#;# PFT=@ereg#;#>|/ fi),
+(if p(V4^e)then |<ISISREF max_record=1#;# dbn=valid#;# l=CE:|V4^e|#;# PFT=@freg#;#>|/ fi),
+(if p(V4^e)then |<ISISREF max_record=1#;# dbn=valid#;# l=CE:|V4^e|#;# PFT=@sreg#;#>|/ fi),
+
+(|<fieldOfApplication>|v853^e|</fieldOfApplication>|/)
+(|<fieldOfApplication_fr_FR>|v853^f|</fieldOfApplication_fr_FR>|/)
+(|<fieldOfApplication_es_ES>|v853^s|</fieldOfApplication_es_ES>|/)
+
+(|<territorialSubdivision>|v853^t|</territorialSubdivision>|/)
+(|<territorialSubdivision>|v4^t|</territorialSubdivision>|/)
+
+(|<region>|v854^e|</region>|/),
+(|<region_fr_FR>|v854^f|</region_fr_FR>|/),
+(|<region_es_ES>|v854^s|</region_es_ES>|/),
+(|<basin>|v856^e|</basin>|/),
+(|<basin_fr_FR>|v856^f|</basin_fr_FR>|/),
+(|<basin_es_ES>|v856^s|</basin_es_ES>|/),
+
+if p(v212) then
+  ( if p(v212) then '<subject>' fi,
+    if v212='A' then 'Land &amp; soil'
+    else if v212='C' then 'Water'
+    else if v212='D' then 'Sea'
+    else if v212='E' then 'Air &amp; atmosphere'
+    else if v212='G' then 'Forestry'
+    else if v212='J' then 'Fisheries'
+    else if v212='K' then 'Waste &amp; hazardous substances'
+    else if v212='L' then 'Mineral resources'
+    else if v212='Q' then 'Energy'
+    else if v212='U' then 'Wild species &amp; ecosystems'
+    else if v212='V' then 'Environment gen.'
+    else if v212='W' then 'Agriculture'
+    else if v212='X' then 'Cultivated plants'
+    else if v212='Y' then 'Livestock'
+    else if v212='Z' then 'Food' fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+    if p(v212) then '</subject>' fi/)
+
+  ( if p(v212) then '<subject_fr_FR>' fi,
+    if v212='A' then 'Terre et sols'
+    else if v212='C' then 'Eau'
+    else if v212='D' then 'Mer'
+    else if v212='E' then 'Air et atmosphère'
+    else if v212='G' then 'Forêts'
+    else if v212='J' then 'Pêche'
+    else if v212='K' then 'Déchets et substances dangereuses'
+    else if v212='L' then 'Ressources minérales'
+    else if v212='Q' then 'Énergie'
+    else if v212='U' then 'Espèces sauvages et écosystèmes'
+    else if v212='V' then 'Environnement gén.'
+    else if v212='W' then 'Agriculture'
+    else if v212='X' then 'Plantes cultivées'
+    else if v212='Y' then 'Bétail'
+    else if v212='Z' then 'Alimentation' fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+    if p(v212) then '</subject_fr_FR>' fi/)
+
+  ( if p(v212) then '<subject_es_ES>' fi,
+    if v212='A' then 'Tierra y suelos'
+    else if v212='C' then 'Agua'
+    else if v212='D' then 'Mar'
+    else if v212='E' then 'Aire y atmósfera'
+    else if v212='G' then 'Montes'
+    else if v212='J' then 'Pesca'
+    else if v212='K' then 'Desechos y sustancias peligrosas'
+    else if v212='L' then 'Recursos minerales'
+    else if v212='Q' then 'Energía'
+    else if v212='U' then 'Especies silvestres y ecosistemas'
+    else if v212='V' then 'Medio ambiente gen.'
+    else if v212='W' then 'Agricultura'
+    else if v212='X' then 'Cultivos'
+    else if v212='Y' then 'Ganado'
+    else if v212='Z' then 'Alimentación' fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+    if p(v212) then '</subject_es_ES>' fi/)
+fi/
+
+(|<languageOfDocument>|v440|</languageOfDocument>|)/
+(|<languageOfDocument_fr_FR>|v441|</languageOfDocument_fr_FR>|)/
+(|<languageOfDocument_es_ES>|v442|</languageOfDocument_es_ES>|)/
+
+(|<languageOfTranslation>|v450|</languageOfTranslation>|)/
+(|<languageOfTranslation_fr_FR>|v451|</languageOfTranslation_fr_FR>|)/
+(|<languageOfTranslation_es_ES>|v452|</languageOfTranslation_es_ES>|)/
+
+(|<courtName><![CDATA[|v840^a|]]></courtName>|)/
+
+if p(v842) then
+  '<courtJurisdiction>'
+    if v842='adm' then 'Administrative'
+    else if v842='civ' then 'Civil'
+    else if v842='con' then 'Constitutional'
+    else if v842='cri' then 'Criminal'
+    else if v842='fin' then 'Finance'
+    else if v842='gen' then 'General'
+    else 'Other or unknown' fi fi fi fi fi fi,
+  '</courtJurisdiction>'
+fi/
+
+(|<seatOfCourt><![CDATA[|v310|]]></seatOfCourt>|/)
+
+(|<subdivision><![CDATA[|v844|]]></subdivision>|)/
+(|<instance><![CDATA[|v846|]]></instance>|)/
+(|<justices><![CDATA[|v29|]]></justices>|)/
+
+'<dateOfText>'v55.4,"-"v55*4.2,"-"v55*6.2,'</dateOfText>'/,
+'<searchDate>'v55.4,"-"v55*4.2,"-"v55*6.2,'</searchDate>'/,
+
+if p(v848) then
+  '<forceOfJudgement>'
+    if v848='NO' then 'No'
+    else if v848='NR' then 'No, rescinded'
+    else if v848='YY' then 'Yes'
+    else if v848='YC' then 'Yes, confirmed'
+    else 'Unknown' fi fi fi fi,
+  '</forceOfJudgement>'
+fi/,
+
+(|<referenceNumber><![CDATA[|v430|]]></referenceNumber>|)/
+
+"<numberOfPages>"v520"</numberOfPages>"/
+"<appendices>"v530"</appendices>"/
+"<officialPublication>"v510"</officialPublication>"/
+"<availableIn>"v560"</availableIn>"/
+
+(|<linkToFullText><![CDATA[|v171|]]></linkToFullText>|)/
+(|<linkToFullTextFr><![CDATA[|v172|]]></linkToFullTextFr>|)/
+(|<linkToFullTextSp><![CDATA[|v173|]]></linkToFullTextSp>|)/
+(|<linkToFullTextOther><![CDATA[|v174|]]></linkToFullTextOther>|)/
+
+(|<internetReference><![CDATA[|v62|]]></internetReference>|)/
+(|<internetReferenceFr><![CDATA[|v722|]]></internetReferenceFr>|)/
+(|<internetReferenceSp><![CDATA[|v723|]]></internetReferenceSp>|)/
+(|<internetReferenceOther><![CDATA[|v724|]]></internetReferenceOther>|)/
+
+(|<relatedWebSite><![CDATA[|v62|]]></relatedWebSite>|)/
+
+(|<keyword><![CDATA[|v74|]]></keyword>|)/
+(|<keyword_fr_FR><![CDATA[|v742|]]></keyword_fr_FR>|)/
+(|<keyword_es_ES><![CDATA[|v743|]]></keyword_es_ES>|)/
+
+(|<abstract><![CDATA[|v79|]]></abstract>|/),
+(|<abstractFr><![CDATA[|v792|]]></abstractFr>|/),
+(|<abstractSp><![CDATA[|v793|]]></abstractSp>|/),
+(|<abstractOther><![CDATA[|v794|]]></abstractOther>|/),
+(|<linkToAbstract><![CDATA[|v790|]]></linkToAbstract>|)/
+
+(|<comment><![CDATA[|v711|]]></comment>|/),
+(|<commentFr><![CDATA[|v712|]]></commentFr>|/),
+(|<commentSp><![CDATA[|v713|]]></commentSp>|/),
+(|<commentOther><![CDATA[|v714|]]></ommentOther>|/),
+(|<linkToComment><![CDATA[|v720|]]></linkToComment>|)/
+
+(|<referenceToTreaties><![CDATA[|v907^o|]]></referenceToTreaties>|/)
+(|<referenceToEULegislation><![CDATA[|v901^o|]]></referenceToEULegislation>|/)
+(|<referenceToNationalLegislation><![CDATA[|v903^o|]]></referenceToNationalLegislation>|/)
+(|<referenceToCourtDecision><![CDATA[|v909^o|]]></referenceToCourtDecision>|/)
+
+'</document>'/

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+   <prefix name="strings">
+      <prefix name="country">
+         <value>Participant</value>
+      </prefix>
+      <prefix name="entryIntoForce">
+         <value>Entry into force</value>
+      </prefix>
+      <prefix name="dateOfRatification">
+         <value>Ratification</value>
+      </prefix>
+      <prefix name="dateOfAccessionApprobation">
+         <value>Accession</value>
+      </prefix>
+      <prefix name="dateOfAcceptanceApproval">
+         <value>Acceptance Approval</value>
+      </prefix>
+      <prefix name="dateOfConsentToBeBound">
+         <value>Consent to be bound and other</value>
+      </prefix>
+      <prefix name="dateOfSuccession">
+         <value>Succession</value>
+      </prefix>
+      <prefix name="dateOfDefiniteSignature">
+         <value>Definite signature</value>
+      </prefix>
+      <prefix name="dateOfSimpleSignature">
+         <value>Simple signature</value>
+      </prefix>
+      <prefix name="dateOfReservation">
+         <value>Reservation</value>
+      </prefix>
+      <prefix name="dateOfOmission">
+         <value>Withdrawal</value>
+      </prefix>
+   </prefix>
+</strings>

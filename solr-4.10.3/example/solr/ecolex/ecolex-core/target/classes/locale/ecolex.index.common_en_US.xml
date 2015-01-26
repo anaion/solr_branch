@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Common</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>Common</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Words from record and fulltext</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Subject(s)</value>
+    </prefix>
+    <prefix name="country">
+      <value>Country / territory</value>
+    </prefix>
+    <prefix name="titleOfText">
+      <value>Words from title</value>
+    </prefix>
+    <prefix name="titleOfText_search">
+      <value>Words from title</value>
+    </prefix>
+    <prefix name="region">
+      <value>Geographical area</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Basin</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Keyword(s)</value>
+    </prefix>
+    <prefix name="languageOfDocument">
+      <value>Language of document</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Year / Period</value>
+    </prefix>
+    <prefix name="databases">
+      <value>Databases</value>
+    </prefix>
+  </prefix>
+</strings>

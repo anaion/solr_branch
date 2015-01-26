@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="enabledByTreaty">
+      <value>Habilité par</value>
+    </prefix>
+    <prefix name="enables">
+      <value>Habilite</value>
+    </prefix>
+    <prefix name="amendsTreaty">
+      <value>Amende</value>
+    </prefix>
+    <prefix name="amendedBy">
+      <value>Amendé par</value>
+    </prefix>
+    <prefix name="intoForceTreaty">
+      <value>Mis en vigueur</value>
+    </prefix>
+    <prefix name="intoForceBy">
+      <value>Mis en vigueur par</value>
+    </prefix>
+    <prefix name="supersedesTreaty">
+      <value>Remplace</value>
+    </prefix>
+    <prefix name="supersededBy">
+      <value>Replacé par</value>
+    </prefix>
+    <prefix name="citesTreaty">
+      <value>Cite</value>
+    </prefix>
+    <prefix name="citedBy">
+      <value>Cité par</value>
+    </prefix>
+    <prefix name="relevantTextTreaty">
+      <value>Textes pertinentes</value>
+    </prefix>
+    <prefix name="relevantFor">
+      <value>Textes pertinentes</value>
+    </prefix>
+    <prefix name="amends">
+      <value>Amende</value>
+    </prefix>
+    <prefix name="implements">
+      <value>Mis en oeuvre</value>
+    </prefix>
+    <prefix name="implementedBy">
+      <value>Mis en oeuvre par</value>
+    </prefix>
+    <prefix name="repeals">
+      <value>Abroge</value>
+    </prefix>
+    <prefix name="repealedBy">
+      <value>Abrogé par</value>
+    </prefix>
+    <prefix name="referenceToEULegislation">
+      <value>Cite</value>
+    </prefix>
+    <prefix name="referenceToTreaties">
+      <value>Cite</value>
+    </prefix>
+    <prefix name="referenceToLiterature">
+      <value>Cite</value>
+    </prefix>
+    <prefix name="referenceToNationalLegislation">
+      <value>Cite</value>
+    </prefix>
+    <prefix name="referenceToCourtDecision">
+      <value>Cite</value>
+    </prefix>
+    <prefix name="referenceToFaolex">
+      <value>Cite</value>
+    </prefix>
+    <prefix name="referencedFrom">
+      <value>Cité par</value>
+    </prefix>
+  </prefix>
+</strings>

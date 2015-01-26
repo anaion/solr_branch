@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology. 
+ All rights reserved.
+--> 
+<config>
+  <views separator="."/>
+  <classes separator="." default-suffix="Default">
+    <prefix>ecolex.modules</prefix>    
+    <prefix>org.objectledge.modules</prefix>    
+  </classes>
+  <templates separator="/" default-suffix="Default"/>
+</config>  
+  

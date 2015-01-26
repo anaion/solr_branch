@@ -1,0 +1,8 @@
+#foreach($option in $options.keySet())
+  <div #if ($style) class="$style" #end>
+      <input id="checkbox_$option" name="$name" type="checkbox" #if($selected.contains($option)) checked="checked" #end value="$option"/>
+      <label for="checkbox_$option">$i18nViews.get($options.get($option).toString())</label>
+  </div>
+#end
+#set($selected = "")
+#set($style = "")

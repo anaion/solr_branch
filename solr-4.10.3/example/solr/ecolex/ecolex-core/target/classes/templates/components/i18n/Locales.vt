@@ -1,0 +1,8 @@
+<ul>
+#foreach($locale in $locales)
+<li#if($locale.equals($currentLocale)) style="font-weight: bold;" #end>
+<a href="$link.action('i18n.SetLocale').set('locale',"$locale")">$localeNames.get($locale)</a>
+<br />
+$link.sessionless().absolute().view('Simple').action('i18n.SetLocale').set('locale',"$locale")</li>
+#end
+</ul>

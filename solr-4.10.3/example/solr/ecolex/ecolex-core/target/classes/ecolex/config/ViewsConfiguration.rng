@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+ @author <a href="mailto:pwiech@ii.pw.edu.pl">Przemysław Więch</a>
+-->
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+    <start>
+
+        <element name="config">
+
+          <zeroOrMore>
+            <element name="options">
+                <attribute name="name">
+                    <text/>
+                </attribute>
+                <oneOrMore>
+                    <element name="option">
+                        <attribute name="value">
+                            <text/>
+                        </attribute>
+                        <optional>
+                            <attribute name="listing">
+                                <text/>
+                            </attribute>
+                        </optional>
+                        <optional>
+                            <attribute name="type">
+                                <text/>
+                            </attribute>
+                        </optional>
+                        <text/>
+                    </element>
+                </oneOrMore>
+            </element>
+          </zeroOrMore>
+
+        </element>
+
+    </start>
+</grammar>

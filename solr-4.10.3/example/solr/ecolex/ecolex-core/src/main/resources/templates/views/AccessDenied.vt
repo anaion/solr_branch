@@ -1,0 +1,12 @@
+$pageTool.setTitle('Access Denied')##
+##
+<h1>You are not allowed to view this resource.</h1>
+<p>
+If You are not logged in - plase log in.
+</p>
+
+#if($originalView)
+<p>
+<a href="$link.view($originalView)">Go back</a>
+</p>
+#end

@@ -1,0 +1,109 @@
+#set($i18nSS = $i18n.usePrefix('ecolex.SimpleSearch.strings'))
+#set($i18nViews = $i18n.usePrefix('ecolex.views.strings'))
+
+$pageTool.setTitle($i18nSS.get("title"))##
+$pageTool.addScriptLink('ecolex/javascript/utils.js')
+ 
+ <script>
+  autocomplete("search__field","","titleOfText")
+  </script>
+  
+<script type="text/javascript">
+function advancedSearch()
+{
+  checkedCount = countChecked();
+
+  if (checkedCount != 1)
+    document.searchForm.action = "$link.view('Common')";
+  else if (el("checkbox_treaties").checked)
+    document.searchForm.action = "$link.view('Treaties')";
+  else if (el("checkbox_documents").checked)
+    document.searchForm.action = "$link.view('Legislation')";
+  else if (el("checkbox_courtdecisions").checked)
+    document.searchForm.action = "$link.view('CourtDecisions')";
+  else if (el("checkbox_literature").checked)
+    document.searchForm.action = "$link.view('Literature')";
+
+  el("sortField").disabled = true;
+  document.searchForm.submit();
+}
+
+function search()
+{
+  document.searchForm.action = "$link.view('SearchResults')";
+  checkedCount = countChecked();
+  el("sortField").disabled = false;
+  if (checkedCount == 1)
+    el("sortField").value = "searchDate";
+  else
+    el("sortField").value = "score";
+
+  document.searchForm.submit();
+}
+
+function countChecked()
+{
+  checkedCount = 0;
+  if (el("checkbox_treaties").checked)
+    checkedCount++;
+  if (el("checkbox_documents").checked)
+    checkedCount++;
+  if (el("checkbox_courtdecisions").checked)
+    checkedCount++;
+  if (el("checkbox_literature").checked)
+    checkedCount++;
+  return checkedCount;
+}
+</script>
+
+#macro(box $comp  $link)
+    <div class="news_box">
+     <div class="news_box_header">
+       #if ($link)
+         <a href="$link">$i18nSS.get($comp)</a>
+       #else
+         $i18nSS.get($comp)
+       #end
+     </div>
+     <div class="news_box_content">
+        $component.embed("box.${comp}_$i18n.locale")
+     </div>
+    </div>
+#end
+
+<!--
+<div id="right_column">
+
+    #box('News' $null)
+    #box('Links' $null)
+    #box('Treaties' $link.view('Treaties'))
+    #box('Legislation' $link.view('Legislation'))
+    #box('CourtDecisions' $link.view('CourtDecisions'))
+    #box('Literature' $link.view('Literature'))
+   
+  </div>
+   -->
+  <div id="left_column">
+    <form id="searchForm" name="searchForm" method="get" action="$link.view('SearchResults')">
+    <input type="hidden" id="sortField" name="sortField" value="score"/>
+   	
+    <div id="search_box">
+      <input id="search_field" type="text" name="query" value="$!htmlEncoder.encodeAttribute($parametersTool.get('query',''))" />
+      <input id="go_button" type="submit" value="$i18nSS.get('GO')" onclick="search()"/>
+      <div id="full_text">
+      <input id="full_text_checkbox" name="includeFields" type="checkbox" value="all" checked="checked"/>
+      <label for="full_text_checkbox">$i18nSS.get("Search also in full text")</label></div>
+      <!--<a href="javascript:advancedSearch()">$i18nSS.get("Advanced search")</a>-->
+    </div>
+	<div style="padding-left:70px">
+    $component.embed('CheckBoxes', [['style','db_checkbox'],['name','index'],['options',$commonDatabases], ['selected', $arraysTool.asList($parametersTool.getStrings('index'))]])
+    <p>&nbsp;</p>
+	<p>$i18nSS.get("select databases")</p> 
+	<p style="height:80px"/>
+	</div>
+	
+    <p class="info">$i18nSS.get("Info line 1")</p>
+    <p class="info">$i18nSS.get("Info line 2")</p>
+    <p style="color:red">$i18nSS.get("Info line 3 beg") <a style="color:red" href="mailto:ECOLEX@iucn.org">ECOLEX@iucn.org</a> $i18nSS.get("Info line 3 end")</p>
+    </form>
+  </div>

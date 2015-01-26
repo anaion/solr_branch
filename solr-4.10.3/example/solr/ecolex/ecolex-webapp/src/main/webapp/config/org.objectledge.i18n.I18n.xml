@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology.
+ All rights reserved.
+-->
+
+<config>
+  <supported-locales>
+   <locale name="English" default="true">en_US</locale>
+   <locale name="Francais">fr_FR</locale>
+   <locale name="Espanol">es_ES</locale>
+  </supported-locales>
+  <localization-directory>/locale</localization-directory>
+</config>
+

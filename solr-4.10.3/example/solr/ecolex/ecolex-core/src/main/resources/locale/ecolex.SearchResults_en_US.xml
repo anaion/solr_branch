@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="title">
+      <value>Search Results</value>
+    </prefix>
+    <prefix name="Results">
+      <value>Results</value>
+    </prefix>
+    <prefix name="of">
+      <value>of</value>
+    </prefix>
+    <prefix name="Sort by">
+      <value>Sort by</value>
+    </prefix>
+    <prefix name="Read full text">
+      <value>Read full text</value>
+    </prefix>
+    <prefix name="International">
+      <value>International</value>
+    </prefix>
+    <prefix name="ID">
+      <value>ID</value>
+    </prefix>
+    <prefix name="No matches found">
+      <value>No matches found</value>
+    </prefix>
+    <prefix name="not available">
+      <value>not available</value>
+    </prefix>
+    <prefix name="newest">
+      <value>new entries</value>
+    </prefix>
+    <prefix name="newestActions">
+      <value>recent actions</value>
+    </prefix>
+    <prefix name="refine">
+      <value>refine query</value>
+    </prefix>
+    <prefix name="all">
+      <value>All</value>
+    </prefix>
+    <prefix name="export">
+      <value>Export selected items</value>
+    </prefix>
+    <prefix name="nothingSelected">
+      <value>No records are selected</value>
+    </prefix>
+   </prefix>
+   <prefix name="result">
+    <prefix name="query.create.faolex.search.searching.QueryCreationException">
+      <value>Your query has incorrect format, please try a different query or refer to the ECOLEX documentation.</value>
+    </prefix>
+    <prefix name="search.execute.org.objectledge.table.TableException">
+      <value>There was a serious problem while searching, please report it to ECOLEX administrators.</value>
+    </prefix>
+  </prefix>
+</strings>

@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+  <!-- main log -->
+  <appender name="File" class="org.objectledge.logging.LedgeRollingFileAppender">
+    <param name="File" value="logs/ledge.log"/>
+    <param name="MaxFileSize" value="10MB"/>
+    <param name="MaxBackupIndex" value="9"/>
+    <param name="Append" value="true"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %x %5p [%t] (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+    <param name="Append" value="false"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %x %5p [%t] (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- fulltextextraction log -->
+  <appender name="FullTextExtraction" class="org.objectledge.logging.LedgeRollingFileAppender">
+    <param name="File" value="logs/fulltextextraction.log"/>
+    <param name="MaxFileSize" value="10MB"/>
+    <param name="MaxBackupIndex" value="9"/>
+    <param name="Append" value="true"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %x %5p [%t] (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- indexing log -->
+  <appender name="Indexing" class="org.objectledge.logging.LedgeRollingFileAppender">
+    <param name="File" value="logs/indexing.log"/>
+    <param name="MaxFileSize" value="10MB"/>
+    <param name="MaxBackupIndex" value="9"/>
+    <param name="Append" value="true"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %x %5p [%t] (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- searchsubsystem log -->
+  <appender name="SearchSubsystem" class="org.objectledge.logging.LedgeRollingFileAppender">
+    <param name="File" value="logs/searchsys.log"/>
+    <param name="MaxFileSize" value="10MB"/>
+    <param name="MaxBackupIndex" value="9"/>
+    <param name="Append" value="true"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %x %5p [%t] (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- special fulltextextraction logger -->
+  <logger name="faolex.db.download.FullTextExtraction" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="FullTextExtraction"/>
+  </logger>
+  <logger name="ecolex.db.download.FullTextExtraction" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="FullTextExtraction"/>
+  </logger>
+
+  <!-- special indexing logger -->
+  <logger name="faolex.db.FaoLexDBAccess" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+  <logger name="faolex.db.search.FaoLexDocumentCreator" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+  <logger name="faolex.db.search.DocumentIndexManager" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+  <logger name="ecolex.db.download.DocumentDownloader" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+  <logger name="treatiesIndexManager" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+  <logger name="courtDecisionsIndexManager" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+  <logger name="literatureIndexManager" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+  <logger name="faolexIndexManager" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="Indexing"/>
+  </logger>
+
+  <!-- special searchsubsystem loggers -->
+  <logger name="faolex.search.IndexingFacility" additivity="false">
+    <level value="WARN"/>
+    <appender-ref ref="SearchSubsystem"/>
+  </logger>
+  <logger name="faolex.search.SearchingFacility" additivity="false">
+    <level value="WARN"/>
+    <appender-ref ref="SearchSubsystem"/>
+  </logger>
+  <logger name="ecolex.modules.views.SearchResults" additivity="false">
+    <level value="WARN"/>
+    <appender-ref ref="SearchSubsystem"/>
+  </logger>
+
+  <!-- customized loggers -->
+  <logger name="org.objectledge.templating.Templating"><level value="ERROR"/></logger>
+
+  <!-- root logger (default settings) -->
+  <root>
+    <level value="WARN"/> <!-- <level value="ERROR"/> -->
+    <appender-ref ref="File"/> <!-- <appender-ref ref="Console"/> -->
+  </root>
+</log4j:configuration>

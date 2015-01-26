@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="cross search">
+      <value>Cross database search</value>
+    </prefix>
+    <prefix name="advanced search">
+      <value>advanced search</value>
+    </prefix>
+    <prefix name="GO">
+      <value>GO</value>
+    </prefix>
+    <prefix name="Clear">
+      <value>Clear</value>
+    </prefix>
+    <prefix name="from">
+      <value>from</value>
+    </prefix>
+    <prefix name="to">
+      <value>to</value>
+    </prefix>
+    <prefix name="Sort results by">
+      <value>Sort results by</value>
+    </prefix>
+    <prefix name="Exclude">
+      <value>Exclude</value>
+    </prefix>
+    <prefix name="List">
+      <value>List</value>
+    </prefix>
+   </prefix>
+</strings>

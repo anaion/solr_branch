@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id$ -->
+<config>
+  <policy name="ecolex" auth="true">
+    <role>ecolexAdministrator</role>
+    <action>IndexAll</action>
+    <action>UpdateIndex</action>
+    <view>Manager</view>
+  </policy>
+  <policy name="system" auth="true">
+    <role>systemAdministrator</role>
+    <action>i18n.Reload</action>
+    <action>im.*</action>
+    <action>logging.*</action>
+    <action>scheduler.*</action>
+    <action>templating.*</action>
+    <view>System</view>
+    <view>system.*</view>
+    <view>logging.*</view>
+    <view>scheduler.*</view>
+    <view>templating.*</view>
+  </policy>
+</config>

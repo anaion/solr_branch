@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="record details">
+      <value>Entrée détaillée</value>
+    </prefix>
+    <prefix name="Parties">
+      <value>Parties</value>
+    </prefix>
+    <prefix name="Click to show parties">
+      <value>Cliquer por afficher les Parties</value>
+    </prefix>
+    <prefix name="Click to hide parties">
+      <value>Cliquer por ne pas afficher les Parties</value>
+    </prefix>
+    <prefix name="References">
+      <value>Références</value>
+    </prefix>
+    <prefix name="Referring documents">
+      <value>Références à d’autres documents</value>
+    </prefix>
+   </prefix>
+</strings>

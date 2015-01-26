@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Decisiones judiciales</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>Dec</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Todas las materias y texto</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Buscar fecha</value>
+    </prefix>
+    <prefix name="region">
+      <value>Región</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Cuenca</value>
+    </prefix>
+    <prefix name="country">
+      <value>País</value>
+    </prefix>
+    <prefix name="territorialSubdivision">
+      <value>Subdivisión territorial</value>
+    </prefix>
+    <prefix name="titleOfText_search">
+      <value>Buscar el título del texto</value>
+    </prefix>
+    <prefix name="titleOfText">
+      <value>Título del texto</value>
+    </prefix>
+    <prefix name="titleOfTextFr">
+      <value>Título del texto</value>
+    </prefix>
+    <prefix name="titleOfTextSp">
+      <value>Título del texto</value>
+    </prefix>
+    <prefix name="titleOfTextOther">
+      <value>Título del texto</value>
+    </prefix>
+    <prefix name="titleAbbreviation">
+      <value>Abreviación de título</value>
+    </prefix>
+    <prefix name="dateOfText">
+      <value>Fecha del texto</value>
+    </prefix>
+    <prefix name="availableIn">
+      <value>Disponible en</value>
+    </prefix>
+    <prefix name="typeOfText">
+      <value>Tipo de texto</value>
+    </prefix>
+    <prefix name="placeOfAdoption">
+      <value>Lugar de adopción</value>
+    </prefix>
+    <prefix name="courtName">
+      <value>Nombre del Tribunal</value>
+    </prefix>
+    <prefix name="seatOfCourt">
+      <value>Sede del Tribunal</value>
+    </prefix>
+    <prefix name="subdivision">
+      <value>Subdivisión</value>
+    </prefix>
+    <prefix name="courtJurisdiction">
+      <value>Jurisdicción del Tribunal</value>
+    </prefix>
+    <prefix name="instance">
+      <value>Instancia</value>
+    </prefix>
+    <prefix name="justices">
+      <value>Jueces</value>
+    </prefix>
+    <prefix name="referenceNumber">
+      <value>Número de referencia</value>
+    </prefix>
+    <prefix name="relatedWebSite">
+      <value>Página web relacionada</value>
+    </prefix>
+    <prefix name="linksToFullText">
+      <value>Enlace al texto completo</value>
+    </prefix>
+    <prefix name="numberOfPages">
+      <value>Número de páginas</value>
+    </prefix>
+    <prefix name="appendices">
+      <value>Apéndices</value>
+    </prefix>
+    <prefix name="languageOfDocument">
+      <value>Idioma del documento</value>
+    </prefix>
+    <prefix name="languageOfTranslation">
+      <value>Idioma de la traducción</value>
+    </prefix>
+    <prefix name="abstract">
+      <value>Abstracto</value>
+    </prefix>
+    <prefix name="abstractFr">
+      <value>Abstracto</value>
+    </prefix>
+    <prefix name="abstractSp">
+      <value>Abstracto</value>
+    </prefix>
+    <prefix name="abstractOther">
+      <value>Abstracto</value>
+    </prefix>
+    <prefix name="linkToAbstract">
+      <value>Enlace al abstracto</value>
+    </prefix>
+    <prefix name="comment">
+      <value>Comentario</value>
+    </prefix>
+    <prefix name="linkToComment">
+      <value>Enlace al comentario</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Materia</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Palabra clave</value>
+    </prefix>
+    <prefix name="id">
+      <value>Id</value>
+    </prefix>
+  </prefix>
+</strings>

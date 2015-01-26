@@ -1,0 +1,11 @@
+$viewEnclosureTool.override('Page')##
+##
+$pageTool.addStyleLink('ecolex/ecolex.css')##
+##$pageTool.addStyleLink('ecolex/iucn.css')##
+##
+$pageTool.insertTitlePrefix('EcoLex: ')##
+##
+$pageTool.addScriptLink('ecolex/javascript/advanced.js')
+#set($i18nIndex = $i18n.usePrefix('ecolex.index'))
+#set($i18nLayout = $i18n.usePrefix('ecolex.layout.strings'))
+$!embeddedPlaceholder

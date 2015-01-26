@@ -1,0 +1,58 @@
+'<document>'/,
+'<db>',db,'</db>'/,
+'<isisMfn>',mfn(6),'</isisMfn>'/,
+'<id>'v3'</id>'/,
+'<dateOfEntry>'v120^d.4,"-"v120^d*4.2,"-"v120^d*6.2,'</dateOfEntry>'/,
+'<dateOfModification>'v130[nocc(v130)]^d.4,"-"v130[nocc(v130)]^d*4.2,"-"v130[nocc(v130)]^d*6.2,'</dateOfModification>'/,
+
+'<treatyId>'v958'</treatyId>'/,
+"<titleOfText><![CDATA["v957"]]></titleOfText>"/
+'<potentialParty>'if v959='Y' then 'Yes' else 'No' fi,'</potentialParty>'/
+'<country><![CDATA['v991[1]']]></country>'/
+"<country_fr_FR><![CDATA["v992"]]></country_fr_FR>"/
+"<country_es_ES><![CDATA["v993"]]></country_es_ES>"/
+
+if p(v961) then '<dateOfSimpleSignature>'v961.4,"-"v961*4.2,"-"v961*6.2'</dateOfSimpleSignature>' fi,
+if p(v962) then '<dateOfDefiniteSignature>'v962.4,"-"v962*4.2,"-"v962*6.2'</dateOfDefiniteSignature>' fi,
+if p(v963) then '<dateOfConsentToBeBound>'v963.4,"-"v963*4.2,"-"v963*6.2'</dateOfConsentToBeBound>' fi,
+if p(v964) then '<dateOfRatification>'v964.4,"-"v964*4.2,"-"v964*6.2'</dateOfRatification>' fi,
+if p(v965) then '<dateOfAcceptanceApproval>'v965.4,"-"v965*4.2,"-"v965*6.2'</dateOfAcceptanceApproval>' fi,
+if p(v966) then '<dateOfAccessionApprobation>'v966.4,"-"v966*4.2,"-"v966*6.2'</dateOfAccessionApprobation>' fi,
+if p(v967) then '<dateOfProvisionalApplication>'v967.4,"-"v967*4.2,"-"v967*6.2'</dateOfProvisionalApplication>' fi,
+if p(v968) then '<dateOfReservation>'v968.4,"-"v968*4.2,"-"v968*6.2'</dateOfReservation>' fi,
+if p(v969) then '<dateOfDeclaration>'v969.4,"-"v969*4.2,"-"v969*6.2'</dateOfDeclaration>' fi,
+if p(v970) then '<dateOfSuccession>'v970.4,"-"v970*4.2,"-"v970*6.2'</dateOfSuccession>' fi,
+if p(v971) then '<dateOfOmission>'v971.4,"-"v971*4.2,"-"v971*6.2'</dateOfOmission>' fi,
+if p(v972) then '<entryIntoForce>'v972.4,"-"v972*4.2,"-"v972*6.2'</entryIntoForce>' fi,
+if p(v973) then '<dateOfParticipation>'v973.4,"-"v973*4.2,"-"v973*6.2'</dateOfParticipation>' fi,
+
+if p(v958) then
+  ( if p(v958) then '<subject>' fi,
+    if v958='A' then 'Land and soil'
+    else if v958='B' then 'Reference library'
+    else if v958='C' then 'Water'
+    else if v958='D' then 'Sea'
+    else if v958='E' then 'Air and atmosphere'
+    else if v958='G' then 'Forestry'
+    else if v958='J' then 'Fishery'
+    else if v958='K' then 'Waste and hazardous substances'
+    else if v958='L' then 'Mineral resources'
+    else if v958='Q' then 'Energy'
+    else if v958='S' then 'Scientific'
+    else if v958='T' then 'Legal questions'
+    else if v958='U' then 'Wild species and ecosystems'
+    else if v958='V' then 'Environment'
+    else if v958='W' then 'Agriculture'
+    else if v958='X' then 'Cultivated plants'
+    else if v958='Y' then 'Livestock'
+    else if v958='Z' then 'Food' fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi fi,
+    if p(v958) then '</subject>' fi/)
+fi/
+
+(|<keyword>|v986|</keyword>|)/
+(|<fieldOfApplication>|v941^e|</fieldOfApplication>|/)
+(|<regionBasin>|v942^e|</regionBasin>|/),
+(|<depository><![CDATA[|v931|]]></depository>|)/
+'<dateOfText>'v945.4,"-"v945*4.2,"-"v945*6.2,'</dateOfText>'/,
+
+'</document>'/

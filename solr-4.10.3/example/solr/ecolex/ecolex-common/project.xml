@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<project>
+  <pomVersion>3</pomVersion>
+  <!-- project info -->
+
+  <id>ecolex-common</id>
+  <groupId>ecolex</groupId>
+  <currentVersion>${versions.ecolex}</currentVersion>
+  <organization>
+    <name>II PW</name>
+    <url>http://www.ii.pw.edu.pl/</url>
+  </organization>
+  <!-- logo -->
+
+  <inceptionYear>2006</inceptionYear>
+  <package>ecolex</package>
+  <url>http://ecolex/</url>
+
+  <repository>
+    <developerConnection>scm:cvs:ext:${maven.username}@witch.ii.pw.edu.pl:/home/cvsroot/${pom.artifactId}</developerConnection>
+    <connection/>
+    <url>http://ami-sme.ii.pw.edu.pl/viewcvs.cgi/${pom.artifactId}</url>
+  </repository>
+  <versions>
+    <!--
+    <version>
+      <id>0.1</id>
+      <name>0.1</name>
+      <tag>RELEASE-0_1</tag>
+    </version>
+    -->
+  </versions>
+  <licenses>
+    <!--
+    <license>
+      <name>Commercial</name>
+      <url></url>
+      <distribution>repo</distribution>
+    </license>
+    -->
+  </licenses>
+
+  <!--
+  <mailingLists/>
+  -->
+
+  <developers>
+    <developer>
+      <name>Damian Gajda</name>
+      <id>dgajda</id>
+      <email>gajda@ii.pw.edu.pl</email>
+      <organization>Warsaw University of Technology</organization>
+      <timezone>+1</timezone>
+      <roles>
+        <role>architect</role>
+        <role>release engineer</role>
+        <role>java developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Przemek Więch</name>
+      <id>pwiech</id>
+      <email>pwiech@ii.pw.edu.pl</email>
+      <organization>Warsaw University of Technology</organization>
+      <timezone>+1</timezone>
+      <roles>
+        <role>architect</role>
+        <role>java developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Piotr Gawrysiak</name>
+      <id>gawron</id>
+      <email>P.Gawrysiak@ii.pw.edu.pl</email>
+      <organization>Warsaw University of Technology</organization>
+      <timezone>+1</timezone>
+      <roles>
+        <role>architect</role>
+        <role>isis developer</role>
+      </roles>
+    </developer>
+  </developers>
+  <!-- contributors -->
+
+  <reports>
+    <report>maven-changes-plugin</report>
+    <report>maven-javadoc-plugin</report>
+    <report>maven-jxr-plugin</report>
+    <report>maven-jdepend-plugin</report>
+    <report>maven-checkstyle-plugin</report>
+    <report>maven-junit-report-plugin</report>
+    <report>maven-pmd-plugin</report>
+    <report>maven-simian-plugin</report>
+    <report>maven-findbugs-plugin</report>
+  </reports>
+
+  <dependencies>
+    <dependency>
+      <groupId>objectledge</groupId>
+      <artifactId>ledge-maven-plugin</artifactId>
+      <version>SNAPSHOT</version>
+      <type>plugin</type>
+    </dependency>
+    <!-- coverage reporting -->
+    <dependency>
+      <groupId>emma</groupId>
+      <artifactId>maven-emma-plugin</artifactId>
+      <version>0.6</version>
+      <type>plugin</type>
+    </dependency>
+  </dependencies>
+</project>

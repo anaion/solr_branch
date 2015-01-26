@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Tout</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>Tout</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Mots de l'entrée et texte</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Sujet(s)</value>
+    </prefix>
+    <prefix name="country">
+      <value>Pays / territoire</value>
+    </prefix>
+    <prefix name="titleOfText_search">
+      <value>Mots du titre</value>
+    </prefix>
+    <prefix name="region">
+      <value>Zone géographique</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Bassin</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Mots-clés</value>
+    </prefix>
+    <prefix name="languageOfDocument">
+      <value>Langue du document</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Année / Période</value>
+    </prefix>
+    <prefix name="databases">
+      <value>bases des données</value>
+    </prefix>
+  </prefix>
+</strings>

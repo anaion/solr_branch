@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="title">
+      <value>Simple Search</value>
+    </prefix>
+    <prefix name="select databases">
+      <value>Select one or more databases for simple or advanced search</value>
+    </prefix>
+    <prefix name="Search also in full text">
+      <value>Search also in full text</value>
+    </prefix>
+    <prefix name="Advanced search">
+      <value>Advanced search</value>
+    </prefix>
+    <prefix name="Info line 1">
+      <value>ECOLEX is a database providing the most comprehensive, global source of information on environmental law.</value>
+    </prefix>
+    <prefix name="Info line 2">
+      <value>ECOLEX is operated jointly by FAO, IUCN and UNEP.</value>
+    </prefix>
+    <prefix name="Info line 3 beg">
+      <value>ECOLEX is currently being updated. Any problems that you may encounter while using the site are likely due to our current work on the database. Please feel free to contact us at</value>
+    </prefix>
+    <prefix name="Info line 3 end">
+      <value>if you experience any difficulties.</value>
+    </prefix>
+    <prefix name="News">
+      <value>Latest news</value>
+    </prefix>
+    <prefix name="Links">
+      <value>Other websites</value>
+    </prefix>
+    <prefix name="Treaties">
+      <value>Treaties</value>
+    </prefix>
+    <prefix name="Legislation">
+      <value>Legislation</value>
+    </prefix>
+    <prefix name="CourtDecisions">
+      <value>Court decisions</value>
+    </prefix>
+    <prefix name="Literature">
+      <value>Literature</value>
+    </prefix>
+    <prefix name="GO">
+      <value>GO</value>
+    </prefix>
+   </prefix>
+</strings>

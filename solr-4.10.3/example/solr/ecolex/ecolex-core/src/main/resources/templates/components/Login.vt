@@ -1,0 +1,45 @@
+#**
+ * Login component
+ *
+ * @author <a href="mailto:gajda@ii.pw.edu.pl">Damian Gajda</a>
+ * @version $Id$
+*###
+#set($loginAction = $link.self().action('authentication.Login'))
+#if($originalView)
+#set($loginAction = $loginAction.view($originalView))
+#else
+#set($loginAction = $loginAction.view('Start'))
+#end
+
+<form name="loginform" action="$loginAction" method="post">
+<table>
+
+<tr class="row#odd()">
+<td>
+User name:
+</td>
+<td>
+<input type="text" name="login" class="inputText" size="16" />
+</td>
+</tr>
+
+<tr class="row#odd()">
+<td>
+Password:
+</td>
+<td>
+<input type="password" name="password" class="inputText" size="16" />
+</td>
+</tr>
+
+<tr class="row#odd()">
+<td>
+&nbsp;
+</td>
+<td>
+<button type="submit" class="submitbutton">Log in</button>
+</td>
+</tr>
+
+</table>
+</form>

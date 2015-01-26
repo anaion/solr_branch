@@ -1,0 +1,132 @@
+#set($i18nL = $i18n.usePrefix('ecolex.Listing.strings'))
+
+$pageTool.setTitle($i18nL.get("title"))##
+$pageTool.addScriptLink('ecolex/javascript/utils.js')
+
+#set($startFrom=$parametersTool.get('startFrom',''))
+#set($listingField=$parametersTool.get('listingField'))
+##set($fieldText=$parametersTool.get($listingField))
+
+#if($arraysTool.asList($parametersTool.getStrings("index")).size() != 1)
+    #set($index = "common")
+#else
+    #set($index = $parametersTool.get("index", "common"))
+#end
+#set($i18nIndex = $i18n.usePrefix("ecolex.index"))
+
+<script type="text/javascript">
+  function unescapeAmp(s)
+  {
+    return s.replace(/\x26amp;/g, "\x26");
+  }
+
+  function listingSelect()
+  {
+    link = "$link.self().view($parametersTool.get('screen')).unset('screen').unset('listingField').unset($listingField).unset('startFrom').unset('page').unset('offset').unset('original')";
+    link += "&amp;$listingField=" + getWhichSelected();
+    parent.location = unescapeAmp(link);
+  }
+
+  function listingCancel()
+  {
+    link = "$link.self().view($parametersTool.get('screen')).unset('screen').unset('listingField').unset($listingField).unset('startFrom').unset('page').unset('offset').unset('original').set($listingField, $original)";
+    parent.location = unescapeAmp(link);
+  }
+
+  function nextPage()
+  {
+    link = "$link.self().unset($listingField).set('page', $nextPage).unset('startFrom').set('offset', $offset).set('original', $original)";
+    link += "&amp;$listingField=" + getWhichSelected();
+    parent.location = unescapeAmp(link);
+  }
+
+  function prevPage()
+  {
+    link = "$link.self().unset($listingField).set('page', $prevPage).unset('startFrom').set('offset', $offset).set('original', $original)";
+    link += "&amp;$listingField=" + getWhichSelected();
+    parent.location = unescapeAmp(link);
+  }
+
+  function startFromText()
+  {
+    link = "$link.self().unset($listingField).unset('startFrom').set('original', $original)";
+    link += "&amp;$listingField=" + getWhichSelected();
+    link += "&amp;startFrom=" + el('startFrom').value;
+    parent.location = unescapeAmp(link);
+  }
+
+</script>
+
+#macro (insert_buttons)
+      <td>
+        <input class="long_button" type="button" value="$i18nL.get('Select')" onclick="listingSelect()"/>
+        <input class="short_button" type="button" #if(!$prevPage)disabled="disabled" #end value="&lt;&lt;" onclick="prevPage()"/>
+        <input class="short_button" type="button" #if(!$nextPage)disabled="disabled" #end value="&gt;&gt;" onclick="nextPage()"/>
+        <input class="long_button" type="button" value="$i18nL.get('Cancel')" onclick="listingCancel()"/>
+      </td>
+#end
+
+<h1>$i18nL.get("title")</h1>
+
+<form id="listingForm" action="#" method="get" onsubmit="startFromText(); return false;">
+  <input id="whichSelectedText"  name="$listingField" type="hidden" value="$!htmlEncoder.encodeAttribute($fieldText)"/>
+  <table class="input-fields">
+    <tr>
+      <th>$i18nIndex.get("${index}.field.$listingField")</th>
+
+      <td>
+        $!htmlEncoder.encodeAttribute($fieldText)
+      </td>
+    </tr>
+
+    <tr>
+        <th>
+            <input class="long_button" type="button" value="$i18nL.get('Start from'):" onclick="startFromText()"/>
+        </th>
+        <td>
+            $component.embed('TextField', [['style', 'textField'],['name','startFrom'], ['text', $startFrom]])
+        </td>
+    </tr>
+
+    <tr>
+      <th></th>
+        #insert_buttons()
+    </tr>
+    <tr>
+        <th><!--Result:--></th>
+            <td>
+                #if ($result.size() > 0)
+                <table class="listing_result">
+                #if($result.iterator().next().size > 1)
+                    <tr><th class="listing_text"></th>
+                    #foreach($i in $indexNames)
+                        <th class="listing_freq">$i18nIndex.get("${i}.index.abbrev")</th>
+                    #end
+                    </tr>
+                #end
+                #foreach($option in $result)
+                    #set($checkbox_id = "checkbox_$option.text.hashCode()")
+                  <tr>
+                      <td class="listing_text">
+                        <input id="$checkbox_id" name="listingResult" type="checkbox" #if($selectedListingOptions.contains($option.text)) checked="checked" #end value="$!htmlEncoder.encodeAttribute($option.text)" onclick="check('$checkbox_id')"/>
+                        <label for="$checkbox_id">$!htmlEncoder.encodeAttribute($option.text)</label>
+                      </td>
+                      #foreach($freq in $intArraysTool.asList($option.freq))
+                        <td class="listing_freq"><label for="$checkbox_id">
+                            #if($freq == 0 && $option.text.startsWith("Interna"))-#else$freq#end
+                        </label></td>
+                      #end
+                  </tr>
+                #end
+                </table>
+                #else
+                    Index is empty
+                    #end
+          </td>
+    </tr>
+    <tr>
+      <th></th>
+        #insert_buttons()
+    </tr>
+  </table>
+</form>

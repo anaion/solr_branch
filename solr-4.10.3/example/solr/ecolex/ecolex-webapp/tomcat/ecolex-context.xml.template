@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Context path="/ecolex" docBase="WORKSPACE-targets/ecolex-webapp/ecolex-webapp-live"
+ reloadable="true" useNaming="false">
+ <Parameter name="ledge.root"
+  value="WORKSPACE-targets/ecolex-webapp/ecolex-webapp-live"
+  override="false"/>
+</Context>
+

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Legislation</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>Leg</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Words from record and fulltext</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Year / Period</value>
+    </prefix>
+    <prefix name="titleOfText">
+      <value>Words from title</value>
+    </prefix>
+    <prefix name="repealed">
+      <value>Repealed legislation</value>
+    </prefix>
+    <prefix name="region">
+      <value>Geographical area</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Subject(s)</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Keyword(s)</value>
+    </prefix>
+    <prefix name="country">
+      <value>Country</value>
+    </prefix>
+    <prefix name="territorialSubdivision">
+      <value>Territorial subdivision</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Basin</value>
+    </prefix>
+    <prefix name="Title_of_Text">
+      <value>Title of text</value>
+    </prefix>
+    <prefix name="Long_Title_of_text">
+      <value>Long title of text</value>
+    </prefix>
+    <prefix name="dateOfText">
+      <value>Date of text</value>
+    </prefix>
+    <prefix name="dateOfOriginalText">
+      <value>Date of original text</value>
+    </prefix>
+    <prefix name="dateOfConsolidation">
+      <value>Date of consolidation / reprint</value>
+    </prefix>
+    <prefix name="Entry_into_Force">
+      <value>Entry into force notes</value>
+    </prefix>
+    <prefix name="Publication_reference">
+      <value>Source</value>
+    </prefix>
+    <prefix name="Serial_Imprint">
+      <value>Source</value>
+    </prefix>
+    <prefix name="typeOfText">
+      <value>Type of document</value>
+    </prefix>
+    <prefix name="Related_Web_Site">
+      <value>Available web site</value>
+    </prefix>
+    <prefix name="link_to_full_text">
+      <value>Link to full text</value>
+    </prefix>
+    <prefix name="Doc_Language">
+      <value>Language of document</value>
+    </prefix>
+    <prefix name="languageOfRecord">
+      <value>Language of record</value>
+    </prefix>
+    <prefix name="Abstract">
+      <value>Abstract</value>
+    </prefix>
+    <prefix name="Comment">
+      <value>Comment</value>
+    </prefix>
+    <prefix name="id">
+      <value>Legislation ID number</value>
+    </prefix>
+  </prefix>
+</strings>

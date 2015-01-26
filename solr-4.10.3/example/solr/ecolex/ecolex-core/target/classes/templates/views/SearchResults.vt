@@ -1,0 +1,416 @@
+#set($i18nIndex = $i18n.usePrefix('ecolex.index'))
+#set($i18nSR = $i18n.usePrefix('ecolex.SearchResults.strings'))
+#set($i18nViews = $i18n.usePrefix('ecolex.views.strings'))
+
+$pageTool.setTitle($i18nSR.get("title"))##
+$pageTool.addScriptLink('ecolex/javascript/utils.js')
+
+#set($i18nSRView = $i18n.usePrefix('ecolex.SearchResults.strings'))
+#result()
+
+#macro(field $hit $field)
+    #if($hit.get("${field}Whole_$i18n.Locale"))
+        $highlighter.highlight($hit.get("${field}Whole_$i18n.Locale")))
+    #elseif($hit.get("${field}Whole"))
+        $highlighter.highlight($hit.get("${field}Whole"))
+    #elseif($hit.get("${field}_$i18n.Locale"))
+        $highlighter.highlight($hit.get("${field}_$i18n.Locale"))
+    #elseif($hit.get("$field"))
+       $highlighter.highlight($hit.get("$field"))
+    #end
+#end
+
+#macro(fieldName $index $field) $i18nIndex.get("${index}.field.$field")#end
+
+#macro(fieldDiv $index $hit $field)
+#if($hit.get("${field}Whole_$i18n.Locale") || $hit.get("${field}Whole") || $hit.get("${field}_$i18n.Locale") || $hit.get("$field"))
+<div class="result-date">
+    <span>#fieldName($index $field): #field($hit $field)</span>##
+</div>
+#end
+#end
+
+#macro(dateDiv $index $hit $field)
+#if($hit.get("$field"))
+<div class="result-date">
+    <span>#fieldName($index $field): $!dateTool.format($hit.get("$field"), $i18n.Locale)</span>##
+</div>
+#end
+#end
+
+#if($parametersTool.get('title', null))
+<div class="sr_title">
+#if($indexHits.size() == 1)
+$i18nIndex.get("${indexHits.keySet().iterator().next()}.index.name") -
+#end
+$i18nSR.get($parametersTool.get('title'))
+</div>
+#end
+
+
+#if($hitsTable && $hitsTable.TotalRowCount > 0)
+<form id="searchResultsForm" name="searchResultsForm" method="get" action="$link.view('ExportResult')" target="_blank">
+    #set($date = $format_date.pattern('dd MMMM yyyy'))
+    #set($year = $format_date.pattern('yyyy'))
+
+
+
+
+    <table class="results-header">
+        <tr><th>$i18nSR.get("Results") <b>$hitsTable.startRow</b> - <b>$hitsTable.endRow</b> $i18nSR.get("of") <b>$hitsTable.totalRowCount</b>
+        #if($indexHits.size() == 1) ($i18nIndex.get("${indexHits.keySet().iterator().next()}.index.name"))#end
+        #if($parametersTool.get('screen', null))
+			(<a href="$link.view($parametersTool.get('screen')).set($link.self().getParameters())">$i18nSR.get("refine")</a>)
+		#elseif($parametersTool.get('query', null))
+			(<a href="$link.view('SimpleSearch').set($link.self().getParameters())">$i18nSR.get("refine")</a>)
+		#end
+        </th>
+            <td class="sort-links">$i18nSR.get("Sort by"):
+                #foreach($entry in $sortOptions.entrySet())
+                    #if($velocityCount > 1) | #end
+                        #if($parametersTool.get('sortField', 'score') == $entry.key)
+                            <b>$i18nViews.get($entry.value.toString())</b>
+                        #else
+                            <a href="$link.self().set('sortField',"$entry.key")" name="sortLink">$i18nViews.get($entry.value.toString())</a>
+                        #end
+                #end
+            </td>
+        </tr>
+        <tr>
+        
+        <tr/>
+        <th>
+          <a onclick="selectAll()" title="Select all on page"><img src="$link.content('ecolex/images/select_all.png')"/></a>
+          <a onclick="selectNonePage()" title="Clear selection on page"><img src="$link.content('ecolex/images/select_none.png')"/></a>
+          <a href="$link.self().unset('selected')" title="Clear all selections"><img src="$link.content('ecolex/images/select_none.png')" /></a>
+          
+        </th>
+        <td>
+        	<a onclick="exportSelected()" href="#">$i18nSR.get("export")</a>
+        	<select name="exportType">
+  				<option value="short">short</option>
+  				<option value="full">full</option>
+  				<option value="xml">xml</option>
+			</select>
+        </td>
+    </table>
+
+<script type="text/javascript">
+function openDialog(url, title)
+{
+    wnd = window.open(url,title,'width=815,height=550,resizable,scrollbars');
+    wnd.moveTo(((screen.width - 815)/2),((screen.height - 550)/2));
+    wnd.focus();
+}
+
+
+function somethingSelected() {	
+	var all = document.getElementsByName('selected');
+	for (var i=0; i<all.length; i++) {
+		if (all[i].type == 'checkbox' && all[i].checked)
+			return true;
+		if (all[i].type == 'hidden' && all[i].disabled != 'disabled' )
+			return true;
+	}
+	return false;
+}
+
+
+function recordSelected(id) {
+	var selected = false;
+	var all = document.getElementsByName('selected');
+	for (var i=0; i<all.length; i++) {
+		if (all[i].value==id && all[i].checked )
+			selected =  true;
+	}
+	updateLinks(id,selected);
+}
+
+function updateLinks(id, selected) {
+	var pageLinks = document.getElementsByClassName('table-pager');
+	for (var h=0; h<pageLinks.length; h++) {
+		var links = pageLinks[h].getElementsByTagName('a');
+		for (var i=0; i<links.length; i++) {
+			if (selected == true) {
+				if (links[i].href.search("&selected="+id+"")<0)
+					links[i].href = links[i].href + "&selected="+id+"";
+			}
+			else 
+				links[i].href = links[i].href.replace("&selected="+id+"","")
+		}
+	}
+	
+	indexLinks = document.getElementsByClassName('indexHits');
+	for (h=0; h<indexLinks.length; h++) {
+		links = indexLinks[h].getElementsByTagName('a');
+		for (var i=0; i<links.length; i++) {
+			if (selected == true) {
+				if (links[i].href.search("&selected="+id+"")<0)
+					links[i].href = links[i].href + "&selected="+id+"";
+			}
+			else 
+				links[i].href = links[i].href.replace("&selected="+id+"","")
+		}
+	}
+	
+	sortLinks = document.getElementsByClassName('sort-links');
+	for (h=0; h<sortLinks.length; h++) {
+		links = sortLinks[h].getElementsByTagName('a');
+		for (var i=0; i<links.length; i++) {
+			if (selected == true) {
+				if (links[i].href.search("&selected="+id+"")<0)
+					links[i].href = links[i].href + "&selected="+id+"";
+			}
+			else 
+				links[i].href = links[i].href.replace("&selected="+id+"","")
+		}
+	}
+	
+	var all = document.getElementsByName('selected');
+	for (var i=0; i<all.length; i++) {
+		if (selected ==false && all[i].type == 'hidden' && all[i].value==id) {
+			all[i].checked = false;
+			all[i].disabled = 'disabled';
+		}
+	}
+}
+
+function exportSelected()
+{
+  if (somethingSelected()) {
+	  document.searchResultsForm.action = "$link.view('ExportResult')";
+	  document.searchResultsForm.method = "get";
+	  document.searchResultsForm.submit();
+  } else {
+  	alert('$i18nSR.get("nothingSelected")')
+  }
+}
+
+function selectAll()
+{
+	var all = document.getElementsByName('selected');
+	for (var i=0; i<all.length; i++) {
+		all[i].checked = true;
+		updateLinks(all[i].value, true);
+	}
+
+}
+
+function selectNone()
+{
+	var all = document.getElementsByName('selected');
+	for (var i=0; i<all.length; i++) {
+		all[i].checked = false;
+		updateLinks(all[i].value, false);
+	}
+}
+
+function selectNonePage()
+{
+	var all = document.getElementsByName('selected');
+	var pageSel = new Array()
+	for (var i=0; i<all.length; i++) {
+		if (all[i].type != 'hidden') {
+			all[i].checked = false;
+			updateLinks(all[i].value, false);
+		}
+	}
+}
+
+</script>
+
+
+<div class="indexHits">
+    #if($indexHits.size() > 1)
+        #set($indexHitsLink = $link.self().unset('index').unset('page'))
+        ##foreach($indexHit in $indexHitsParam)
+            #set($indexHitsLink = $indexHitsLink.set('indexHitsParam', $indexHitsParam))
+        ##end
+
+        #foreach($indexHit in $indexHits.entrySet())
+            #if($indexHit.value > 0)
+            <a href="$indexHitsLink.set('index', $indexHit.key)">$i18nIndex.get("${indexHit.key}.index.name") ($indexHit.value)</a>
+            #else
+                $i18nIndex.get("${indexHit.key}.index.name") ($indexHit.value)
+            #end
+        #end
+        <a href="$indexHitsLink.unset('index')">$i18nSR.get("all")</a>
+    #end
+</div>
+
+#set($tableLink = $link.self().set('tableId', $hitsTable.id).unset('newSearch'))
+#tableView_relativePager($hitsTable $tableLink)
+<div style="clear: both">&nbsp;</div>
+
+#set($minRowId = 9999999)
+#set($maxRowId =-1)
+
+<!-- <ul class="results-list"> -->
+#foreach ($row in $hitsTable.rows)
+    #set($hit = $row.object)
+    #set($index = $indexIdentifier.identify($hit.document))
+
+ <!--   <li> -->
+<table>
+<tr>
+#set($minRowId = $highlighter.min($minRowId, $row.id))
+#set($maxRowId = $highlighter.max($maxRowId, $row.id))
+<td style="vertical-align:top">
+    <input type="checkbox" name="selected" value="$hit.id." #if ($highlighter.contains($params.getStrings('selected'),$hit.id.concat('.'))) checked=true #end onchange="recordSelected('$hit.id'+'.')">
+</td>
+
+<td style="border-bottom: dotted #005D13 1px;padding-left: 5px;margin-bottom: 3px;padding-bottom: 10px;width:100%">
+
+#if($indexHits.size() > 1)
+    <div class="recordtype">$i18nIndex.get("${index}.index.name")</div>
+#end
+
+    <p class="result-countries">
+    #if($index.equals("treaties"))
+        $i18nSR.get("International")
+    #elseif($hit.scope)
+        #field($hit 'scope')
+    #else
+        #field($hit 'country')
+        #foreach($countryCode in $hit.tokens(' ').countryCodes)
+            #if($velocityCount > 1) ; #end
+                #if($dictionary.getTerm($countryCode, $i18n.Locale))
+                    $dictionary.getTerm($countryCode, $i18n.Locale)
+                #else
+                    $countryCode
+                #end
+        #end
+
+        #if($hit.territorialSubdivision)
+            ($hit.territorialSubdivision)
+        #end
+    #end
+    </p>
+
+        <p class="result-title">
+              $highlighter.highlight($component.embed('DisplayTitle', [['record', $hit.document]]))
+
+    #foreach($basinCode in $hit.tokens(' ').basinCodes)
+        #if($velocityCount > 1) ; #end
+            $dictionary.getTerm($basinCode, $i18n.Locale)
+        #end
+        </p>
+
+
+#fieldDiv($index $hit 'courtName')
+
+#if($index.equals("literature"))
+	#fieldDiv($index $hit 'keyword')
+#end
+
+#if($hit.dateOfText)
+<div class="result-date">
+<span>
+    $i18nIndex.get("${index}.field.dateOfText"):
+    #if($index.equals("literature"))
+        $hit.dateOfText.substring(0, 4)
+    #else
+        $!dateTool.format($hit.dateOfText, $i18n.Locale)
+    #end
+</span>##
+</div>
+#end
+
+
+#dateDiv($index $hit 'dateOfOriginalText')
+
+##dateDiv($index $hit 'dateOfEntry')
+
+#if ($index.equals('documents'))
+  #dateDiv($index $hit 'dateOfConsolidation')
+#end
+
+#dateDiv($index $hit 'dateOfAdoption')
+#fieldDiv($index $hit 'placeOfAdoption')
+
+
+
+#if($index.equals("treaties"))
+  #fieldDiv($index $hit 'typeOfText')
+  #fieldDiv($index $hit 'fieldOfApplication')
+#end
+
+<div class="result-date">
+    <span>$i18nSR.get("ID"): $hit.id</span>##
+</div>
+
+## Faolex
+    <div  class="result-date">
+#if($hit.linksToFullText)
+    #fieldName($index 'link_to_full_text'):
+    #foreach($link in $hit.tokens(' ').linksToFullText)
+    	#if($link.lastIndexOf('/')>=0)
+    		#set($shortLink = $link.substring($link.lastIndexOf('/')).substring(1))
+    	#else
+    		#set($shortLink = $link)
+    	#end
+        #if($urlGenerator.getFaolexLink($link))
+            <a href="$urlGenerator.getFaolexLink($link)" target="_blank">$shortLink</a>
+        #else
+            <a href="#">$shortLinkink</a> (<span class="not_available">$i18nSR.get("not available")</span>)
+        #end
+    #end
+#end
+
+## Libcat
+##$hit.linkToFullText
+#if($hit.linkToFullText)
+    #fieldName($index 'linksToFullText'):
+    #foreach($link in $hit.tokens(' ').linkToFullText)
+    	#if($link.lastIndexOf('/')>=0)
+    		#set($shortLink = $link.substring($link.lastIndexOf('/')).substring(1))
+    	#else
+    		#set($shortLink = $link)
+    	#end
+        #if($urlGenerator.getEcolexLink($link))
+            <a href="$urlGenerator.getEcolexLink($link)" target="_blank">$shortLink</a>
+        #else
+            <a href="#">$shortLink</a> (<span class="not_available">$i18nSR.get("not available")</span>)
+        #end
+    #end
+#end
+    </div>
+
+
+#if($parametersTool.get('sortField', 'score').equals('score'))
+    <span class="result-relevance">Relevance:
+    #set($score = $hit.score / 25)
+    #set($score2 = (1000 - $hit.score) / 25)
+    <img class="relevance" src="$link.content('spc.gif')" style="width: ${score}px" alt="relevance"/><img class="relevance2" src="$link.content('spc.gif')" style="width: ${score2}px" alt="relevance"/>##
+    </span>##
+#end
+</td>
+</tr>
+</table>
+<!--</li> -->
+#end
+<!-- </ul> -->
+
+<div class="footer">
+#tableView_relativePager($hitsTable $tableLink)
+</div>
+#foreach($param in $params.parameterNames)
+	#if($param!='view' and $param!='indexHitsParam')
+	  #set($theParams = $params.getStrings($param))
+	    #foreach($p in $theParams)
+	      #if ($param!='selected' or not $highlighter.inRange($p.replace(".",""), $minRowId, $maxRowId))
+	        <input type="hidden" name="$param" value='$p'/>
+	      #end
+	    #end
+	#end
+#end
+</form>
+#else
+  <div class="no_matches">$i18nSR.get("No matches found")!</div>
+  #if($parametersTool.get('screen', null))
+	<div class="no_matches">(<a href="$link.view($parametersTool.get('screen')).set($link.self().getParameters())">$i18nSR.get("refine")</a>)</div>
+  #elseif($parametersTool.get('query', null))
+	<div class="no_matches">(<a href="$link.view('SimpleSearch').set($link.self().getParameters())">$i18nSR.get("refine")</a>)</div>
+  #end
+  
+#end

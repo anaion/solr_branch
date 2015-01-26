@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology.
+ All rights reserved.
+-->
+<container>
+
+  <!-- content extractor -->
+  <component class="org.objectledge.filesystem.ContentExtractor"/>
+
+  <!-- base components -->
+  <component class="org.objectledge.context.Context"/>
+
+  <!-- utility components -->
+
+  <component key="thread-cleanup" class="org.objectledge.pipeline.SimplePipeline">
+    <sequence>
+    </sequence>
+  </component>
+
+  <component class="org.objectledge.threads.ThreadPool">
+    <parameter key="thread-cleanup"/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+  </component>
+
+  <component class="org.objectledge.web.WebConfigurator"/>
+
+  <component class-key="org.objectledge.templating.Templating"
+             class="org.objectledge.templating.velocity.VelocityTemplating"/>
+
+  <component class-key="org.objectledge.i18n.I18n" class="org.objectledge.i18n.xml.XMLI18n"/>
+  <component class="org.objectledge.i18n.DateFormatter"/>
+
+  <component class="org.objectledge.authentication.NamingPolicy"/>
+  <component class="org.objectledge.authentication.LoginVerifier"/>
+  <component class="org.objectledge.authentication.PasswordGenerator"/>
+  <component class="org.objectledge.authentication.PasswordDigester">
+    <parameter value="MD5"/>
+  </component>
+
+  <component class="org.objectledge.mail.MailSystem"/>
+
+  <component class="org.objectledge.configuration.ConfigurationInspector"/>
+
+  <!-- utils -->
+  <component class="org.objectledge.encodings.HTMLEntityEncoder"/>
+  <component class="org.objectledge.encodings.HTMLEntityDecoder"/>
+  <component class="org.objectledge.upload.FileDownload"/>
+
+  <!-- // mvc components ////////////////////////////////////////////////////////////// -->
+  <!-- mvc basics -->
+  <component class="org.objectledge.web.mvc.security.PolicySystem"/>
+  <component class="org.objectledge.web.mvc.security.SecurityHelper"/>
+  <component class="org.objectledge.web.mvc.finders.NameSequenceFactory"/>
+
+  <container key="mvcContainer">
+  </container>
+  <component class="org.objectledge.web.mvc.finders.I18nMVCFinder">
+    <parameter key="mvcContainer"/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+  </component>
+
+  <component class="org.objectledge.web.mvc.tools.EmailToolFactory"/>
+  <component class="org.objectledge.i18n.WebI18nToolFactory"/>
+  <component class="org.objectledge.i18n.WebDateFormatToolFactory"/>
+  <component class-key="org.objectledge.web.mvc.tools.LinkToolFactory"
+                 class="org.objectledge.web.mvc.tools.LinkToolFactoryImpl"/>
+  <component class="org.objectledge.web.mvc.tools.ParametersToolFactory"/>
+
+  <component class="org.objectledge.web.mvc.builders.ViewEnclosureManager"/>
+  <component class="org.objectledge.web.mvc.tools.HTMLEntityEncoderToolFactory"/>
+  <component class="org.objectledge.web.mvc.components.ComponentToolFactory"/>
+  <component class="org.objectledge.web.mvc.tools.PageToolFactory"/>
+  <component class="org.objectledge.web.mvc.tools.StringToolFactory"/>
+  <component class="org.objectledge.templating.tools.ContextTools">
+    <sequence>
+      <parameter class-key="org.objectledge.i18n.WebI18nToolFactory"/>
+      <parameter class-key="org.objectledge.i18n.WebDateFormatToolFactory"/>
+      <parameter class-key="org.objectledge.web.mvc.tools.LinkToolFactory"/>
+      <parameter class-key="org.objectledge.web.mvc.tools.ParametersToolFactory"/>
+      <parameter class-key="org.objectledge.web.mvc.builders.ViewEnclosureManager"/>
+      <parameter class-key="org.objectledge.web.mvc.tools.HTMLEntityEncoderToolFactory"/>
+      <parameter class-key="org.objectledge.web.mvc.tools.PageToolFactory"/>
+      <parameter class-key="org.objectledge.web.mvc.tools.StringToolFactory"/>
+      <parameter class-key="org.objectledge.web.mvc.components.ComponentToolFactory"/>
+      <parameter class-key="org.objectledge.web.mvc.tools.EmailToolFactory"/>
+    </sequence>
+  </component>
+  <component class="org.objectledge.upload.FileUpload"/>
+  <component class-key="org.objectledge.table.TableStateManager"
+             class="org.objectledge.table.TableStateManagerImpl"/>
+
+  <!-- // valves ////////////////////////////////////////////////////////////////////// -->
+  <component class="org.objectledge.web.ContentTypeInitializerValve"/>
+  <component class="org.objectledge.encodings.RequestParametersHTMLEntityDecoderValve"/>
+  <component class="org.objectledge.encodings.MVCResultsHTMLEntityEncoderValve"/>
+  <component class="org.objectledge.web.mvc.MVCResultsValve"/>
+  <component class="org.objectledge.web.mvc.MVCInitializerValve"/>
+  <component class="org.objectledge.authentication.AuthenticationValve"/>
+  <component class="org.objectledge.parameters.RequestParametersLoaderValve"/>
+  <component class="org.objectledge.i18n.LocaleLoaderValve"/>
+  <component class="org.objectledge.i18n.UTF8EncodingLoaderValve"/>
+  <component class="org.objectledge.web.mvc.actions.ActionExecutorValve"/>
+  <component class="org.objectledge.web.mvc.builders.BuilderExecutorValve">
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter value="5"/>
+    <parameter value="5"/>
+  </component>
+  <component class="org.objectledge.templating.TemplatingContextLoaderValve"/>
+  <component class="org.objectledge.templating.tools.ContextToolPopulatorValve"/>
+  <component class="org.objectledge.web.PrintExceptionValve"/>
+  <component class="org.objectledge.web.mvc.ExceptionRedirectorValve"/>
+  <component class="org.objectledge.web.mvc.security.PolicyCheckingValve"/>
+  <component class="org.objectledge.upload.FileUploadValve"/>
+
+  <!-- end of valves -->
+
+
+  <!-- // pipeline //////////////////////////////////////////////////////////////////////// -->
+
+  <component key="postAuthPipeline"
+             class="org.objectledge.authentication.PostAuthenticationValve">
+    <component anon="true" class="org.objectledge.pipeline.SimplePipeline">
+      <sequence>
+        <parameter class-key="org.objectledge.web.mvc.security.PolicyCheckingValve"/>
+      </sequence>
+    </component>
+  </component>
+
+  <component class="org.objectledge.pipeline.ErrorHandlingPipeline">
+    <parameter class-key="org.jcontainer.dna.Logger"/>
+    <sequence>
+      <parameter class-key="org.objectledge.web.ContentTypeInitializerValve"/>
+      <parameter class-key="org.objectledge.authentication.AuthenticationValve"/>
+      <parameter class-key="org.objectledge.i18n.LocaleLoaderValve"/>
+      <parameter class-key="org.objectledge.i18n.UTF8EncodingLoaderValve"/>
+      <parameter class-key="org.objectledge.parameters.RequestParametersLoaderValve"/>
+      <parameter class-key="org.objectledge.encodings.RequestParametersHTMLEntityDecoderValve"/>
+      <parameter class-key="org.objectledge.web.mvc.MVCInitializerValve"/>
+      <parameter class-key="org.objectledge.templating.TemplatingContextLoaderValve"/>
+
+      <parameter class-key="org.objectledge.web.mvc.security.PolicyCheckingValve"/>
+      <parameter class-key="org.objectledge.web.mvc.actions.ActionExecutorValve"/>
+      <parameter key="postAuthPipeline"/>
+
+      <parameter class-key="org.objectledge.templating.tools.ContextToolPopulatorValve"/>
+      <parameter class-key="org.objectledge.web.mvc.builders.BuilderExecutorValve"/>
+    </sequence>
+    <sequence>
+      <parameter class-key="org.objectledge.web.ContentTypeInitializerValve"/>
+      <parameter class-key="org.objectledge.web.mvc.ExceptionRedirectorValve"/>
+      <parameter class-key="org.objectledge.templating.tools.ContextToolPopulatorValve"/>
+      <parameter class-key="org.objectledge.web.mvc.builders.BuilderExecutorValve"/>
+      <!--
+      <parameter class-key="org.objectledge.web.PrintExceptionValve"/>
+      -->
+    </sequence>
+    <sequence>
+      <parameter class-key="org.objectledge.encodings.MVCResultsHTMLEntityEncoderValve"/>
+      <parameter class-key="org.objectledge.web.mvc.MVCResultsValve"/>
+    </sequence>
+  </component>
+
+  <!-- // dispatchers ///////////////////////////////////////////////////////////////////// -->
+
+  <component class-key="org.objectledge.web.HttpDispatcher"
+             class="org.objectledge.web.dispatcher.PipelineHttpDispatcher">
+      <component class="org.objectledge.web.RequestTrackingValve">
+        <parameter class-key="org.objectledge.pipeline.ErrorHandlingPipeline"/>
+        <parameter/>
+        <parameter/>
+        <parameter/>
+      </component>
+    <parameter/>
+  </component>
+
+  <!-- Ecolex components //////////////////////////////////////////////////////// -->
+
+<!-- Common -->
+
+  <component class="ecolex.config.URLConfigurator"/>
+  <component class="ecolex.db.download.URLGenerator"/>
+  <component class="faolex.config.URLConfigurator"/>
+  <component class="ecolex.db.download.FaoLexUrlGenerator"/>
+
+  <component class-key="faolex.search.DateConverter"
+             class="faolex.search.PatternDateConverter">
+    <parameter value="yyyyMMdd" />
+  </component>
+
+  <component class="ecolex.util.DateTool">
+    <parameter value="dd MMMM yyyy"/>
+    <parameter value="MMMM yyyy"/>
+    <parameter value="yyyy"/>
+  </component>
+
+  <component class="pl.edu.pw.ii.lucene.DirectoryFactory"/>
+  <component class-key="faolex.search.AnalyzerFactory"
+             class="ecolex.db.index.SolrAnalyzerFactory"/>
+
+  <component class="org.apache.solr.schema.IndexSchema">
+    <parameter value="ecolex/db/index/ecolexSchema.xml"/>
+  </component>
+
+
+<!-- Indexing -->
+
+  <component class-key="faolex.search.IndexingFacility"
+             class="faolex.search.internal.IndexingFacilityImpl"/>
+  <component key="ecolexDocumentCreator" class="ecolex.db.index.EcoLexDocumentCreator"/>
+
+  <component class="pl.edu.pw.ii.download.HttpResourceDownloader"/>
+  <component class="ecolex.db.index.IndexDownload"/>
+
+    <component class="ecolex.db.download.FullTextExtraction"/>
+    <component class-key="pl.edu.pw.ii.extraction.DocumentParser"
+             class="pl.edu.pw.ii.extraction.NutchDocumentParser"/>
+    <component class-key="java.net.FileNameMap"
+             class="faolex.db.download.MimeMap"/>
+
+    <component class="ecolex.db.index.TaskRunner"/>
+    <component class="pl.edu.pw.ii.taskmanager.LongRunningTaskManager"/>
+
+    <component class="ecolex.db.CourtDecisionsDbAccess"/>
+    <component class="ecolex.db.LiteratureDbAccess"/>
+    <component class="ecolex.db.TreatiesDbAccess"/>
+    <component class="ecolex.db.FaoLexDbAccess"/>
+    <component class="ecolex.db.download.DocumentDownloader"/>
+
+    <component class="ecolex.db.DatesProcessor"/>
+    <component class="ecolex.db.EntityProcessor"/>
+    <component class="ecolex.db.SortFieldsProcessor"/>
+
+  <component key="treatiesIndexManager" class="ecolex.db.index.EcoLexIndexManager">
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter key="ecolexDocumentCreator"/>
+    <sequence>
+      <component class="ecolex.db.TreatyPartiesProcessor"/>
+      <parameter class-key="ecolex.db.DatesProcessor"/>
+      <parameter class-key="ecolex.db.EntityProcessor"/>
+      <parameter class-key="ecolex.db.SortFieldsProcessor"/>
+      <parameter class-key="ecolex.db.download.FullTextExtraction"/>
+    </sequence>
+    <parameter value="treaties"/>
+    <parameter class-key="ecolex.db.TreatiesDbAccess"/>
+    <parameter class-key="ecolex.db.download.URLGenerator"/>
+    <parameter class-key="ecolex.db.download.DocumentDownloader"/>
+  </component>
+  <component key="courtDecisionsIndexManager" class="ecolex.db.index.EcoLexIndexManager">
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter key="ecolexDocumentCreator"/>
+    <sequence>
+      <parameter class-key="ecolex.db.DatesProcessor"/>
+      <parameter class-key="ecolex.db.EntityProcessor"/>
+      <parameter class-key="ecolex.db.SortFieldsProcessor"/>
+      <parameter class-key="ecolex.db.download.FullTextExtraction"/>
+    </sequence>
+    <parameter value="courtdecisions"/>
+    <parameter class-key="ecolex.db.CourtDecisionsDbAccess"/>
+    <parameter class-key="ecolex.db.download.URLGenerator"/>
+    <parameter class-key="ecolex.db.download.DocumentDownloader"/>
+  </component>
+  <component key="literatureIndexManager" class="ecolex.db.index.EcoLexIndexManager">
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter key="ecolexDocumentCreator"/>
+    <sequence>
+      <parameter class-key="ecolex.db.DatesProcessor"/>
+      <parameter class-key="ecolex.db.EntityProcessor"/>
+      <parameter class-key="ecolex.db.SortFieldsProcessor"/>
+      <parameter class-key="ecolex.db.download.FullTextExtraction"/>
+    </sequence>
+    <parameter value="literature"/>
+    <parameter class-key="ecolex.db.LiteratureDbAccess"/>
+    <parameter class-key="ecolex.db.download.URLGenerator"/>
+    <parameter class-key="ecolex.db.download.DocumentDownloader"/>
+  </component>
+
+  <component key="faolexIndexManager" class="ecolex.db.index.FaoLexIndexManager"/>
+
+
+  <component class="ecolex.db.index.IndexManagerRepository">
+    <sequence>
+      <parameter key="treatiesIndexManager"/>
+      <parameter key="faolexIndexManager"/>
+      <parameter key="courtDecisionsIndexManager"/>
+      <parameter key="literatureIndexManager"/>
+    </sequence>
+  </component>
+
+    <component class="faolex.security.XmlRoleChecking"/>
+    <component class-key="org.objectledge.authentication.UserManager"
+             class="faolex.security.XmlUserManager"/>
+
+<!-- FaoLex -->
+  <component class="faolex.db.search.DocumentIndexManager">
+    <parameter key="faolexDocumentCreator"/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+  </component>
+  <component class="faolex.db.download.FullTextExtraction"/>
+  <component class="faolex.db.FaoLexDBAccess"/>
+  <component class="faolex.db.FaoLexDictionary"/>
+  <component class="faolex.db.search.FaoLexDictionaryEntryCreator"/>
+  <component key="faolexDocumentCreator" class="faolex.db.search.FaoLexDocumentCreator"/>
+
+<!-- Search -->
+
+  <component class="ecolex.search.MultiSearchExecutor"/>
+  <component class-key="faolex.search.searching.QueryCreatorConfig"
+             class="faolex.search.searching.internal.QueryCreatorConfigImpl"/>
+  <component class-key="ecolex.search.QueryCreatorFactory"
+               class="ecolex.search.QueryCreatorFactoryImpl"/>
+  <component class="pl.edu.pw.ii.result.ResultToolFactory"/>
+  <component class="faolex.config.SearchResultsConfigurator"/>
+
+  <component class-key="faolex.search.SearchingFacility"
+             class="faolex.search.internal.SearchingFacilityImpl"/>
+  <component class="faolex.search.searching.SearchFieldsInfo">
+      <parameter key="ecolexDocumentCreator"/>
+  </component>
+
+  <component class="ecolex.search.MultiIndexTermFrequency"/>
+  <component class="ecolex.search.TermListing"/>
+  <component class="ecolex.db.index.DocumentRemover"/>
+
+  <component class="ecolex.config.ViewsConfiguration"/>
+
+  <component class="ecolex.db.index.DbAccessRepository">
+    <sequence>
+        <parameter value="treaties"/>
+        <parameter value="documents"/>
+        <parameter value="courtdecisions"/>
+        <parameter value="literature"/>
+    </sequence>
+    <sequence>
+      <parameter class-key="ecolex.db.TreatiesDbAccess"/>
+      <parameter class-key="ecolex.db.FaoLexDbAccess"/>
+      <parameter class-key="ecolex.db.CourtDecisionsDbAccess"/>
+      <parameter class-key="ecolex.db.LiteratureDbAccess"/>
+    </sequence>
+  </component>
+
+  <component class="ecolex.search.ReferenceRetriever"/>
+  <component class="ecolex.search.IndexIdentifier"/>
+
+  <component class="org.objectledge.scheduler.AtScheduleFactory"/>
+  <component class="org.objectledge.scheduler.CronScheduleFactory"/>
+  <container key="jobsContainer">
+    <component class="ecolex.db.jobs.UpdateIndexJob"/>
+  </container>
+  <component class="org.objectledge.scheduler.TransientScheduler">
+    <parameter key="jobsContainer"/>
+    <parameter/>
+    <parameter/>
+    <parameter/>
+    <sequence>
+      <parameter class-key="org.objectledge.scheduler.AtScheduleFactory"/>
+      <parameter class-key="org.objectledge.scheduler.CronScheduleFactory"/>
+    </sequence>
+  </component>
+
+  <!-- stats come at the end so that all the providers are referencable -->
+
+  <component class="org.objectledge.statistics.Statistics">
+    <sequence>
+      <component class="org.objectledge.statistics.VMStatisticsProvider"/>
+      <parameter class-key="org.objectledge.web.RequestTrackingValve"/>
+    </sequence>
+    <parameter/>
+    <parameter/>
+  </component>
+  <component class="org.objectledge.statistics.StatisticsWriter"/>
+
+</container>

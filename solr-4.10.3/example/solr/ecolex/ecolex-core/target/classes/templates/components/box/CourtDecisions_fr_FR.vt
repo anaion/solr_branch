@@ -1,0 +1,5 @@
+<p>Informations concernant des décisions judiciaires parmi les plus significatives au niveau national et international</p>
+#set($fromDate = $format_date.pattern("yyyyMMdd").format($dateTool.daysBack(90)))
+#set($newestLink = $link.view('SearchResults').set('index', 'courtdecisions').set('query', "dateOfEntry:[$fromDate TO z]").set('sortField', 'dateOfEntry').set('title', 'newest'))
+<p><a href="$newestLink">Nouvelles entrées</a>
+##<p><a href="$link.view('CourtDecisions')">&gt;&gt;</a></p>

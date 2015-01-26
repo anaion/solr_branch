@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Legislación</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>Leg</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Todas las áreas y texto</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Buscar fecha</value>
+    </prefix>
+    <prefix name="titleOfText">
+      <value>Título del texto</value>
+    </prefix>
+    <prefix name="repealed">
+      <value>Revocado</value>
+    </prefix>
+    <prefix name="region">
+      <value>Región</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Materia</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Palabra clave</value>
+    </prefix>
+    <prefix name="country">
+      <value>País</value>
+    </prefix>
+    <prefix name="territorialSubdivision">
+      <value>Subdivisión territorial</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Cuenca</value>
+    </prefix>
+    <prefix name="Title_of_Text">
+      <value>Título del texto</value>
+    </prefix>
+    <prefix name="Long_Title_of_text">
+      <value>Título completo de texto</value>
+    </prefix>
+    <prefix name="dateOfText">
+      <value>Fecha del texto</value>
+    </prefix>
+    <prefix name="dateOfOriginalText">
+      <value>Fecha del texto original</value>
+    </prefix>
+    <prefix name="dateOfConsolidation">
+      <value>Fecha de consolidación</value>
+    </prefix>
+    <prefix name="Entry_into_Force">
+      <value>Entrada en vigor</value>
+    </prefix>
+    <prefix name="Publication_reference">
+      <value>Referencia de publicación</value>
+    </prefix>
+    <prefix name="Serial_Imprint">
+      <value>Referencia de publicación</value>
+    </prefix>
+    <prefix name="typeOfText">
+      <value>Tipo de texto</value>
+    </prefix>
+    <prefix name="Related_Web_Site">
+      <value>Página web relacionada</value>
+    </prefix>
+    <prefix name="link_to_full_text">
+      <value>Enlace al texto completo</value>
+    </prefix>
+    <prefix name="Doc_Language">
+      <value>Idioma del documento</value>
+    </prefix>
+    <prefix name="languageOfRecord">
+      <value>Idioma del récord</value>
+    </prefix>
+    <prefix name="Abstract">
+      <value>Abstracto</value>
+    </prefix>
+    <prefix name="Comment">
+      <value>Comentario</value>
+    </prefix>
+    <prefix name="id">
+      <value>Id</value>
+    </prefix>
+  </prefix>
+</strings>

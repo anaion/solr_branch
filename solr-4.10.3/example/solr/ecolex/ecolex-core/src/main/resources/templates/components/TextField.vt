@@ -1,0 +1,2 @@
+<input #if($style) class="$style" #end id="$name" name="$name" type="text" #if ($size) size="$size" #end #if($text) value="$text" #end />
+#set($text="")

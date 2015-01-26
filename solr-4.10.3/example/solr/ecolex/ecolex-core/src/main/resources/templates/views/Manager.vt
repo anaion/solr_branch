@@ -1,0 +1,109 @@
+$pageTool.setTitle('Manager')##
+
+#set($i18nIndex = $i18n.usePrefix('ecolex.index'))
+#set($datetime = $format_date.pattern('HH:mm, dd.MM.yyyy'))
+#set($date = $format_date.pattern('dd.MM.yyyy'))
+
+#macro(refresh)
+  $pageTool.addHttpEquivMeta("refresh", "20; URL=$link")
+#end
+
+#macro(taskStatus $task $description)
+        #if($task)
+          #if($task.Ended)
+            #if($task.Failed)
+              Task failed at $datetime.format($task.EndTime)
+              ( $!task.ProcessingMessage )
+            #else
+              Task finished at $datetime.format($task.EndTime)
+              (Done in $timeConverter.toString($task.RunningTime)).
+            #end
+          #elseif($task.Started)
+            Task running. Progress: $task.ProgressPercent%.
+            Time left: $timeConverter.toString($task.EstimatedTimeLeft).
+            #refresh()
+          #else
+            Task running. Progress: 0%.
+            #refresh()
+          #end
+        #else
+            $description
+        #end
+#end
+
+
+#macro(index $index)
+    <div class="indexTasks">
+      <h2>$i18nIndex.get("${index}.index.name")</h2>
+      <form method="get" action="$link"   onsubmit="return(confirm('Are you sure you want to reload the index?\nThis will erase the current index.\nRebuilding can take many hours.'))">
+        <input type="submit" value="Rebuild index"/>
+        <input type="hidden" name="action" value="RebuildIndex"/>
+        <input type="hidden" name="index" value="$index"/>
+
+        #taskStatus($taskRunner.getRebuildTask($index) "Click to rebuild the index from scratch.")
+      </form>
+
+      <form method="get" action="$link">
+        <input type="submit" value="Update index"/>
+        <input type="hidden" name="action" value="UpdateIndex"/>
+        <input type="hidden" name="index" value="$index"/>
+
+        #taskStatus($taskRunner.getUpdateTask($index) "Click to update the index.")
+      </form>
+
+          <p>Last update:
+          #if($lastUpdateDates.get($index))
+            $date.format($lastUpdateDates.get($index))
+          #else
+            -
+          #end
+          </p>
+          <p>Most recent record:
+          #if($mostRecentDates.get($index))
+            $date.format($mostRecentDates.get($index))
+          #else
+            -
+          #end
+          </p>
+    </div>
+#end
+
+
+$component.embed('Logout')
+
+<h1>Index management</h1>
+
+<div>
+  <form method="get" action="$link"   onsubmit="return(confirm('Are you sure you want to reload the index?\nThis will erase the current index.\nRebuilding can take many hours.'))">
+    <input type="submit" value="Rebuild all indexes"/>
+    <input type="hidden" name="action" value="RebuildAll"/>
+
+    #taskStatus($taskRunner.getRebuildAllTask() "Click to rebuild all indexes from scratch.")
+  </form>
+</div>
+
+<div>
+  <form method="get" action="$link">
+    <input type="submit" value="Update all indexes"/>
+    <input type="hidden" name="action" value="UpdateAll"/>
+
+    #taskStatus($taskRunner.getUpdateAllTask() "Click to update all indexes.")
+  </form>
+</div>
+
+  #foreach($index in $lastUpdateDates.keySet())
+    #index($index)
+  #end
+
+  <br/>
+  <form method="get" action="$link">
+    <input type="submit" value="Refresh page"/>
+  </form>
+  <br/>
+
+
+<h1>Locale links</h1>
+
+$component.embed('i18n.Locales')
+
+<a href="$link.view('Simple')">Go to search</a>

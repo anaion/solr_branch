@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2009, Warsaw University of Technology.
+ All rights reserved.
+-->
+<config>
+  <documentDirs>
+    <dir>
+      <baseDir>scanned/</baseDir>
+      <extension>.max</extension>
+      <extension>.tif</extension>
+    </dir>
+    <dir>
+      <baseDir>texts/</baseDir>
+      <extension>.doc</extension>
+      <extension>.txt</extension>
+      <extension>.wpf</extension>
+    </dir>
+    <dir>
+      <baseDir>pdf/</baseDir>
+      <extension>.pdf</extension>
+    </dir>
+    <dir>
+      <baseDir>html/</baseDir>
+      <extension>.htm</extension>
+    </dir>
+  </documentDirs>
+
+  <resultLinks>
+    <link locale="en_US">
+      <format>@ERALL</format>
+      <lang>eng</lang>
+    </link>
+    <link locale="fr_FR">
+      <format>@FRALL</format>
+      <lang>fra</lang>
+    </link>
+    <link locale="es_ES">
+      <format>@SRALL</format>
+      <lang>spa</lang>
+    </link>
+    <link locale="ar_SA">
+      <format>@ARALL</format>
+      <lang>arb</lang>
+    </link>
+  </resultLinks>
+</config>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Todos</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>Todos</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Todas las áreas y texto</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Materia</value>
+    </prefix>
+    <prefix name="country">
+      <value>País</value>
+    </prefix>
+    <prefix name="titleOfText_search">
+      <value>Buscar el título del texto</value>
+    </prefix>
+    <prefix name="region">
+      <value>Región</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Cuenca</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Palabra clave</value>
+    </prefix>
+    <prefix name="languageOfDocument">
+      <value>Idioma del documento</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Buscar fecha</value>
+    </prefix>
+    <prefix name="databases">
+      <value>Base de datos</value>
+    </prefix>
+  </prefix>
+</strings>

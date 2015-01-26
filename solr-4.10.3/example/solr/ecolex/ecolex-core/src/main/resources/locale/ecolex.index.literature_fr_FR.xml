@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="index">
+    <prefix name="name">
+      <value>Littérature</value>
+    </prefix>
+    <prefix name="abbrev">
+      <value>LIT</value>
+    </prefix>
+  </prefix>
+  <prefix name="field">
+    <prefix name="allFields">
+      <value>Mots de l'entrée et texte</value>
+    </prefix>
+    <prefix name="subject">
+      <value>Sujet(s)</value>
+    </prefix>
+    <prefix name="region">
+      <value>Région géographique</value>
+    </prefix>
+    <prefix name="displayRegion">
+      <value>Région géographique</value>
+    </prefix>
+    <prefix name="basin">
+      <value>Bassin</value>
+    </prefix>
+    <prefix name="keyword">
+      <value>Mot(s) clé(s)</value>
+    </prefix>
+    <prefix name="languageOfDocument">
+      <value>Langue du document</value>
+    </prefix>
+    <prefix name="country">
+      <value>Pays</value>
+    </prefix>
+    <prefix name="titleOfText_search">
+      <value>Mots du titre</value>
+    </prefix>
+    <prefix name="author">
+      <value>Auteur</value>
+    </prefix>
+    <prefix name="intOrg">
+      <value>Organisation internationale</value>
+    </prefix>
+    <prefix name="serialTitle">
+      <value>Périodique / Collection</value>
+    </prefix>
+    <prefix name="publisher">
+      <value>Éditeur</value>
+    </prefix>
+    <prefix name="typeOfText">
+      <value>Type du document</value>
+    </prefix>
+    <prefix name="searchDate">
+      <value>Année / Période</value>
+    </prefix>
+
+    <prefix name="authorA">
+      <value>Auteur</value>
+    </prefix>
+    <prefix name="paperTitleOfText">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="paperTitleOfTextFr">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="paperTitleOfTextSp">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="paperTitleOfTextOther">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="paperTitleOfTextTransl">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="paperTitleOfTextStatement">
+      <value>Titre</value>
+    </prefix>
+
+    <prefix name="authorM">
+      <value>Auteur</value>
+    </prefix>
+    <prefix name="titleOfText">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="titleOfTextFr">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="titleOfTextSp">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="titleOfTextOther">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="titleOfTextTransl">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="titleOfTextTranslFr">
+      <value>Titre</value>
+    </prefix>
+    <prefix name="titleOfTextTranslSp">
+      <value>Titre</value>
+    </prefix>
+
+    <prefix name="confName">
+      <value>Nom de la conférence</value>
+    </prefix>
+    <prefix name="confDate">
+      <value>Date de la conférence</value>
+    </prefix>
+    <prefix name="confPlace">
+      <value>Lieu de la conférence</value>
+    </prefix>
+
+    <prefix name="isbn">
+      <value>ISBN</value>
+    </prefix>
+    <prefix name="publPlace">
+      <value>Lieu de publication</value>
+    </prefix>
+    <prefix name="dateOfText">
+      <value>Date de publication</value>
+    </prefix>
+    <prefix name="volumeNo">
+      <value>Coolation</value>
+    </prefix>
+    <prefix name="collation">
+      <value>Pages</value>
+    </prefix>
+
+    <prefix name="linkToFullText">
+      <value>Accès au texte intégral</value>
+    </prefix>
+    <prefix name="languageOfTranslation">
+      <value>Traduction du document</value>
+    </prefix>
+    <prefix name="abstract">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="abstractFr">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="abstractSp">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="abstractOther">
+      <value>Résumé</value>
+    </prefix>
+    <prefix name="linkToAbstract">
+      <value>Accès au résumé</value>
+    </prefix>
+    <prefix name="comment">
+      <value>Commentaire</value>
+    </prefix>
+    <prefix name="linkToComment">
+      <value>Accès au commentaire</value>
+    </prefix>
+
+    <prefix name="scope">
+      <value>Champ d'application</value>
+    </prefix>
+    <prefix name="territorialSubdivision">
+      <value>Sous-division territoriale</value>
+    </prefix>
+
+    <prefix name="id">
+      <value>Numéro d'identification</value>
+    </prefix>
+
+    <prefix name="corpAuthorA">
+      <value>Auteur institution</value>
+    </prefix>
+    <prefix name="corpAuthorM">
+      <value>Auteur institution</value>
+    </prefix>
+    <prefix name="contributor">
+      <value>Coauteur</value>
+    </prefix>
+	<prefix name="relatedWebSite">
+      <value>Site Web concerné</value>
+    </prefix>
+    <prefix name="doi">
+      <value>DOI</value>
+    </prefix>
+  </prefix>
+</strings>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="title">
+      <value>Recherche simple</value>
+    </prefix>
+    <prefix name="select databases">
+      <value>Sélectionner une ou plusieures bases de données pour effectuer une recherche simple ou avancée</value>
+    </prefix>
+    <prefix name="Search also in full text">
+      <value>Inclure le texte intégral</value>
+    </prefix>
+    <prefix name="Advanced search">
+      <value>Recherche avancée</value>
+    </prefix>
+    <prefix name="Info line 1">
+      <value>ECOLEX est la source d'informations la plus complète qui existe au niveau mondial an matière de droit de l'environnement.</value>
+    </prefix>
+    <prefix name="Info line 2">
+      <value>ECOLEX est géré conjointement par la FAO, l’UICN et le PNUE.</value>
+    </prefix>
+    <prefix name="Info line 3 beg">
+      <value>ECOLEX est actuellement mis à jour. Tous les problèmes que vous pouvez rencontrer lors de l'utilisation du site sont probablement dus au travail en cours sur la base de données. N'hésitez pas à nous contacter à</value>
+    </prefix>
+    <prefix name="Info line 3 end">
+      <value> si vous éprouvez des difficultés.</value>
+    </prefix>
+    <prefix name="News">
+      <value>Nouvelles</value>
+    </prefix>
+    <prefix name="Links">
+      <value>Autres sites</value>
+    </prefix>
+    <prefix name="Treaties">
+      <value>Traités</value>
+    </prefix>
+    <prefix name="Legislation">
+      <value>Législation</value>
+    </prefix>
+    <prefix name="CourtDecisions">
+      <value>Jurisprudence</value>
+    </prefix>
+    <prefix name="Literature">
+      <value>Littérature</value>
+    </prefix>
+    <prefix name="GO">
+      <value>Rechercher</value>
+    </prefix>
+   </prefix>
+</strings>

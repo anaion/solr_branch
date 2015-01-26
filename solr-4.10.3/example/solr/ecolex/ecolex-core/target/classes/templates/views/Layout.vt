@@ -1,0 +1,78 @@
+$viewEnclosureTool.override('Page')##
+##
+$pageTool.addStyleLink('ecolex/ecolex.css')##
+##$pageTool.addStyleLink('ecolex/iucn.css')##
+##
+$pageTool.insertTitlePrefix('EcoLex: ')##
+##
+
+$pageTool.addScriptLink('ecolex/javascript/advanced.js')
+
+#set($i18nIndex = $i18n.usePrefix('ecolex.index'))
+#set($i18nLayout = $i18n.usePrefix('ecolex.layout.strings'))
+
+<div id="body">
+
+#if($i18n.Locale.toString().equals("fr_FR"))
+  #set($bannerLink = $link.content('ecolex/images/banner_fr_FR.jpg'))
+#elseif($i18n.Locale.toString().equals("es_ES"))
+  #set($bannerLink = $link.content('ecolex/images/banner_es_ES.jpg'))
+#else
+  #set($bannerLink = $link.content('ecolex/images/banner_en_US.jpg'))
+#end
+
+<img id="banner" src="$bannerLink" alt="Ecolex banner" usemap="#banner_map"/><div id="languages">
+     <a href="$link.self().action('i18n.SetLocale').set('locale','en_US')">English</a>
+     <a href="$link.self().action('i18n.SetLocale').set('locale','fr_FR')">Français</a>
+     <a href="$link.self().action('i18n.SetLocale').set('locale','es_ES')">Español</a>
+</div>
+
+<map name="banner_map" id="banner_map">
+    <area href="$link.view('SimpleSearch')" alt="EcoLex Home" title="EcoLex Home" shape="rect" coords="20, 20, 115, 115"/>
+    <area href="http://www.fao.org/" alt="FAO" title="FAO" shape="rect" coords="570, 25, 610, 65"/>
+    <area href="http://www.iucn.org/" alt="IUCN" title="IUCN" shape="rect" coords="610, 25, 690, 65"/>
+    <area href="http://www.unep.org/" alt="UNEP" title="UNEP" shape="rect" coords="690, 25, 730, 65"/>
+</map>
+
+<div id="menu">
+    <ul>
+        <li><a href="$link.view('SimpleSearch')">$i18nLayout.get("Home")</a></li>
+        <li><a href='$link.view("About_$i18n.locale")'>$i18nLayout.get("About")</a></li>
+        <li><a href="$link.view('Common')">$i18nLayout.get("Search")</a>
+            <ul>
+                <li><a href="$link.view('Common')">$i18nIndex.get("common.index.name")</a></li>
+                <li><a href="$link.view('Treaties')">$i18nIndex.get("treaties.index.name")</a></li>
+                <li><a href="$link.view('Legislation')">$i18nIndex.get("documents.index.name")</a></li>
+                <li><a href="$link.view('CourtDecisions')">$i18nIndex.get("courtdecisions.index.name")</a></li>
+                <li><a href="$link.view('Literature')">$i18nIndex.get("literature.index.name")</a></li>
+                <li><a href="http://sedac.ciesin.columbia.edu/gsametasearch/ecolex_start.jsp">$i18nLayout.get("CopDecisions")</a></li>
+            </ul>
+        </li>
+        <li><a href="$link.view('Common')">$i18nLayout.get("News")</a>
+        	#set($fromDate = $format_date.pattern("yyyyMMdd").format($dateTool.daysBack(90)))
+            <ul>
+            	<li><a href="$link.view('SearchResults').set('index', 'treaties').set('query', "dateOfLastLegalAction:[$fromDate TO z]").set('sortField', 'dateOfLastLegalAction').set('title', 'newestActions')">$i18nLayout.get("recentActions")</a></li>
+				<li><a href="$link.view('SearchResults').set('index', 'documents').set('query', "dateOfEntry:[$fromDate TO z]").set('sortField', 'dateOfEntry').set('title', 'newest')">$i18nLayout.get("newLegislations")</a></li>
+				<li><a href="$link.view('SearchResults').set('index', 'courtdecisions').set('query', "dateOfEntry:[$fromDate TO z]").set('sortField', 'dateOfEntry').set('title', 'newest')">$i18nLayout.get("newCourtDecisions")</a></li>
+				<li><a href="$link.view('SearchResults').set('index', 'literature').set('query', "dateOfEntry:[$fromDate TO z]").set('sortField', 'dateOfEntry').set('title', 'newest')">$i18nLayout.get("newLiterature")</a></li>
+            </ul>
+        </li>
+        <li><a href="mailto:ECOLEX@iucn.org">$i18nLayout.get("Contact")</a></li>
+    </ul>
+</div>
+
+<div id="content">
+$!embeddedPlaceholder
+</div>
+
+<div id="footer">
+<div>
+  <a href='$link.view("UserAgreement_$i18n.locale")'>$i18nLayout.get("user agreement")</a>
+  <a href='$link.view("Privacy_$i18n.locale")'>$i18nLayout.get("privacy")</a>
+  <a href='$link.view("Acknowledgements_$i18n.locale")'>$i18nLayout.get("acknowledgements")</a>
+  <!--<a href='$link.view("SiteMap_$i18n.locale")'>$i18nLayout.get("site map")</a>-->
+</div>
+<img src="$link.content('ecolex/images/footer2.png')" alt="Ecolex footer"/>
+</div>
+
+</div> ## body

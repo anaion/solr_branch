@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+   <prefix name="strings">
+      <prefix name="country">
+         <value>État</value>
+      </prefix>
+      <prefix name="entryIntoForce">
+         <value>Entrée en vigueur</value>
+      </prefix>
+      <prefix name="dateOfRatification">
+         <value>ratification</value>
+      </prefix>
+      <prefix name="dateOfAccessionApprobation">
+         <value>adhesion</value>
+      </prefix>
+      <prefix name="dateOfAcceptanceApproval">
+         <value>acceptation/approbation</value>
+      </prefix>
+      <prefix name="dateOfSuccession">
+         <value>succession</value>
+      </prefix>
+      <prefix name="dateOfDefiniteSignature">
+         <value>signature définitive</value>
+      </prefix>
+      <prefix name="dateOfSimpleSignature">
+         <value>signature simple</value>
+      </prefix>
+      <prefix name="dateOfReservation">
+         <value>reservation</value>
+      </prefix>
+      <prefix name="dateOfOmission">
+         <value>Retrait</value>
+      </prefix>
+   </prefix>
+</strings>

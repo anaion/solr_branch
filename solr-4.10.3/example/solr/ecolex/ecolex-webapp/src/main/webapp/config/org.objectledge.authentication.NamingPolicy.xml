@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<config>
+  <login-property>login</login-property>
+  <syntax>
+  </syntax>
+  <tokens>
+    <token>
+      <variable>login</variable>
+    </token>
+  </tokens>
+</config>

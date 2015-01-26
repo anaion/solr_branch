@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+   <prefix name="strings">
+      <prefix name="Treaties">
+         <value>Tratados</value>
+      </prefix>
+      <prefix name="Literature">
+         <value>Doctrina</value>
+      </prefix>
+      <prefix name="Court decisions">
+         <value>Decisiones judiciales</value>
+      </prefix>
+      <prefix name="Legislation">
+         <value>Legislación</value>
+      </prefix>
+      <prefix name="Date">
+         <value>Fecha</value>
+      </prefix>
+      <prefix name="Country">
+         <value>País</value>
+      </prefix>
+      <prefix name="Relevance">
+         <value>Relevancia</value>
+      </prefix>
+      <prefix name="allWords">
+         <value>Todas las palabras</value>
+      </prefix>
+      <prefix name="anyWord">
+         <value>Cualquier palabra</value>
+      </prefix>
+      <prefix name="multilateral">
+         <value>Multilateral</value>
+      </prefix>
+      <prefix name="bilateral">
+         <value>Bilateral</value>
+      </prefix>
+      <prefix name="global">
+         <value>Mundial</value>
+      </prefix>
+      <prefix name="regional">
+         <value>Regional</value>
+      </prefix>
+      <prefix name="Type of document">
+         <value>Tipo de documento</value>
+      </prefix>
+      <prefix name="Field of application">
+         <value>Área de aplicación</value>
+      </prefix>
+      <prefix name="legislation">
+         <value>Legislación</value>
+      </prefix>
+      <prefix name="miscellaneous">
+         <value>Miscelaneos</value>
+      </prefix>
+      <prefix name="regulation">
+         <value>Regulación</value>
+      </prefix>
+      <prefix name="English">
+         <value>Inglés</value>
+      </prefix>
+      <prefix name="French">
+         <value>Francés</value>
+      </prefix>
+      <prefix name="Spanish">
+         <value>Español</value>
+      </prefix>
+      <prefix name="Other">
+         <value>Otros</value>
+      </prefix>
+      <prefix name="decision">
+         <value>Decisión</value>
+      </prefix>
+      <prefix name="notice">
+         <value>Noticia</value>
+      </prefix>
+      <prefix name="inferior">
+         <value>Decisión del tribunal de primera instancia</value>
+      </prefix>
+      <prefix name="superior">
+         <value>Decisión judicial de instancia superior</value>
+      </prefix>
+      <prefix name="preliminary">
+         <value>Decisión preliminar</value>
+      </prefix>
+      <prefix name="others">
+         <value>Otros</value>
+      </prefix>
+      <prefix name="Author">
+         <value>Autor</value>
+      </prefix>
+   </prefix>
+</strings>

@@ -1,0 +1,52 @@
+#set($i18nIndex = $i18n.usePrefix('ecolex.index.literature'))
+#set($i18nAS = $i18n.usePrefix('ecolex.AdvancedSearch.strings'))
+#set($i18nViews = $i18n.usePrefix('ecolex.views.strings'))
+
+$pageTool.setTitle("$i18nIndex.get('index.name') $i18nAS.get('advanced search')")##
+$pageTool.addScriptLink('ecolex/javascript/utils.js')
+
+#set($yearStartText=$parametersTool.get("searchDate_start",""))
+#set($yearEndText=$parametersTool.get("searchDate_end",""))
+#set($sortField=$parametersTool.get("sortField", $sortOptions.keySet().iterator().next()))
+
+<script type="text/javascript">
+  function openResults()
+  {
+    form = el('advancedSearchForm');
+    form.action = "$link.view('SearchResults')";
+  }
+</script>
+
+<h1>$i18nIndex.get("index.name") $i18nAS.get("advanced search")</h1>
+
+<form id="advancedSearchForm" method="get" action="$link.view('SearchResults')">
+  <input type="hidden" name="screen" value="Literature"/>
+  <input type="hidden" name="index" value="literature"/>
+  <table class="input-fields">
+
+    $component.embed('search.TextCriteria')
+
+    <tr>
+      <th>$i18nIndex.get("field.searchDate"):</th>
+      <td>
+        <label>$i18nAS.get("from")</label>$component.embed('TextField', [['style', 'yearfield'],['name', 'searchDate_start'], ['text', $yearStartText]])
+        <label>$i18nAS.get("to")</label>$component.embed('TextField', [['style', 'yearfield'],['name', 'searchDate_end'], ['text', $yearEndText]])
+      </td>
+
+    </tr>
+    <tr>
+      <th>$i18nAS.get("Sort results by"):</th>
+      <td>
+        $component.embed('RadioButtons', [['name','sortField'],['options',$sortOptions], ['selected', $sortField]])
+     </td>
+    </tr>
+
+    <tr>
+      <th/>
+      <td style="text-align: right">
+        <input class="long_button" type="submit" value="$i18nAS.get('GO')" onclick="openResults()"/>
+        <input class="long_button" type="reset" value="$i18nAS.get('Clear')" onclick="clearForm('advancedSearchForm'); return false;"/>
+      </td>
+    </tr>
+  </table>
+</form>

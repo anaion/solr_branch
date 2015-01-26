@@ -1,0 +1,136 @@
+    function el(id) {
+          if (document.getElementById) {
+            return document.getElementById(id);
+          } else if (window[id]) {
+            return window[id];
+              }
+          return null;
+    }
+
+    function check(id)
+    {
+        var selectedText = el("whichSelectedText").value;
+        var checkboxText = el(id).value;
+
+        if(selectedText.indexOf(checkboxText) == -1 && el(id).checked == true)
+        { // checked
+            selectedText += ' "';
+            selectedText += checkboxText;
+            selectedText += '"';
+        }
+        else
+        if(selectedText.indexOf(checkboxText) != -1 && el(id).checked == false)
+        { // unchecked
+            var index = selectedText.indexOf(checkboxText);
+
+            selectedText = selectedText.replace(checkboxText,"");
+
+            if(index > 1)
+            {
+                if(selectedText.charAt(index - 1) == '"')
+                {
+                    //erase space and slash before
+                    var before = selectedText.substring(0,index-1);
+                    var after = selectedText.substring(index);
+
+                    selectedText = before + after;
+                }
+                if(selectedText.charAt(index - 1) =='"')
+                {
+                    var before = selectedText.substring(0,index-1);
+                    var after = selectedText.substring(index);
+
+                    selectedText = before + after;
+                }
+            }
+        }
+
+        el("whichSelectedText").value = selectedText;
+    }
+
+    function getWhichSelected()
+    {
+        var value = encodeURIComponent(el("whichSelectedText").value);
+
+        if(value != null && value.length > 0)
+            if(value.charAt(0) == '|')
+                return value.substring(1);
+
+        return value;
+    }
+
+    function clearForm(id)
+    {
+        form = el(id);
+        for (i = 0; i < form.elements.length; i++)
+        {
+            e = form.elements[i];
+            if (e.type == "text")
+                e.value = "";
+            else if (e.type == "select-one")
+                e.selectedIndex = 0;
+            else if (e.type == "checkbox")
+                e.checked = false;
+            else if (e.type == "radio")
+                e.checked = e.defaultChecked;
+        }
+    }
+
+ function autocomplete(forInput, index, field) {
+ $(function() {
+    function split( val ) {
+      return val.split( / \s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+    $( "#"+forInput )
+       // don't navigate away from the field on tab when selecting an item
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === jQuery.ui.keyCode.TAB &&
+            $( this ).data( "ui-autocomplete" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+      source: function(request, response) {
+                  var r = jQuery.ajax({type:'GET',url:'Suggest?'+'listingField='+field+(index ? '&index='+index.toLowerCase() : '')+'&startFrom='+extractLast(request.term),cache:false, async:false}).responseText
+                  if (r.indexOf("suggestedTerms:")==0) {
+                  	r=r.substring(16)
+			//if (r.length>0)
+                  		response(r.split('\n'))
+			//else
+			//	response(null)
+                  }
+                  else {
+                  	response(null);
+                  }
+              },
+      search: function() {
+          var term = extractLast( this.value );
+          if ( term.length < 2 ) {
+            return false;
+          }
+        },
+      focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },  
+      select: function( event, ui ) {
+		  var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          if (ui.item.value.indexOf(" ")>0) {
+          	terms.push( '"' + ui.item.value +'"' );
+          } else {
+          	terms.push( ui.item.value );
+          }
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( " " );
+          return false;
+          }
+    });
+})
+}

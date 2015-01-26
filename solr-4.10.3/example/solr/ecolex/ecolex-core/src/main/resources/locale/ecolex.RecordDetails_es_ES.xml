@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <prefix name="strings">
+    <prefix name="record details">
+      <value>detalles del récord</value>
+    </prefix>
+    <prefix name="Parties">
+      <value>Estados partes</value>
+    </prefix>
+    <prefix name="Click to show parties">
+      <value>Hacer clic para mostrar los estados parte</value>
+    </prefix>
+    <prefix name="Click to hide parties">
+      <value>Hacer clic para no mostrar los estados parte</value>
+    </prefix>
+    <prefix name="References">
+      <value>Referencias</value>
+    </prefix>
+    <prefix name="Referring documents">
+      <value>Referencias a otros documentos</value>
+    </prefix>
+   </prefix>
+</strings>

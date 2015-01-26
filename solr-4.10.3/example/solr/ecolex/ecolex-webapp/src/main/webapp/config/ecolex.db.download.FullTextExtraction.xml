@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2005, Warsaw University of Technology.
+ All rights reserved.
+-->
+<config>
+  <field>
+    <linkField>linkToFullText</linkField>
+    <targetField>fullText</targetField>
+  </field>
+  <field>
+    <linkField>linkToFullTextFr</linkField>
+    <targetField>fullText</targetField>
+  </field>
+  <field>
+    <linkField>linkToFullTextSp</linkField>
+    <targetField>fullText</targetField>
+  </field>
+  <field>
+    <linkField>linkToFullTextOther</linkField>
+    <targetField>fullText</targetField>
+  </field>
+
+  <field>
+    <linkField>linkToAbstract</linkField>
+    <targetField>abstract</targetField>
+  </field>
+  <field>
+    <linkField>linkToComment</linkField>
+    <targetField>comment</targetField>
+  </field>
+</config>

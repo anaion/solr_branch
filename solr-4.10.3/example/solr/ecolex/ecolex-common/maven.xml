@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id$ -->
+<project xmlns:j="jelly:core"
+         xmlns:util="jelly:util">
+
+  <preGoal name="jar:jar">
+    <attainGoal name="ledge:version-jar"/>
+    <attainGoal name="ledge:index-jar"/>
+  </preGoal>         
+   
+  <preGoal name="war:war">
+    <attainGoal name="ledge:repackage-content"/>
+    <attainGoal name="ledge:version-war"/>
+    <attainGoal name="ledge:version-war-html"/>
+    <attainGoal name="ledge:index-war"/>
+  </preGoal>
+
+   <!-- reports -->
+
+  <goal name="coverage-report">
+    <j:if test="${pom.build != null and pom.build.unitTestSourceDirectory != null and !empty(pom.build.unitTestSourceDirectory)}">
+      <util:file var="testDir" name="${pom.build.unitTestSourceDirectory}"/>
+      <j:if test="${testDir.exists()}">
+        <attainGoal name="jar:jar" />
+        <attainGoal name="emma:on" />
+        <attainGoal name="emma:test" />
+        <attainGoal name="emma:report" />
+        <attainGoal name="emma:off" />
+      </j:if>
+    </j:if>
+  </goal>
+</project>         

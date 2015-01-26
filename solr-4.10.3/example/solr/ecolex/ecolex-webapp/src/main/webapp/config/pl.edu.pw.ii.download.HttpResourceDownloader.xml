@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2007, Warsaw University of Technology.
+ All rights reserved.
+-->
+<config>
+  <!-- Sample proxy configuration
+  <proxyHost>193.205.206.25</proxyHost>
+  <proxyPort>3128</proxyPort>
+  -->
+    <timeout>3600</timeout> <!-- seconds -->
+</config>

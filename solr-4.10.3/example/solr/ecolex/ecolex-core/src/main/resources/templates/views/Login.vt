@@ -1,0 +1,15 @@
+$pageTool.setTitle('Login')##
+##
+<h1>Login required</h1>
+
+<p>
+You need to login into the system to view this.
+</p>
+
+$component.embed('Login')
+
+#if($originalView)
+<p>
+<a href="$link.view($originalView)">Go back</a>
+</p>
+#end
